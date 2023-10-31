@@ -1,3 +1,5 @@
+</body>
+</html>
 <script>
 
 var navLinks = document.getElementById("navLinks")
