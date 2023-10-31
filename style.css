@@ -6,7 +6,7 @@
 .header{
     min-height: 98vh;
     width: 100%;
-    background-color: rgb(165, 207, 255);
+    background-color: rgb(255, 165, 166);
 }
 nav{
     display: flex;
