@@ -1,5 +1,4 @@
-</body>
-</html>
+<!--------JavaScript for Toggle Menu------>
 <script>
 
 var navLinks = document.getElementById("navLinks")
@@ -11,6 +10,3 @@ function hideMenu(){
 }
 
 </script>
-
-</body>
-</html>
