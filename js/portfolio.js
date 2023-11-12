@@ -8,7 +8,7 @@
 	                    columnWidth = 50;
 						//note the Width was 50 before I changed it.
 	                if (w > 1200) {
-	                    columnNum  = 4;
+	                    columnNum  =5;
 						//i think this was 5 before I changed it to 4 
 	                } 
 	                else if (w > 900) {
