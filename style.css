@@ -314,7 +314,7 @@ a img.aligncenter {
 	position: relative;
 }
 .navbar-dark .navbar-nav .nav-link:hover{
-	color: #ffffff;
+	color: #000000;
 }
 .navbar-dark .navbar-nav .nav-link.active{
 	font-weight: 600;
