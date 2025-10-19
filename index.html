@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vanesa — 3D Desktop</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Helpful UI fallbacks -->
+  <div id="ui">
+    <button id="playBtn" hidden>Tap to Play Video</button>
+  </div>
+
+  <!-- Three.js will attach to this canvas -->
+  <canvas id="scene"></canvas>
+
+  <!-- Three.js + loaders from CDN -->
+  <script type="module">
+    import * as THREE from "https://unpkg.com/three@0.160.0/build/three.module.js";
+    import { GLTFLoader } from "https://unpkg.com/three@0.160.0/examples/jsm/loaders/GLTFLoader.js";
+    import { RGBELoader } from "https://unpkg.com/three@0.160.0/examples/jsm/loaders/RGBELoader.js";
+    window.THREE = THREE; // expose for main.js
+  </script>
+  <script type="module" src="main.js"></script>
+</body>
+</html>
