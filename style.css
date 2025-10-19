@@ -1,36 +1,4 @@
-:root {
-    --bg: #0f1115;
-    --fg: #c9d1d9;
-    --accent: #3ee36f;
-  }
-  
-  * { box-sizing: border-box; }
-  html, body { height: 100%; margin: 0; background: var(--bg); color: var(--fg); }
-  
-  #scene {
-    width: 100vw;
-    height: 100vh;
-    display: block;
-  }
-  
-  #ui {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    display: grid;
-    place-items: start end;
-    padding: 16px;
-  }
-  
-  #playBtn {
-    pointer-events: auto;
-    background: var(--accent);
-    color: #0b0f0c;
-    border: 0;
-    padding: 10px 14px;
-    border-radius: 10px;
-    font-weight: 700;
-    cursor: pointer;
-    box-shadow: 0 10px 30px rgba(62, 227, 111, .25);
-  }
-  
+html, body { height: 100%; margin: 0; background: #0f1115; }
+#scene { width: 100vw; height: 100vh; display: block; }
+#ui { position: fixed; inset: 0; display: grid; place-items: start end; padding: 16px; pointer-events:none; }
+#playBtn { pointer-events:auto; padding:10px 14px; border-radius:10px; font-weight:700; border:0; }
