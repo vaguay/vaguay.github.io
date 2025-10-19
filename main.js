@@ -1,6 +1,6 @@
 // Import modules directly from CDN
-import * as THREE from "https://unpkg.com/three@0.160.0/build/three.module.js";
-import { GLTFLoader } from "https://unpkg.com/three@0.160.0/examples/jsm/loaders/GLTFLoader.js";
+import * as THREE from "https://cdn.skypack.dev/three@0.160.0";
+import { GLTFLoader } from "https://cdn.skypack.dev/three@0.160.0/examples/jsm/loaders/GLTFLoader.js";
 
 
 const canvas = document.getElementById("scene");
