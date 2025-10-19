@@ -3,14 +3,22 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Vanesa — 3D Desktop</title>
-  <link rel="stylesheet" href="style.css?v=3" />
+  <title>Vanesa Aguay Guerra</title>
+
+  <!-- Link your CSS -->
+  <link rel="stylesheet" href="style.css?v=5" />
 </head>
+
 <body>
-  <div id="ui"><button id="playBtn" hidden>Tap to Play Video</button></div>
+  <!-- Optional UI (for video play button, etc.) -->
+  <div id="ui">
+    <button id="playBtn" hidden>Tap to Play Video</button>
+  </div>
+
+  <!-- 3D Canvas -->
   <canvas id="scene"></canvas>
 
-  <!-- main.js will import Three/GLTFLoader directly -->
-  <script type="module" src="main.js?v=3"></script>
+  <!-- Import the main JS module -->
+  <script type="module" src="main.js?v=5"></script>
 </body>
 </html>
