@@ -1,4 +1,0 @@
-html, body { height: 100%; margin: 0; background: #0f1115; }
-#scene { width: 100vw; height: 100vh; display: block; }
-#ui { position: fixed; inset: 0; display: grid; place-items: start end; padding: 16px; pointer-events:none; }
-#playBtn { pointer-events:auto; padding:10px 14px; border-radius:10px; font-weight:700; border:0; }
