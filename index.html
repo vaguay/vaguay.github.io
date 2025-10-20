@@ -1,25 +1,67 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Vanesa Aguay Guerra</title>
-
-  <!-- Link your CSS -->
-  <link rel="stylesheet" href="style.css?v=5" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Vanesa Aguay — Home</title>
+<meta name="description" content="Personal website of Vanesa Aguay" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css" />
+<script defer src="script.js"></script>
 </head>
+<body data-page="home">
+<header class="site-header">
+<a class="brand" href="/">VA</a>
+<button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+<nav class="site-nav" aria-label="Primary">
+<a href="index.html" data-link="home">Home</a>
+<a href="projects.html" data-link="projects">Projects</a>
+<a href="about.html" data-link="about">About</a>
+</nav>
+</header>
 
-<body>
-  <!-- Optional UI (for video play button, etc.) -->
-  <div id="ui">
-    <button id="playBtn" hidden>Tap to Play Video</button>
-  </div>
 
-  <!-- 3D Canvas -->
-  <canvas id="scene"></canvas>
+<main class="wrap">
+<section class="hero">
+<div class="hero-text">
+<h1>Hi, I'm <span class="accent">Vanesa</span>.</h1>
+<p class="lead">EECS @ Yale • builder • community‑minded technologist. I like turning messy ideas into thoughtful systems that help people.</p>
+<div class="cta-row">
+<a class="btn primary" href="projects.html">See Projects</a>
+<a class="btn ghost" href="about.html">About Me</a>
+</div>
+</div>
+<div class="hero-media">
+<img src="https://picsum.photos/seed/vanesa/640/640" alt="Portrait/placeholder" />
+</div>
+</section>
 
-  <!-- Import the main JS module -->
-  <script type="module" src="main.js?v=5"></script>
+
+<section class="grid cards">
+<article class="card">
+<h3>What I'm doing now</h3>
+<p>Studying EECS, experimenting with human‑centered AI, and mentoring first‑gen/low‑income students.</p>
+<a class="card-link" href="about.html">Read more →</a>
+</article>
+<article class="card">
+<h3>Recent project</h3>
+<p>Built hash tables and KD‑trees in C; designed a Blotto simulator; tinkering with xDrip+ ML ideas.</p>
+<a class="card-link" href="projects.html#featured">Open projects →</a>
+</article>
+<article class="card">
+<h3>Get in touch</h3>
+<p>Best via email or LinkedIn. I love chats about equitable tech, aerospace, and learning design.</p>
+<a class="card-link" href="mailto:hello@example.com">hello@example.com →</a>
+</article>
+</section>
+</main>
+
+
+<footer class="site-footer">
+<p>© <span id="year"></span> Vanesa Aguay • Built with HTML/CSS/JS</p>
+</footer>
 </body>
 </html>
 
