@@ -37,8 +37,16 @@ img {max-width: 100%;border: none;outline: none;height: auto;}
 input,textarea {border-radius: 0;resize: none;}
 ul {padding: 0;margin: 0;}
 @font-face {
-font-family: 'DM Serif Display', serif;
-font-family: 'Poppins', sans-serif;}
+  font-family: 'DM Serif Display';
+  src: url('path-to-font/DMSerifDisplay.woff2') format('woff2'),
+	   url('path-to-font/DMSerifDisplay.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('path-to-font/Poppins.woff2') format('woff2'),
+	   url('path-to-font/Poppins.woff') format('woff');
+}
 input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {background-color: transparent;background-image: none;color:#000;}
 /* 1.2 Typography */
 h1,h2,h3,h4,h5,h6 {font-family: 'DM Serif Display', serif;}
