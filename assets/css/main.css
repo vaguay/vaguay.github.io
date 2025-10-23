@@ -74,6 +74,16 @@ svg,img { max-width: 100%; height: auto; }
 
 .ds-banner figure{width: 370px; position: relative;}
 .ds-banner figure figcaption{ color: #FFF; font-size:1.875rem; position: absolute; bottom: 0; width: 100%; text-align: center; padding-bottom:2.5rem  }
+
+/* Custom addition: Hola Mundo computer-style */
+.ds-banner-left h3 {
+	font-family: 'Courier New', monospace; /* terminal-style font */
+	color: #CBFE00; /* neon yellow-green */
+	font-size: 1.5rem;
+	letter-spacing: 2px;
+	margin-bottom: 1rem;
+  }
+  
 /*-----------------------------------------------------------------
   3. >>> Resume Style
 ----------------------------------------------------------------*/
