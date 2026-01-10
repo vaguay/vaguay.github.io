@@ -57,41 +57,98 @@ function startScreenAnimation() {
   }
   
   function playNextVideo() {
-    // Placeholder for video playback
-    // You can add video elements here
-    // For now, create a simple animation then loop back
-    
     isPlayingVideo = true;
-    
-    // Simulate video playback for 5 seconds
-    let videoFrame = 0;
-    const videoInterval = setInterval(() => {
-      ctx.fillStyle = '#001a33';
-      ctx.fillRect(0, 0, canvas2D.width, canvas2D.height);
-      
-      // Display placeholder for video
-      ctx.fillStyle = '#ffffff';
-      ctx.font = '40px Arial';
-      ctx.textAlign = 'center';
-      ctx.fillText('Video Placeholder', canvas2D.width / 2, canvas2D.height / 2 - 40);
-      ctx.font = '28px Arial';
-      ctx.fillText('(Upload your outreach videos)', canvas2D.width / 2, canvas2D.height / 2 + 20);
-      
-      if (screenMesh && screenMesh.material.map) {
-        screenMesh.material.map.needsUpdate = true;
-      }
-      
-      videoFrame++;
-      if (videoFrame > 30) { // ~5 seconds at 60fps
-        clearInterval(videoInterval);
+  
+    if (!screenVideoEl || videoElements.length === 0) {
+      // If no videos, fall back to typing loop
+      charIndex = 0;
+      currentText = "";
+      animationPhase = 'typing';
+      isPlayingVideo = false;
+      return;
+    }
+  
+    const videoUrl = videoElements[currentVideoIndex % videoElements.length];
+    currentVideoIndex++;
+  
+    // Load + play video
+    screenVideoEl.src = videoUrl;
+    screenVideoEl.currentTime = 0;
+    screenVideoEl.loop = false;
+    screenVideoEl.muted = true; // autoplay-friendly
+  
+    const startDrawing = () => {
+      if (videoRafId) cancelAnimationFrame(videoRafId);
+  
+      const drawFrame = () => {
+        // Draw the video frame into the 2D canvas
+        ctx.fillStyle = '#001a33';
+        ctx.fillRect(0, 0, canvas2D.width, canvas2D.height);
+  
+        // Draw video scaled to fit canvas (cover)
+        const vw = screenVideoEl.videoWidth || 1;
+        const vh = screenVideoEl.videoHeight || 1;
+  
+        const canvasAspect = canvas2D.width / canvas2D.height;
+        const videoAspect = vw / vh;
+  
+        let sx = 0, sy = 0, sw = vw, sh = vh;
+  
+        if (videoAspect > canvasAspect) {
+          // video wider than canvas: crop sides
+          sw = vh * canvasAspect;
+          sx = (vw - sw) / 2;
+        } else {
+          // video taller than canvas: crop top/bottom
+          sh = vw / canvasAspect;
+          sy = (vh - sh) / 2;
+        }
+  
+        ctx.drawImage(screenVideoEl, sx, sy, sw, sh, 0, 0, canvas2D.width, canvas2D.height);
+  
+        // Optional scanlines overlay (keeps your CRT vibe during video)
+        ctx.fillStyle = 'rgba(0, 100, 150, 0.02)';
+        for (let i = 0; i < canvas2D.height; i += 3) {
+          ctx.fillRect(0, i, canvas2D.width, 1.5);
+        }
+  
+        if (screenMesh && screenMesh.material.map) {
+          screenMesh.material.map.needsUpdate = true;
+        }
+  
+        // Keep drawing while in video phase
+        if (animationPhase === 'video') {
+          videoRafId = requestAnimationFrame(drawFrame);
+        }
+      };
+  
+      animationPhase = 'video';
+      drawFrame();
+    };
+  
+    // When it can play, start drawing frames
+    screenVideoEl.oncanplay = () => {
+      screenVideoEl.play().then(() => {
+        startDrawing();
+      }).catch(() => {
+        // If autoplay blocked, still switch back gracefully
         isPlayingVideo = false;
-        // Loop back to typing
         charIndex = 0;
         currentText = "";
         animationPhase = 'typing';
-      }
-    }, 166); // ~6fps for video simulation
+      });
+    };
+  
+    // When the video ends, go to next video (continuous loop)
+    screenVideoEl.onended = () => {
+      isPlayingVideo = false;
+      playNextVideo();
+    };
+  
+    // Trigger load
+    screenVideoEl.load();
   }
+  
   
   // Add this function to allow users to add videos
   window.addVideo = function(videoUrl) {
@@ -146,6 +203,9 @@ function startScreenAnimation() {
   let currentVideoIndex = 0;
   let isPlayingVideo = false;
   let videoTexture = null;
+  let screenVideoEl = null;
+  let videoRafId = null;
+
   const typingText = "HOLA MUNDO";
   let currentText = "";
   let charIndex = 0;
@@ -209,6 +269,13 @@ function startScreenAnimation() {
     canvas2D.width = 1024;
     canvas2D.height = 768;
     ctx = canvas2D.getContext('2d');
+    screenVideoEl = document.getElementById('screenVideo');
+
+    // Add your hosted video files here:
+    videoElements.push("assets/videos/outreach1.mp4");
+    videoElements.push("assets/videos/outreach2.mp4");
+    videoElements.push("assets/videos/outreach3.mp4");
+
   
     // Start animation loops
     startScreenAnimation();
