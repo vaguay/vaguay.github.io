@@ -193,7 +193,7 @@ function startScreenAnimation() {
       0.1,
       1000
     );
-    camera.position.set(0, 20, 50); // Adjusted position for a slightly smaller and higher view
+    camera.position.set(0, 2.2, 12); // Adjusted position for a slightly smaller and higher view
     camera.lookAt(0, 0.3, 0); // Center the camera slightly lower to avoid cutting off the bottom
   
     // Renderer
@@ -228,8 +228,7 @@ function startScreenAnimation() {
     rimLight.position.set(0, 8, -8);
     scene.add(rimLight);
   
-    // Create Computer
-    createRealisticComputer();
+ 
   
     // Initialize canvas for screen content
     canvas2D = document.createElement('canvas');
@@ -242,6 +241,9 @@ function startScreenAnimation() {
     videoElements.push("assets/videos/outreach1.mp4");
     videoElements.push("assets/videos/outreach2.mp4");
     videoElements.push("assets/videos/outreach3.mp4");
+
+   // Create Computer
+   createRealisticComputer();    
   
     // Start animation loops
     startScreenAnimation();
