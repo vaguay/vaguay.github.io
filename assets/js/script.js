@@ -374,5 +374,230 @@ function startScreenAnimation() {
     const keyboard = new THREE.Mesh(keyboardGeometry, monitorMaterial);
     keyboard.position.set(0, -4.3, 4.5);
     keyboard.rotation.x = -0.08;
-    keyboard.castShadow =
+    keyboard.castShadow = true;
+    keyboard.receiveShadow = true;
+    computer.add(keyboard);
+  
+    // Keyboard keys
+    const keyMaterial = new THREE.MeshStandardMaterial({ 
+      color: 0xe0e0e0,
+      roughness: 0.4 
+    });
+    
+    for (let row = 0; row < 5; row++) {
+      const keysInRow = row === 0 ? 13 : 12;
+      for (let col = 0; col < keysInRow; col++) {
+        const keySize = row === 0 ? 0.35 : 0.42;
+        const keyGeometry = new THREE.BoxGeometry(keySize, 0.18, 0.42);
+        const key = new THREE.Mesh(keyGeometry, keyMaterial);
+        key.position.set(
+          -3 + col * 0.55,
+          -4.15,
+          3.2 + row * 0.55
+        );
+        keyboard.add(key);
+      }
+    }
+  
+    // Mouse
+    const mouseGeometry = new THREE.BoxGeometry(0.8, 0.3, 1.2);
+    mouseGeometry.scale(1, 0.5, 1);
+    const mouse = new THREE.Mesh(mouseGeometry, monitorMaterial);
+    mouse.position.set(5, -4.25, 4.8);
+    mouse.castShadow = true;
+    computer.add(mouse);
+  
+    computer.rotation.x = rotationX;
+    computer.rotation.y = rotationY;
+    computer.position.y = -0.8;
+  
+    scene.add(computer);
+  
+    // Animate LED pulse
+    let ledIntensity = 1;
+    let increasing = false;
+    setInterval(() => {
+      if (increasing) {
+        ledIntensity += 0.15;
+        if (ledIntensity >= 1) increasing = false;
+      } else {
+        ledIntensity -= 0.15;
+        if (ledIntensity <= 0.3) increasing = true;
+      }
+      ledMaterial.emissiveIntensity = ledIntensity;
+    }, 150);
+  }
+  
+  // Mouse/Touch interaction handlers - now supports all directions
+  function onMouseDown(e) {
+    isDragging = true;
+    previousMousePosition = { x: e.clientX, y: e.clientY };
+  }
+  
+  function onMouseMove(e) {
+    if (isDragging && computer) {
+      const deltaX = e.clientX - previousMousePosition.x;
+      const deltaY = e.clientY - previousMousePosition.y;
+      
+      targetRotationY += deltaX * 0.008;
+      targetRotationX += deltaY * 0.008;
+      
+      // Clamp X rotation to prevent flipping
+      targetRotationX = Math.max(-Math.PI / 2, Math.min(Math.PI / 2, targetRotationX));
+      
+      previousMousePosition = { x: e.clientX, y: e.clientY };
+    }
+  }
+  
+  function onMouseUp() {
+    isDragging = false;
+  }
+  
+  function onTouchStart(e) {
+    isDragging = true;
+    previousMousePosition = { 
+      x: e.touches[0].clientX, 
+      y: e.touches[0].clientY 
+    };
+  }
+  
+  function onTouchMove(e) {
+    if (isDragging && computer) {
+      const deltaX = e.touches[0].clientX - previousMousePosition.x;
+      const deltaY = e.touches[0].clientY - previousMousePosition.y;
+      
+      targetRotationY += deltaX * 0.008;
+      targetRotationX += deltaY * 0.008;
+      
+      targetRotationX = Math.max(-Math.PI / 2, Math.min(Math.PI / 2, targetRotationX));
+      
+      previousMousePosition = { 
+        x: e.touches[0].clientX, 
+        y: e.touches[0].clientY 
+      };
+    }
+    e.preventDefault();
+  }
+  
+  function onTouchEnd() {
+    isDragging = false;
+  }
+  
+  function onWheel(e) {
+    e.preventDefault();
+    const zoomSpeed = 0.5;
+    camera.position.z += e.deltaY * 0.01 * zoomSpeed;
+    camera.position.z = Math.max(6, Math.min(15, camera.position.z));
+  }
+  
+  function onWindowResize() {
+    const canvas = document.getElementById('canvas3d');
+    if (!canvas || !camera || !renderer) return;
+    
+    camera.aspect = canvas.clientWidth / canvas.clientHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(canvas.clientWidth, canvas.clientHeight);
+  }
+  
+  function animate() {
+    requestAnimationFrame(animate);
+  
+    if (computer) {
+      // Smooth rotation interpolation in all directions
+      rotationY += (targetRotationY - rotationY) * 0.1;
+      rotationX += (targetRotationX - rotationX) * 0.1;
+      
+      computer.rotation.y = rotationY;
+      computer.rotation.x = rotationX;
+      
+      // Gentle floating animation
+      computer.position.y = -0.8 + Math.sin(Date.now() * 0.0008) * 0.12;
+    }
+  
+    if (renderer && scene && camera) {
+      renderer.render(scene, camera);
+    }
+  }
+  
+  // Project Modal
+  const projectCards = document.querySelectorAll('.project-card');
+  const modal = document.getElementById('project-modal');
+  const modalClose = document.getElementById('modal-close');
+  const modalBody = document.getElementById('modal-body');
+  
+  const projectData = {
+    'mars-rover': {
+      title: 'NASA Mars Rover Architecture',
+      description: 'Led hardware design team for a comprehensive Mars rover mission concept under NASA L\'SPACE Mission Concept Academy. Developed power subsystem architecture optimizing efficiency by 15% while maintaining redundancy requirements.',
+      details: [
+        'Systems engineering for $450M mission concept',
+        'CEH 4.0 risk modeling and mitigation strategies',
+        'Cross-functional team leadership (12 members)',
+        'Technical documentation and presentation to NASA reviewers'
+      ],
+      tech: ['Systems Engineering', 'Power Systems', 'Risk Analysis', 'CAD']
+    },
+    'quantum-laser': {
+      title: 'Quantum Laser Synchronization',
+      description: 'Developed Python-based automation system for Yale Quantum Institute, improving laser timing precision for quantum networking experiments. System enables real-time adjustments with 95% accuracy improvement.',
+      details: [
+        'Real-time data acquisition and processing',
+        'Automated calibration algorithms',
+        'Integration with existing lab equipment',
+        'Performance optimization reducing manual intervention'
+      ],
+      tech: ['Python', 'Data Analysis', 'Automation', 'Quantum Systems']
+    },
+    'ai-literacy': {
+      title: 'Hola Mundo: AI for Kids',
+      description: 'Authored bilingual children\'s book introducing artificial intelligence concepts to Latin American youth. Reached 120,000+ readers globally, making technical concepts accessible through culturally relevant storytelling.',
+      details: [
+        'Bilingual content development (English/Spanish)',
+        'Age-appropriate technical explanations',
+        'Cultural representation in STEM education',
+        'Community partnerships for distribution'
+      ],
+      tech: ['Technical Writing', 'Education', 'Community Outreach']
+    }
+  };
+  
+  projectCards.forEach(card => {
+    card.addEventListener('click', () => {
+      const projectId = card.getAttribute('data-project');
+      const project = projectData[projectId];
+      
+      if (project) {
+        modalBody.innerHTML = `
+          <h2>${project.title}</h2>
+          <p style="color: var(--light-gray); margin: 1.5rem 0; line-height: 1.7;">${project.description}</p>
+          <h3 style="margin-top: 2rem; margin-bottom: 1rem;">Key Contributions</h3>
+          <ul style="color: var(--light-gray); line-height: 2; margin-bottom: 2rem;">
+            ${project.details.map(detail => `<li>${detail}</li>`).join('')}
+          </ul>
+          <h3 style="margin-bottom: 1rem;">Technologies</h3>
+          <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+            ${project.tech.map(tech => `
+              <span style="padding: 0.5rem 1rem; border: 1px solid var(--white); font-size: 0.85rem;">${tech}</span>
+            `).join('')}
+          </div>
+        `;
+        modal.classList.add('active');
+      }
+    });
+  });
+  
+  modalClose.addEventListener('click', () => {
+    modal.classList.remove('active');
+  });
+  
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      modal.classList.remove('active');
+    }
+  });
+  
+  // Initialize
+  window.addEventListener('load', () => {
+    init3D();
+  });
   
