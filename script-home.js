@@ -444,7 +444,7 @@ function startScreenAnimation() {
   
     computer.rotation.x = rotationX;
     computer.rotation.y = rotationY;
-    computer.position.y = -0.8;
+    computer.position.y = -0.4;
   
     scene.add(computer);
   
@@ -546,7 +546,8 @@ function startScreenAnimation() {
       computer.rotation.x = rotationX;
   
       // Gentle floating animation
-      computer.position.y = -0.8 + Math.sin(Date.now() * 0.0008) * 0.12;
+      computer.position.y = -0.4 + Math.sin(Date.now() * 0.0008) * 0.12;
+
     }
   
     if (renderer && scene && camera) {
