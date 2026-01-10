@@ -168,7 +168,7 @@ function startScreenAnimation() {
   // Video and animation state
   let videoElements = [];
   let currentVideoIndex = 0;
-  let isPlayingVideo = false;
+  let isPlayingVideo = true;
   let videoTexture = null;
   let screenVideoEl = null;
   let videoRafId = null;
