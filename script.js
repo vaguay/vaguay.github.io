@@ -178,14 +178,21 @@ function startScreenAnimation() {
     if (targetPage) targetPage.classList.add('active');
     if (targetLink) targetLink.classList.add('active');
   
-    // Snap to the section (works better than window.scrollTo)
-    requestAnimationFrame(() => {
-      targetPage.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    // Snap to the CONTENT inside the section (not the section itself)
+    setTimeout(() => {
+      const anchor =
+        targetPage.querySelector('.content-wrapper') ||
+        targetPage.querySelector('.projects-grid') ||
+        targetPage.querySelector('.blog-grid') ||
+        targetPage;
   
-      // Optional: offset for fixed nav (tweak 80–140 if needed)
-      window.scrollBy(0, -120);
-    });
+      const offset = 120; // adjust if you want
+      const y = anchor.getBoundingClientRect().top + window.pageYOffset - offset;
+  
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }, 0);
   }
+  
   
   
   navLinks.forEach(link => {
