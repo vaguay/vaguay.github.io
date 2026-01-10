@@ -193,7 +193,7 @@ function startScreenAnimation() {
       0.1,
       1000
     );
-    camera.position.set(0, 2, 10);
+    camera.position.set(0, 1.6, 14);
     camera.lookAt(0, 0, 0);
   
     // Renderer
