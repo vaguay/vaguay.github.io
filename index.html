@@ -4,46 +4,34 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Vanesa Aguay Guerra</title>
-  <link rel="stylesheet" href="styles.css"> 
-  <!-- Removed duplicate script.js inclusion -->
-
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <!-- Custom cursor -->
   <div class="cursor" id="cursor"></div>
 
-  <!-- Navigation -->
   <nav class="nav">
     <div class="nav-logo">VANESA AGUAY GUERRA</div>
   </nav>
 
-  <!-- Bottom Navigation -->
   <nav class="bottom-nav">
-    <a href="#home" class="bottom-nav-link active" data-page="home">
-      <span class="nav-icon">⌂</span>
-      <span>Home</span>
+    <a href="index.html" class="bottom-nav-link active">
+      <span class="nav-icon">⌂</span><span>Home</span>
     </a>
-    <a href="#experience" class="bottom-nav-link" data-page="experience">
-      <span class="nav-icon">◉</span>
-      <span>Experience</span>
+    <a href="experience.html" class="bottom-nav-link">
+      <span class="nav-icon">◉</span><span>Experience</span>
     </a>
-    <a href="#portfolio" class="bottom-nav-link" data-page="portfolio">
-      <span class="nav-icon">▣</span>
-      <span>Portfolio</span>
+    <a href="portfolio.html" class="bottom-nav-link">
+      <span class="nav-icon">▣</span><span>Portfolio</span>
     </a>
-    <a href="#blog" class="bottom-nav-link" data-page="blog">
-      <span class="nav-icon">✎</span>
-      <span>Blog</span>
+    <a href="blog.html" class="bottom-nav-link">
+      <span class="nav-icon">✎</span><span>Blog</span>
     </a>
     <a href="mailto:vanesa.aguay@yale.edu" class="bottom-nav-link">
-      <span class="nav-icon">✉</span>
-      <span>Contact</span>
+      <span class="nav-icon">✉</span><span>Contact</span>
     </a>
   </nav>
 
-  <!-- Main Container -->
   <main id="main-container">
-    <!-- HOME PAGE -->
     <section id="home" class="page active">
       <div class="hero-container">
         <div class="hero-visual-center">
@@ -54,147 +42,10 @@
     </section>
 
     <video id="screenVideo" playsinline muted preload="auto" style="display:none;"></video>
-
-
-    <!-- EXPERIENCE PAGE -->
-    <section id="experience" class="page">
-      <div class="content-wrapper">
-        <h2 class="page-title">Experience</h2>
-        <div class="timeline">
-          <div class="timeline-item">
-            <div class="timeline-date">2024</div>
-            <div class="timeline-content">
-              <h3>NASA L'SPACE Mission Concept Academy</h3>
-              <p class="role">Hardware Systems Lead</p>
-              <p>Directed hardware design for $450M Mars rover concept, optimizing power subsystems by 15% and integrating CEH 4.0 risk modeling for mission-critical operations.</p>
-            </div>
-          </div>
-          
-          <div class="timeline-item">
-            <div class="timeline-date">2024</div>
-            <div class="timeline-content">
-              <h3>Yale Quantum Institute</h3>
-              <p class="role">Research Assistant</p>
-              <p>Developed Python automation improving laser timing accuracy by 95% for real-time quantum-laser experiments in distributed quantum networking.</p>
-            </div>
-          </div>
-
-          <div class="timeline-item">
-            <div class="timeline-date">2023</div>
-            <div class="timeline-content">
-              <h3>OpenAI ChatGPT Lab</h3>
-              <p class="role">Lab Member</p>
-              <p>Collaborated with OpenAI team to prototype educational tools and share findings with the student community on AI literacy and accessibility.</p>
-            </div>
-          </div>
-
-          <div class="timeline-item">
-            <div class="timeline-date">2023</div>
-            <div class="timeline-content">
-              <h3>La Casa Cultural Center, Yale</h3>
-              <p class="role">Peer Mentor</p>
-              <p>Mentored first-generation Latinx students in navigating academic and social challenges while building inclusive community programming.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- PORTFOLIO PAGE -->
-    <section id="portfolio" class="page">
-      <div class="content-wrapper">
-        <h2 class="page-title">Portfolio</h2>
-        <div class="projects-grid">
-          <article class="project-card" data-project="mars-rover">
-            <div class="project-image">
-              <img src="assets/images/projects-1.png" alt="Mars Rover Architecture">
-            </div>
-            <div class="project-info">
-              <h3>NASA Mars Rover Architecture</h3>
-              <p>Mission concept development for Mars exploration with advanced power systems optimization</p>
-              <button class="btn btn-text">View Details →</button>
-            </div>
-          </article>
-
-          <article class="project-card" data-project="quantum-laser">
-            <div class="project-image">
-              <img src="assets/images/projects-2.png" alt="Quantum Laser System">
-            </div>
-            <div class="project-info">
-              <h3>Quantum Laser Synchronization</h3>
-              <p>Python-based automation system for precision quantum networking experiments</p>
-              <button class="btn btn-text">View Details →</button>
-            </div>
-          </article>
-
-          <article class="project-card" data-project="ai-literacy">
-            <div class="project-image">
-              <img src="assets/images/projects-3.png" alt="AI Literacy">
-            </div>
-            <div class="project-info">
-              <h3>Hola Mundo: AI for Kids</h3>
-              <p>Bilingual children's book introducing AI concepts to Latin American youth (120,000+ readers)</p>
-              <button class="btn btn-text">View Details →</button>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- BLOG PAGE -->
-    <section id="blog" class="page">
-      <div class="content-wrapper">
-        <h2 class="page-title">Blog & Publications</h2>
-        <div class="blog-grid">
-          <article class="blog-card">
-            <div class="blog-image">
-              <img src="assets/images/publication-1.png" alt="AIAA Publication">
-            </div>
-            <div class="blog-content">
-              <span class="blog-category">Research Paper</span>
-              <h3>Governing Space Security</h3>
-              <p>AIAA ASCEND 2025 paper analyzing multilateral treaty potential in space governance and security frameworks.</p>
-              <a href="https://arc.aiaa.org/doi/10.2514/6.2025-4011" class="btn btn-text" target="_blank">Read Paper →</a>
-            </div>
-          </article>
-
-          <article class="blog-card">
-            <div class="blog-image">
-              <img src="assets/images/publication-2.png" alt="Hola Mundo Book">
-            </div>
-            <div class="blog-content">
-              <span class="blog-category">Publication</span>
-              <h3>Hola Mundo: Inteligencia Artificial para Niños</h3>
-              <p>Bilingual children's book making AI accessible to Latin American communities through culturally relevant storytelling.</p>
-              <a href="https://www.amazon.com/dp/B0C5Y8X4R3" class="btn btn-text" target="_blank">View Book →</a>
-            </div>
-          </article>
-
-          <article class="blog-card">
-            <div class="blog-image">
-              <img src="assets/images/publication-3.png" alt="Yale Feature">
-            </div>
-            <div class="blog-content">
-              <span class="blog-category">Feature</span>
-              <h3>Tsai CITY Innovation</h3>
-              <p>Featured as Yale Tsai CITY Fellow for work at the intersection of engineering, entrepreneurship, and social impact.</p>
-              <a href="https://tsai.yale.edu" class="btn btn-text" target="_blank">Learn More →</a>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
   </main>
 
-  <!-- Project Modal (for detailed views) -->
-  <div class="modal" id="project-modal">
-    <div class="modal-content">
-      <button class="modal-close" id="modal-close">&times;</button>
-      <div id="modal-body"></div>
-    </div>
-  </div>
-
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <script src="script.js"></script>
+  <script src="script-pages.js"></script>
+  <script src="script-home.js"></script>
 </body>
 </html>

@@ -1,7 +1,9 @@
+// script-home.js
+
 // Screen animation system
 function startScreenAnimation() {
     updateScreen();
-    
+  
     // Typing animation interval
     setInterval(() => {
       if (animationPhase === 'typing') {
@@ -29,17 +31,17 @@ function startScreenAnimation() {
   
   function updateScreen() {
     if (!ctx) return;
-    
+  
     // Clear with CRT background
     ctx.fillStyle = '#001a33';
     ctx.fillRect(0, 0, canvas2D.width, canvas2D.height);
-    
+  
     // Add scanlines
     ctx.fillStyle = 'rgba(0, 100, 150, 0.02)';
     for (let i = 0; i < canvas2D.height; i += 3) {
       ctx.fillRect(0, i, canvas2D.width, 1.5);
     }
-    
+  
     // Draw text
     ctx.fillStyle = '#00ff00';
     ctx.font = 'bold 120px "Courier New", monospace';
@@ -47,10 +49,10 @@ function startScreenAnimation() {
     ctx.textBaseline = 'middle';
     ctx.shadowBlur = 20;
     ctx.shadowColor = '#00ff00';
-    
+  
     const displayText = currentText + (showCursor ? '_' : ' ');
     ctx.fillText(displayText, canvas2D.width / 2, canvas2D.height / 2);
-    
+  
     if (screenMesh && screenMesh.material.map) {
       screenMesh.material.map.needsUpdate = true;
     }
@@ -149,61 +151,10 @@ function startScreenAnimation() {
     screenVideoEl.load();
   }
   
-  
   // Add this function to allow users to add videos
   window.addVideo = function(videoUrl) {
     videoElements.push(videoUrl);
   };
-  
-  // SCRIPT.JS - Main Application Logic
-  
-  // Custom Cursor
-  const cursor = document.getElementById('cursor');
-  document.addEventListener('mousemove', (e) => {
-    cursor.style.left = e.clientX + 'px';
-    cursor.style.top = e.clientY + 'px';
-  });
-  
-  // Page Navigation
-  const navLinks = document.querySelectorAll('.bottom-nav-link');
-  const pages = document.querySelectorAll('.page');
-  
-  function navigateTo(pageId) {
-    pages.forEach(page => page.classList.remove('active'));
-    navLinks.forEach(link => link.classList.remove('active'));
-  
-    const targetPage = document.getElementById(pageId);
-    const targetLink = document.querySelector(`[data-page="${pageId}"]`);
-  
-    if (targetPage) targetPage.classList.add('active');
-    if (targetLink) targetLink.classList.add('active');
-  
-    // Snap to the CONTENT inside the section (not the section itself)
-    setTimeout(() => {
-      const anchor =
-        targetPage.querySelector('.content-wrapper') ||
-        targetPage.querySelector('.projects-grid') ||
-        targetPage.querySelector('.blog-grid') ||
-        targetPage;
-  
-      const offset = 120; // adjust if you want
-      const y = anchor.getBoundingClientRect().top + window.pageYOffset - offset;
-  
-      window.scrollTo({ top: y, behavior: 'smooth' });
-    }, 0);
-  }
-  
-  
-  
-  navLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
-      const pageId = link.getAttribute('data-page');
-      if (pageId) {
-        e.preventDefault();
-        navigateTo(pageId);
-      }
-    });
-  });
   
   // Three.js 3D Computer Setup
   let scene, camera, renderer, computer, screenMesh, canvas2D, ctx;
@@ -221,7 +172,7 @@ function startScreenAnimation() {
   let videoTexture = null;
   let screenVideoEl = null;
   let videoRafId = null;
-
+  
   const typingText = "HOLA MUNDO";
   let currentText = "";
   let charIndex = 0;
@@ -246,10 +197,10 @@ function startScreenAnimation() {
     camera.lookAt(0, 0, 0);
   
     // Renderer
-    renderer = new THREE.WebGLRenderer({ 
+    renderer = new THREE.WebGLRenderer({
       canvas: canvas,
-      antialias: true, 
-      alpha: true 
+      antialias: true,
+      alpha: true
     });
     renderer.setSize(canvas.clientWidth, canvas.clientHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
@@ -286,13 +237,11 @@ function startScreenAnimation() {
     canvas2D.height = 768;
     ctx = canvas2D.getContext('2d');
     screenVideoEl = document.getElementById('screenVideo');
-
+  
     // Add your hosted video files here:
     videoElements.push("assets/videos/outreach1.mp4");
     videoElements.push("assets/videos/outreach2.mp4");
     videoElements.push("assets/videos/outreach3.mp4");
-
-
   
     // Start animation loops
     startScreenAnimation();
@@ -317,7 +266,7 @@ function startScreenAnimation() {
   
     // Monitor body - more realistic proportions
     const monitorBodyGeometry = new THREE.BoxGeometry(7.5, 6, 6);
-    const monitorMaterial = new THREE.MeshStandardMaterial({ 
+    const monitorMaterial = new THREE.MeshStandardMaterial({
       color: 0xf0e8d8,
       roughness: 0.4,
       metalness: 0.05
@@ -329,7 +278,7 @@ function startScreenAnimation() {
   
     // Front bezel
     const bezelGeometry = new THREE.BoxGeometry(7.8, 6.3, 0.4);
-    const bezelMaterial = new THREE.MeshStandardMaterial({ 
+    const bezelMaterial = new THREE.MeshStandardMaterial({
       color: 0xd0c8b8,
       roughness: 0.5
     });
@@ -339,7 +288,7 @@ function startScreenAnimation() {
   
     // Screen frame (darker)
     const frameGeometry = new THREE.BoxGeometry(7.2, 5.8, 0.3);
-    const frameMaterial = new THREE.MeshStandardMaterial({ 
+    const frameMaterial = new THREE.MeshStandardMaterial({
       color: 0x2a2a2a,
       roughness: 0.7
     });
@@ -350,9 +299,9 @@ function startScreenAnimation() {
     // CRT Screen with canvas texture
     const textTexture = new THREE.CanvasTexture(canvas2D);
     textTexture.needsUpdate = true;
-    
+  
     const screenGeometry = new THREE.PlaneGeometry(6.4, 4.8);
-    const screenMaterial = new THREE.MeshStandardMaterial({ 
+    const screenMaterial = new THREE.MeshStandardMaterial({
       map: textTexture,
       emissive: 0x001122,
       emissiveIntensity: 0.3,
@@ -364,7 +313,7 @@ function startScreenAnimation() {
   
     // Screen glass reflection layer
     const glassGeometry = new THREE.PlaneGeometry(6.5, 4.85);
-    const glassMaterial = new THREE.MeshStandardMaterial({ 
+    const glassMaterial = new THREE.MeshStandardMaterial({
       color: 0xffffff,
       transparent: true,
       opacity: 0.08,
@@ -376,11 +325,11 @@ function startScreenAnimation() {
     computer.add(glass);
   
     // Ventilation grills on sides
-    const ventMaterial = new THREE.MeshStandardMaterial({ 
+    const ventMaterial = new THREE.MeshStandardMaterial({
       color: 0x1a1a1a,
-      roughness: 0.9 
+      roughness: 0.9
     });
-    
+  
     // Left vents
     for (let i = 0; i < 10; i++) {
       const ventGeometry = new THREE.BoxGeometry(0.15, 0.6, 0.1);
@@ -399,7 +348,7 @@ function startScreenAnimation() {
   
     // Brand logo area
     const logoGeometry = new THREE.PlaneGeometry(1.5, 0.3);
-    const logoMaterial = new THREE.MeshStandardMaterial({ 
+    const logoMaterial = new THREE.MeshStandardMaterial({
       color: 0x1a1a1a,
       roughness: 0.3
     });
@@ -409,7 +358,7 @@ function startScreenAnimation() {
   
     // Power LED
     const ledGeometry = new THREE.CircleGeometry(0.1, 16);
-    const ledMaterial = new THREE.MeshStandardMaterial({ 
+    const ledMaterial = new THREE.MeshStandardMaterial({
       color: 0x00ff00,
       emissive: 0x00ff00,
       emissiveIntensity: 1
@@ -433,15 +382,15 @@ function startScreenAnimation() {
   
     // Floppy drive slots
     const driveGeometry = new THREE.BoxGeometry(2, 0.15, 0.1);
-    const driveMaterial = new THREE.MeshStandardMaterial({ 
+    const driveMaterial = new THREE.MeshStandardMaterial({
       color: 0x1a1a1a,
       roughness: 0.7
     });
-    
+  
     const drive1 = new THREE.Mesh(driveGeometry, driveMaterial);
     drive1.position.set(0, -3.3, 2.76);
     computer.add(drive1);
-    
+  
     const drive2 = new THREE.Mesh(driveGeometry, driveMaterial);
     drive2.position.set(0, -3.6, 2.76);
     computer.add(drive2);
@@ -463,11 +412,11 @@ function startScreenAnimation() {
     computer.add(keyboard);
   
     // Keyboard keys
-    const keyMaterial = new THREE.MeshStandardMaterial({ 
+    const keyMaterial = new THREE.MeshStandardMaterial({
       color: 0xe0e0e0,
-      roughness: 0.4 
+      roughness: 0.4
     });
-    
+  
     for (let row = 0; row < 5; row++) {
       const keysInRow = row === 0 ? 13 : 12;
       for (let col = 0; col < keysInRow; col++) {
@@ -522,13 +471,13 @@ function startScreenAnimation() {
     if (isDragging && computer) {
       const deltaX = e.clientX - previousMousePosition.x;
       const deltaY = e.clientY - previousMousePosition.y;
-      
+  
       targetRotationY += deltaX * 0.008;
       targetRotationX += deltaY * 0.008;
-      
+  
       // Clamp X rotation to prevent flipping
       targetRotationX = Math.max(-Math.PI / 2, Math.min(Math.PI / 2, targetRotationX));
-      
+  
       previousMousePosition = { x: e.clientX, y: e.clientY };
     }
   }
@@ -539,9 +488,9 @@ function startScreenAnimation() {
   
   function onTouchStart(e) {
     isDragging = true;
-    previousMousePosition = { 
-      x: e.touches[0].clientX, 
-      y: e.touches[0].clientY 
+    previousMousePosition = {
+      x: e.touches[0].clientX,
+      y: e.touches[0].clientY
     };
   }
   
@@ -549,15 +498,15 @@ function startScreenAnimation() {
     if (isDragging && computer) {
       const deltaX = e.touches[0].clientX - previousMousePosition.x;
       const deltaY = e.touches[0].clientY - previousMousePosition.y;
-      
+  
       targetRotationY += deltaX * 0.008;
       targetRotationX += deltaY * 0.008;
-      
+  
       targetRotationX = Math.max(-Math.PI / 2, Math.min(Math.PI / 2, targetRotationX));
-      
-      previousMousePosition = { 
-        x: e.touches[0].clientX, 
-        y: e.touches[0].clientY 
+  
+      previousMousePosition = {
+        x: e.touches[0].clientX,
+        y: e.touches[0].clientY
       };
     }
     e.preventDefault();
@@ -577,7 +526,7 @@ function startScreenAnimation() {
   function onWindowResize() {
     const canvas = document.getElementById('canvas3d');
     if (!canvas || !camera || !renderer) return;
-    
+  
     camera.aspect = canvas.clientWidth / canvas.clientHeight;
     camera.updateProjectionMatrix();
     renderer.setSize(canvas.clientWidth, canvas.clientHeight);
@@ -590,10 +539,10 @@ function startScreenAnimation() {
       // Smooth rotation interpolation in all directions
       rotationY += (targetRotationY - rotationY) * 0.1;
       rotationX += (targetRotationX - rotationX) * 0.1;
-      
+  
       computer.rotation.y = rotationY;
       computer.rotation.x = rotationX;
-      
+  
       // Gentle floating animation
       computer.position.y = -0.8 + Math.sin(Date.now() * 0.0008) * 0.12;
     }
@@ -602,83 +551,6 @@ function startScreenAnimation() {
       renderer.render(scene, camera);
     }
   }
-  
-  // Project Modal
-  const projectCards = document.querySelectorAll('.project-card');
-  const modal = document.getElementById('project-modal');
-  const modalClose = document.getElementById('modal-close');
-  const modalBody = document.getElementById('modal-body');
-  
-  const projectData = {
-    'mars-rover': {
-      title: 'NASA Mars Rover Architecture',
-      description: 'Led hardware design team for a comprehensive Mars rover mission concept under NASA L\'SPACE Mission Concept Academy. Developed power subsystem architecture optimizing efficiency by 15% while maintaining redundancy requirements.',
-      details: [
-        'Systems engineering for $450M mission concept',
-        'CEH 4.0 risk modeling and mitigation strategies',
-        'Cross-functional team leadership (12 members)',
-        'Technical documentation and presentation to NASA reviewers'
-      ],
-      tech: ['Systems Engineering', 'Power Systems', 'Risk Analysis', 'CAD']
-    },
-    'quantum-laser': {
-      title: 'Quantum Laser Synchronization',
-      description: 'Developed Python-based automation system for Yale Quantum Institute, improving laser timing precision for quantum networking experiments. System enables real-time adjustments with 95% accuracy improvement.',
-      details: [
-        'Real-time data acquisition and processing',
-        'Automated calibration algorithms',
-        'Integration with existing lab equipment',
-        'Performance optimization reducing manual intervention'
-      ],
-      tech: ['Python', 'Data Analysis', 'Automation', 'Quantum Systems']
-    },
-    'ai-literacy': {
-      title: 'Hola Mundo: AI for Kids',
-      description: 'Authored bilingual children\'s book introducing artificial intelligence concepts to Latin American youth. Reached 120,000+ readers globally, making technical concepts accessible through culturally relevant storytelling.',
-      details: [
-        'Bilingual content development (English/Spanish)',
-        'Age-appropriate technical explanations',
-        'Cultural representation in STEM education',
-        'Community partnerships for distribution'
-      ],
-      tech: ['Technical Writing', 'Education', 'Community Outreach']
-    }
-  };
-  
-  projectCards.forEach(card => {
-    card.addEventListener('click', () => {
-      const projectId = card.getAttribute('data-project');
-      const project = projectData[projectId];
-      
-      if (project) {
-        modalBody.innerHTML = `
-          <h2>${project.title}</h2>
-          <p style="color: var(--light-gray); margin: 1.5rem 0; line-height: 1.7;">${project.description}</p>
-          <h3 style="margin-top: 2rem; margin-bottom: 1rem;">Key Contributions</h3>
-          <ul style="color: var(--light-gray); line-height: 2; margin-bottom: 2rem;">
-            ${project.details.map(detail => `<li>${detail}</li>`).join('')}
-          </ul>
-          <h3 style="margin-bottom: 1rem;">Technologies</h3>
-          <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
-            ${project.tech.map(tech => `
-              <span style="padding: 0.5rem 1rem; border: 1px solid var(--white); font-size: 0.85rem;">${tech}</span>
-            `).join('')}
-          </div>
-        `;
-        modal.classList.add('active');
-      }
-    });
-  });
-  
-  modalClose.addEventListener('click', () => {
-    modal.classList.remove('active');
-  });
-  
-  modal.addEventListener('click', (e) => {
-    if (e.target === modal) {
-      modal.classList.remove('active');
-    }
-  });
   
   // Initialize
   window.addEventListener('load', () => {

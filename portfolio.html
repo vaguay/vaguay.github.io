@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio • Vanesa Aguay Guerra</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="cursor" id="cursor"></div>
+
+  <nav class="nav">
+    <div class="nav-logo">VANESA AGUAY GUERRA</div>
+  </nav>
+
+  <nav class="bottom-nav">
+    <a href="index.html" class="bottom-nav-link">
+      <span class="nav-icon">⌂</span><span>Home</span>
+    </a>
+    <a href="experience.html" class="bottom-nav-link">
+      <span class="nav-icon">◉</span><span>Experience</span>
+    </a>
+    <a href="portfolio.html" class="bottom-nav-link active">
+      <span class="nav-icon">▣</span><span>Portfolio</span>
+    </a>
+    <a href="blog.html" class="bottom-nav-link">
+      <span class="nav-icon">✎</span><span>Blog</span>
+    </a>
+    <a href="mailto:vanesa.aguay@yale.edu" class="bottom-nav-link">
+      <span class="nav-icon">✉</span><span>Contact</span>
+    </a>
+  </nav>
+
+  <main id="main-container">
+    <section id="portfolio" class="page active">
+      <div class="content-wrapper">
+        <h2 class="page-title">Portfolio</h2>
+        <div class="projects-grid">
+          <article class="project-card" data-project="mars-rover">
+            <div class="project-image">
+              <img src="assets/images/projects-1.png" alt="Mars Rover Architecture">
+            </div>
+            <div class="project-info">
+              <h3>NASA Mars Rover Architecture</h3>
+              <p>Mission concept development for Mars exploration with advanced power systems optimization</p>
+              <button class="btn btn-text">View Details →</button>
+            </div>
+          </article>
+
+          <article class="project-card" data-project="quantum-laser">
+            <div class="project-image">
+              <img src="assets/images/projects-2.png" alt="Quantum Laser System">
+            </div>
+            <div class="project-info">
+              <h3>Quantum Laser Synchronization</h3>
+              <p>Python-based automation system for precision quantum networking experiments</p>
+              <button class="btn btn-text">View Details →</button>
+            </div>
+          </article>
+
+          <article class="project-card" data-project="ai-literacy">
+            <div class="project-image">
+              <img src="assets/images/projects-3.png" alt="AI Literacy">
+            </div>
+            <div class="project-info">
+              <h3>Hola Mundo: AI for Kids</h3>
+              <p>Bilingual children's book introducing AI concepts to Latin American youth (120,000+ readers)</p>
+              <button class="btn btn-text">View Details →</button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="modal" id="project-modal">
+    <div class="modal-content">
+      <button class="modal-close" id="modal-close">&times;</button>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+
+  <script src="script-pages.js"></script>
+</body>
+</html>

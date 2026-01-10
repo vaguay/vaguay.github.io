@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog • Vanesa Aguay Guerra</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="cursor" id="cursor"></div>
+
+  <nav class="nav">
+    <div class="nav-logo">VANESA AGUAY GUERRA</div>
+  </nav>
+
+  <nav class="bottom-nav">
+    <a href="index.html" class="bottom-nav-link">
+      <span class="nav-icon">⌂</span><span>Home</span>
+    </a>
+    <a href="experience.html" class="bottom-nav-link">
+      <span class="nav-icon">◉</span><span>Experience</span>
+    </a>
+    <a href="portfolio.html" class="bottom-nav-link">
+      <span class="nav-icon">▣</span><span>Portfolio</span>
+    </a>
+    <a href="blog.html" class="bottom-nav-link active">
+      <span class="nav-icon">✎</span><span>Blog</span>
+    </a>
+    <a href="mailto:vanesa.aguay@yale.edu" class="bottom-nav-link">
+      <span class="nav-icon">✉</span><span>Contact</span>
+    </a>
+  </nav>
+
+  <main id="main-container">
+    <section id="blog" class="page active">
+      <div class="content-wrapper">
+        <h2 class="page-title">Blog & Publications</h2>
+        <div class="blog-grid">
+          <article class="blog-card">
+            <div class="blog-image">
+              <img src="assets/images/publication-1.png" alt="AIAA Publication">
+            </div>
+            <div class="blog-content">
+              <span class="blog-category">Research Paper</span>
+              <h3>Governing Space Security</h3>
+              <p>AIAA ASCEND 2025 paper analyzing multilateral treaty potential in space governance and security frameworks.</p>
+              <a href="https://arc.aiaa.org/doi/10.2514/6.2025-4011" class="btn btn-text" target="_blank">Read Paper →</a>
+            </div>
+          </article>
+
+          <article class="blog-card">
+            <div class="blog-image">
+              <img src="assets/images/publication-2.png" alt="Hola Mundo Book">
+            </div>
+            <div class="blog-content">
+              <span class="blog-category">Publication</span>
+              <h3>Hola Mundo: Inteligencia Artificial para Niños</h3>
+              <p>Bilingual children's book making AI accessible to Latin American communities through culturally relevant storytelling.</p>
+              <a href="https://www.amazon.com/dp/B0C5Y8X4R3" class="btn btn-text" target="_blank">View Book →</a>
+            </div>
+          </article>
+
+          <article class="blog-card">
+            <div class="blog-image">
+              <img src="assets/images/publication-3.png" alt="Yale Feature">
+            </div>
+            <div class="blog-content">
+              <span class="blog-category">Feature</span>
+              <h3>Tsai CITY Innovation</h3>
+              <p>Featured as Yale Tsai CITY Fellow for work at the intersection of engineering, entrepreneurship, and social impact.</p>
+              <a href="https://tsai.yale.edu" class="btn btn-text" target="_blank">Learn More →</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="script-pages.js"></script>
+</body>
+</html>
