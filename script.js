@@ -272,9 +272,9 @@ function startScreenAnimation() {
     screenVideoEl = document.getElementById('screenVideo');
 
     // Add your hosted video files here:
-    videoElements.push("personal%20site/assets/videos/outreach1.mp4");
-    videoElements.push("personal%20site/assets/videos/outreach2.mp4");
-    videoElements.push("personal%20site/assets/videos/outreach3.mp4");
+    videoElements.push("assets/videos/outreach1.mp4");
+    videoElements.push("assets/videos/outreach2.mp4");
+    videoElements.push("assets/videos/outreach3.mp4");
 
 
   
