@@ -193,7 +193,7 @@ function startScreenAnimation() {
       0.1,
       1000
     );
-    camera.position.set(0, 5, 20); // Adjusted position for a slightly smaller and higher view
+    camera.position.set(0, 20, 50); // Adjusted position for a slightly smaller and higher view
     camera.lookAt(0, 0.3, 0); // Center the camera slightly lower to avoid cutting off the bottom
   
     // Renderer
