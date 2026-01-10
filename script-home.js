@@ -318,9 +318,9 @@ function startScreenAnimation() {
     const glassMaterial = new THREE.MeshStandardMaterial({
       color: 0xffffff,
       transparent: true,
-      opacity: 0.08,
+      opacity: 0.02,
       roughness: 0.1,
-      metalness: 0.9
+      metalness: 0.1
     });
     const glass = new THREE.Mesh(glassGeometry, glassMaterial);
     glass.position.z = 3.52;
