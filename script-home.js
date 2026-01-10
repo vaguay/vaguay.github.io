@@ -193,8 +193,8 @@ function startScreenAnimation() {
       0.1,
       1000
     );
-    camera.position.set(0, 1.2, 10); // Adjusted position for a smaller and centered view
-    camera.lookAt(0, 0, 0); // Center the camera on the computer
+    camera.position.set(0, 1.8, 10); // Adjusted position for a higher view
+    camera.lookAt(0, 0.5, 0); // Center the camera slightly higher on the computer
   
     // Renderer
     renderer = new THREE.WebGLRenderer({
