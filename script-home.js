@@ -193,8 +193,8 @@ function startScreenAnimation() {
       0.1,
       1000
     );
-    camera.position.set(50, 1.6, 14);
-    camera.lookAt(0, 0, 0);
+    camera.position.set(0, 1.6, 14);
+    camera.lookAt(50, 0, 0);
   
     // Renderer
     renderer = new THREE.WebGLRenderer({
