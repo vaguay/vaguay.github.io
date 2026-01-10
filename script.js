@@ -171,16 +171,22 @@ function startScreenAnimation() {
   function navigateTo(pageId) {
     pages.forEach(page => page.classList.remove('active'));
     navLinks.forEach(link => link.classList.remove('active'));
-    
+  
     const targetPage = document.getElementById(pageId);
     const targetLink = document.querySelector(`[data-page="${pageId}"]`);
-    
+  
     if (targetPage) targetPage.classList.add('active');
     if (targetLink) targetLink.classList.add('active');
-
-    window.scrollTo(0, 0);
-
+  
+    // Snap to the section (works better than window.scrollTo)
+    requestAnimationFrame(() => {
+      targetPage.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  
+      // Optional: offset for fixed nav (tweak 80–140 if needed)
+      window.scrollBy(0, -120);
+    });
   }
+  
   
   navLinks.forEach(link => {
     link.addEventListener('click', (e) => {
