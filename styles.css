@@ -468,13 +468,5 @@
 	}
   }
 
-  .bottom-nav {
-	z-index: 999999 !important;
-	pointer-events: auto !important;
-  }
-  
-  .bottom-nav-link {
-	pointer-events: auto !important;
-  }
   
   
