@@ -177,6 +177,9 @@ function startScreenAnimation() {
     
     if (targetPage) targetPage.classList.add('active');
     if (targetLink) targetLink.classList.add('active');
+
+    window.scrollTo(0, 0);
+
   }
   
   navLinks.forEach(link => {
