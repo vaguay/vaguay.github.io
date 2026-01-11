@@ -303,12 +303,10 @@ function startScreenAnimation() {
     textTexture.needsUpdate = true;
   
     const screenGeometry = new THREE.PlaneGeometry(6.4, 4.8);
-    const screenMaterial = new THREE.MeshStandardMaterial({
-      map: textTexture,
-      emissive: 0x001122,
-      emissiveIntensity: 0.3,
-      roughness: 0.2
-    });
+    const screenMaterial = new THREE.MeshBasicMaterial({
+        map: textTexture
+      });
+      
     screenMesh = new THREE.Mesh(screenGeometry, screenMaterial);
     screenMesh.position.z = 3.5;
     computer.add(screenMesh);
