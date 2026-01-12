@@ -268,11 +268,10 @@ function startScreenAnimation() {
   
     // Monitor body - more realistic proportions
     const monitorBodyGeometry = new THREE.BoxGeometry(7.5, 6, 6);
-    const monitorMaterial = new THREE.MeshStandardMaterial({
-      color: 0xf0e8d8,
-      roughness: 0.4,
-      metalness: 0.05
+    const screenMaterial = new THREE.MeshBasicMaterial({
+      map: textTexture
     });
+    
     const monitorBody = new THREE.Mesh(monitorBodyGeometry, monitorMaterial);
     monitorBody.castShadow = true;
     monitorBody.receiveShadow = true;
@@ -500,7 +499,7 @@ function startScreenAnimation() {
       const deltaY = e.touches[0].clientY - previousMousePosition.y;
   
       targetRotationY += deltaX * 0.008;
-      targetRotationX += deltaY * 0.008;
+      targetRotationX += deltaY * 0.008; 
   
       targetRotationX = Math.max(-Math.PI / 2, Math.min(Math.PI / 2, targetRotationX));
   
