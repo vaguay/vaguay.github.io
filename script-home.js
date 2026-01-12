@@ -268,8 +268,10 @@ function startScreenAnimation() {
   
     // Monitor body - more realistic proportions
     const monitorBodyGeometry = new THREE.BoxGeometry(7.5, 6, 6);
-    const screenMaterial = new THREE.MeshBasicMaterial({
-      map: textTexture
+    const monitorMaterial = new THREE.MeshStandardMaterial({
+      color: 0xf0e8d8,
+      roughness: 0.4,
+      metalness: 0.05
     });
     
     const monitorBody = new THREE.Mesh(monitorBodyGeometry, monitorMaterial);
