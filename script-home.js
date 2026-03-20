@@ -37,9 +37,9 @@ function startScreenAnimation() {
     ctx.fillRect(0, 0, canvas2D.width, canvas2D.height);
   
     // Add scanlines
-    ctx.fillStyle = 'rgba(0, 100, 150, 0.02)';
-    for (let i = 0; i < canvas2D.height; i += 3) {
-      ctx.fillRect(0, i, canvas2D.width, 1.5);
+    ctx.fillStyle = 'rgba(0, 100, 150, 0.008)';
+    for (let i = 0; i < canvas2D.height; i += 4) {
+      ctx.fillRect(0, i, canvas2D.width, 1);
     }
   
     // Draw text
@@ -109,9 +109,9 @@ function startScreenAnimation() {
         ctx.drawImage(screenVideoEl, sx, sy, sw, sh, 0, 0, canvas2D.width, canvas2D.height);
   
         // Optional scanlines overlay (keeps your CRT vibe during video)
-        ctx.fillStyle = 'rgba(0, 100, 150, 0.02)';
-        for (let i = 0; i < canvas2D.height; i += 3) {
-          ctx.fillRect(0, i, canvas2D.width, 1.5);
+        ctx.fillStyle = 'rgba(0, 100, 150, 0.008)';
+        for (let i = 0; i < canvas2D.height; i += 4) {
+          ctx.fillRect(0, i, canvas2D.width, 1);
         }
   
         if (screenMesh && screenMesh.material.map) {
@@ -317,245 +317,12 @@ function startScreenAnimation() {
     const glassMaterial = new THREE.MeshStandardMaterial({
       color: 0xffffff,
       transparent: true,
-      opacity: 0.02,
+      opacity: 0.05,
       roughness: 0.1,
       metalness: 0.1
     });
     const glass = new THREE.Mesh(glassGeometry, glassMaterial);
-    glass.position.z = 3.52;
+    glass.position.z = 3.55;
     computer.add(glass);
   
-    // Ventilation grills on sides
-    const ventMaterial = new THREE.MeshStandardMaterial({
-      color: 0x1a1a1a,
-      roughness: 0.9
-    });
-  
-    // Left vents
-    for (let i = 0; i < 10; i++) {
-      const ventGeometry = new THREE.BoxGeometry(0.15, 0.6, 0.1);
-      const vent = new THREE.Mesh(ventGeometry, ventMaterial);
-      vent.position.set(-3.7, 2 - i * 0.5, 1.5);
-      computer.add(vent);
-    }
-  
-    // Right vents
-    for (let i = 0; i < 10; i++) {
-      const ventGeometry = new THREE.BoxGeometry(0.15, 0.6, 0.1);
-      const vent = new THREE.Mesh(ventGeometry, ventMaterial);
-      vent.position.set(3.7, 2 - i * 0.5, 1.5);
-      computer.add(vent);
-    }
-  
-    // Brand logo area
-    const logoGeometry = new THREE.PlaneGeometry(1.5, 0.3);
-    const logoMaterial = new THREE.MeshStandardMaterial({
-      color: 0x1a1a1a,
-      roughness: 0.3
-    });
-    const logo = new THREE.Mesh(logoGeometry, logoMaterial);
-    logo.position.set(0, -2.5, 3.21);
-    computer.add(logo);
-  
-    // Power LED
-    const ledGeometry = new THREE.CircleGeometry(0.1, 16);
-    const ledMaterial = new THREE.MeshStandardMaterial({
-      color: 0x00ff00,
-      emissive: 0x00ff00,
-      emissiveIntensity: 1
-    });
-    const led = new THREE.Mesh(ledGeometry, ledMaterial);
-    led.position.set(3, -2.5, 3.21);
-    computer.add(led);
-  
-    // LED glow
-    const ledGlow = new THREE.PointLight(0x00ff00, 0.8, 3);
-    ledGlow.position.set(3, -2.5, 3.5);
-    computer.add(ledGlow);
-  
-    // Base unit (computer tower)
-    const baseGeometry = new THREE.BoxGeometry(7, 1.2, 5.5);
-    const base = new THREE.Mesh(baseGeometry, monitorMaterial);
-    base.position.y = -3.6;
-    base.castShadow = true;
-    base.receiveShadow = true;
-    computer.add(base);
-  
-    // Floppy drive slots
-    const driveGeometry = new THREE.BoxGeometry(2, 0.15, 0.1);
-    const driveMaterial = new THREE.MeshStandardMaterial({
-      color: 0x1a1a1a,
-      roughness: 0.7
-    });
-  
-    const drive1 = new THREE.Mesh(driveGeometry, driveMaterial);
-    drive1.position.set(0, -3.3, 2.76);
-    computer.add(drive1);
-  
-    const drive2 = new THREE.Mesh(driveGeometry, driveMaterial);
-    drive2.position.set(0, -3.6, 2.76);
-    computer.add(drive2);
-  
-    // Stand neck
-    const neckGeometry = new THREE.CylinderGeometry(0.5, 0.5, 0.8, 20);
-    const neck = new THREE.Mesh(neckGeometry, monitorMaterial);
-    neck.position.y = -3.4;
-    neck.castShadow = true;
-    computer.add(neck);
-  
-    // Keyboard
-    const keyboardGeometry = new THREE.BoxGeometry(7.5, 0.4, 3);
-    const keyboard = new THREE.Mesh(keyboardGeometry, monitorMaterial);
-    keyboard.position.set(0, -4.3, 4.5);
-    keyboard.rotation.x = -0.08;
-    keyboard.castShadow = true;
-    keyboard.receiveShadow = true;
-    computer.add(keyboard);
-  
-    // Keyboard keys
-    const keyMaterial = new THREE.MeshStandardMaterial({
-      color: 0xe0e0e0,
-      roughness: 0.4
-    });
-  
-    for (let row = 0; row < 5; row++) {
-      const keysInRow = row === 0 ? 13 : 12;
-      for (let col = 0; col < keysInRow; col++) {
-        const keySize = row === 0 ? 0.35 : 0.42;
-        const keyGeometry = new THREE.BoxGeometry(keySize, 0.18, 0.42);
-        const key = new THREE.Mesh(keyGeometry, keyMaterial);
-        key.position.set(
-          -3 + col * 0.55,
-          -4.15,
-          3.2 + row * 0.55
-        );
-        keyboard.add(key);
-      }
-    }
-  
-    // Mouse
-    const mouseGeometry = new THREE.BoxGeometry(0.8, 0.3, 1.2);
-    mouseGeometry.scale(1, 0.5, 1);
-    const mouse = new THREE.Mesh(mouseGeometry, monitorMaterial);
-    mouse.position.set(5, -4.25, 4.8);
-    mouse.castShadow = true;
-    computer.add(mouse);
-  
-    computer.rotation.x = rotationX;
-    computer.rotation.y = rotationY;
-    computer.position.y = -0.4;
-  
-    scene.add(computer);
-  
-    // Animate LED pulse
-    let ledIntensity = 1;
-    let increasing = false;
-    setInterval(() => {
-      if (increasing) {
-        ledIntensity += 0.15;
-        if (ledIntensity >= 1) increasing = false;
-      } else {
-        ledIntensity -= 0.15;
-        if (ledIntensity <= 0.3) increasing = true;
-      }
-      ledMaterial.emissiveIntensity = ledIntensity;
-    }, 150);
-  }
-  
-  // Mouse/Touch interaction handlers - now supports all directions
-  function onMouseDown(e) {
-    isDragging = true;
-    previousMousePosition = { x: e.clientX, y: e.clientY };
-  }
-  
-  function onMouseMove(e) {
-    if (isDragging && computer) {
-      const deltaX = e.clientX - previousMousePosition.x;
-      const deltaY = e.clientY - previousMousePosition.y;
-  
-      targetRotationY += deltaX * 0.008;
-      targetRotationX += deltaY * 0.008;
-  
-      // Clamp X rotation to prevent flipping
-      targetRotationX = Math.max(-Math.PI / 2, Math.min(Math.PI / 2, targetRotationX));
-  
-      previousMousePosition = { x: e.clientX, y: e.clientY };
-    }
-  }
-  
-  function onMouseUp() {
-    isDragging = false;
-  }
-  
-  function onTouchStart(e) {
-    isDragging = true;
-    previousMousePosition = {
-      x: e.touches[0].clientX,
-      y: e.touches[0].clientY
-    };
-  }
-  
-  function onTouchMove(e) {
-    if (isDragging && computer) {
-      const deltaX = e.touches[0].clientX - previousMousePosition.x;
-      const deltaY = e.touches[0].clientY - previousMousePosition.y;
-  
-      targetRotationY += deltaX * 0.008;
-      targetRotationX += deltaY * 0.008; 
-  
-      targetRotationX = Math.max(-Math.PI / 2, Math.min(Math.PI / 2, targetRotationX));
-  
-      previousMousePosition = {
-        x: e.touches[0].clientX,
-        y: e.touches[0].clientY
-      };
-    }
-    e.preventDefault();
-  }
-  
-  function onTouchEnd() {
-    isDragging = false;
-  }
-  
-  function onWheel(e) {
-    e.preventDefault();
-    const zoomSpeed = 0.5;
-    camera.position.z += e.deltaY * 0.01 * zoomSpeed;
-    camera.position.z = Math.max(6, Math.min(15, camera.position.z));
-  }
-  
-  function onWindowResize() {
-    const canvas = document.getElementById('canvas3d');
-    if (!canvas || !camera || !renderer) return;
-  
-    camera.aspect = canvas.clientWidth / canvas.clientHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(canvas.clientWidth, canvas.clientHeight);
-  }
-  
-  function animate() {
-    requestAnimationFrame(animate);
-  
-    if (computer) {
-      // Smooth rotation interpolation in all directions
-      rotationY += (targetRotationY - rotationY) * 0.1;
-      rotationX += (targetRotationX - rotationX) * 0.1;
-  
-      computer.rotation.y = rotationY;
-      computer.rotation.x = rotationX;
-  
-      // Gentle floating animation
-      computer.position.y = -0.4 + Math.sin(Date.now() * 0.0008) * 0.12;
-
-    }
-  
-    if (renderer && scene && camera) {
-      renderer.render(scene, camera);
-    }
-  }
-  
-  // Initialize
-  window.addEventListener('load', () => {
-    init3D();
-  });
-  
+    //
