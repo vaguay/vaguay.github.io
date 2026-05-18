@@ -56,7 +56,23 @@
   </main>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <script src="script-pages.js"></script>
-  <script src="script-home.js"></script>
+  <!-- <script src="script-pages.js"></script>
+  <script src="script-home.js"></script> -->
+
+  <!-- At the bottom of body, BEFORE closing </body> tag -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="script-pages.js"></script>
+<script>
+  // Wait for Three.js to load, then load home script
+  if (typeof THREE !== 'undefined') {
+    const script = document.createElement('script');
+    script.src = 'script-home.js';
+    document.body.appendChild(script);
+  } else {
+    console.error('THREE.js failed to load!');
+  }
+</script>
+</body>
+</html>
 </body>
 </html>
