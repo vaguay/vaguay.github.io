@@ -266,8 +266,11 @@ function startScreenAnimation() {
   function createRealisticComputer() {
     computer = new THREE.Group();
   
+    // Scale factor to make computer smaller
+    const scale = 0.7;
+  
     // Monitor body - more realistic proportions
-    const monitorBodyGeometry = new THREE.BoxGeometry(7.5, 6, 6);
+    const monitorBodyGeometry = new THREE.BoxGeometry(7.5 * scale, 6 * scale, 6 * scale);
     const monitorMaterial = new THREE.MeshStandardMaterial({
       color: 0xf0e8d8,
       roughness: 0.4,
@@ -280,40 +283,40 @@ function startScreenAnimation() {
     computer.add(monitorBody);
   
     // Front bezel
-    const bezelGeometry = new THREE.BoxGeometry(7.8, 6.3, 0.4);
+    const bezelGeometry = new THREE.BoxGeometry(7.8 * scale, 6.3 * scale, 0.4 * scale);
     const bezelMaterial = new THREE.MeshStandardMaterial({
       color: 0xd0c8b8,
       roughness: 0.5
     });
     const bezel = new THREE.Mesh(bezelGeometry, bezelMaterial);
-    bezel.position.z = 3.2;
+    bezel.position.z = 3.2 * scale;
     computer.add(bezel);
   
     // Screen frame (darker)
-    const frameGeometry = new THREE.BoxGeometry(7.2, 5.8, 0.3);
+    const frameGeometry = new THREE.BoxGeometry(7.2 * scale, 5.8 * scale, 0.3 * scale);
     const frameMaterial = new THREE.MeshStandardMaterial({
       color: 0x2a2a2a,
       roughness: 0.7
     });
     const frame = new THREE.Mesh(frameGeometry, frameMaterial);
-    frame.position.z = 3.35;
+    frame.position.z = 3.35 * scale;
     computer.add(frame);
   
     // CRT Screen with canvas texture
     const textTexture = new THREE.CanvasTexture(canvas2D);
     textTexture.needsUpdate = true;
   
-    const screenGeometry = new THREE.PlaneGeometry(6.4, 4.8);
+    const screenGeometry = new THREE.PlaneGeometry(6.4 * scale, 4.8 * scale);
     const screenMaterial = new THREE.MeshBasicMaterial({
-        map: textTexture
-      });
+      map: textTexture
+    });
       
     screenMesh = new THREE.Mesh(screenGeometry, screenMaterial);
-    screenMesh.position.z = 3.5;
+    screenMesh.position.z = 3.5 * scale;
     computer.add(screenMesh);
   
     // Screen glass reflection layer
-    const glassGeometry = new THREE.PlaneGeometry(6.5, 4.85);
+    const glassGeometry = new THREE.PlaneGeometry(6.5 * scale, 4.85 * scale);
     const glassMaterial = new THREE.MeshStandardMaterial({
       color: 0xffffff,
       transparent: true,
@@ -322,7 +325,118 @@ function startScreenAnimation() {
       metalness: 0.1
     });
     const glass = new THREE.Mesh(glassGeometry, glassMaterial);
-    glass.position.z = 3.55;
+    glass.position.z = 3.55 * scale;
     computer.add(glass);
   
+    // Ventilation grills on sides
+    const ventMaterial = new THREE.MeshStandardMaterial({
+      color: 0x1a1a1a,
+      roughness: 0.9
+    });
+  
+    // Left vents
+    for (let i = 0; i < 10; i++) {
+      const ventGeometry = new THREE.BoxGeometry(0.15 * scale, 0.6 * scale, 0.1 * scale);
+      const vent = new THREE.Mesh(ventGeometry, ventMaterial);
+      vent.position.set(-3.7 * scale, (2 - i * 0.5) * scale, 1.5 * scale);
+      computer.add(vent);
+    }
+  
+    // Right vents
+    for (let i = 0; i < 10; i++) {
+      const ventGeometry = new THREE.BoxGeometry(0.15 * scale, 0.6 * scale, 0.1 * scale);
+      const vent = new THREE.Mesh(ventGeometry, ventMaterial);
+      vent.position.set(3.7 * scale, (2 - i * 0.5) * scale, 1.5 * scale);
+      computer.add(vent);
+    }
+  
+    // Power LED
+    const ledGeometry = new THREE.CircleGeometry(0.1 * scale, 16);
+    const ledMaterial = new THREE.MeshStandardMaterial({
+      color: 0x00ff00,
+      emissive: 0x00ff00,
+      emissiveIntensity: 1
+    });
+    const led = new THREE.Mesh(ledGeometry, ledMaterial);
+    led.position.set(3 * scale, -2.5 * scale, 3.21 * scale);
+    computer.add(led);
+  
+    // LED glow
+    const ledGlow = new THREE.PointLight(0x00ff00, 0.8, 3 * scale);
+    ledGlow.position.set(3 * scale, -2.5 * scale, 3.5 * scale);
+    computer.add(ledGlow);
+  
+    // Base unit
+    const baseGeometry = new THREE.BoxGeometry(7 * scale, 1.2 * scale, 5.5 * scale);
+    const base = new THREE.Mesh(baseGeometry, monitorMaterial);
+    base.position.y = -3.6 * scale;
+    base.castShadow = true;
+    base.receiveShadow = true;
+    computer.add(base);
+  
+    // Stand neck
+    const neckGeometry = new THREE.CylinderGeometry(0.5 * scale, 0.5 * scale, 0.8 * scale, 20);
+    const neck = new THREE.Mesh(neckGeometry, monitorMaterial);
+    neck.position.y = -3.4 * scale;
+    neck.castShadow = true;
+    computer.add(neck);
+  
+    // Keyboard
+    const keyboardGeometry = new THREE.BoxGeometry(7.5 * scale, 0.4 * scale, 3 * scale);
+    const keyboard = new THREE.Mesh(keyboardGeometry, monitorMaterial);
+    keyboard.position.set(0, -4.3 * scale, 4.5 * scale);
+    keyboard.rotation.x = -0.08;
+    keyboard.castShadow = true;
+    keyboard.receiveShadow = true;
+    computer.add(keyboard);
+  
+    // Keyboard keys
+    const keyMaterial = new THREE.MeshStandardMaterial({
+      color: 0xe0e0e0,
+      roughness: 0.4
+    });
+  
+    for (let row = 0; row < 5; row++) {
+      const keysInRow = row === 0 ? 13 : 12;
+      for (let col = 0; col < keysInRow; col++) {
+        const keySize = (row === 0 ? 0.35 : 0.42) * scale;
+        const keyGeometry = new THREE.BoxGeometry(keySize, 0.18 * scale, 0.42 * scale);
+        const key = new THREE.Mesh(keyGeometry, keyMaterial);
+        key.position.set(
+          (-3 + col * 0.55) * scale,
+          -4.15 * scale,
+          (3.2 + row * 0.55) * scale
+        );
+        keyboard.add(key);
+      }
+    }
+  
+    // Mouse
+    const mouseGeometry = new THREE.BoxGeometry(0.8 * scale, 0.3 * scale, 1.2 * scale);
+    const mouse = new THREE.Mesh(mouseGeometry, monitorMaterial);
+    mouse.position.set(5 * scale, -4.25 * scale, 4.8 * scale);
+    mouse.castShadow = true;
+    computer.add(mouse);
+  
+    // Set initial rotation and position
+    computer.rotation.x = rotationX;
+    computer.rotation.y = rotationY;
+    computer.position.y = -0.2;
+  
+    // ADD TO SCENE - THIS WAS MISSING!
+    scene.add(computer);
+  
+    // Animate LED pulse
+    let ledIntensity = 1;
+    let increasing = false;
+    setInterval(() => {
+      if (increasing) {
+        ledIntensity += 0.15;
+        if (ledIntensity >= 1) increasing = false;
+      } else {
+        ledIntensity -= 0.15;
+        if (ledIntensity <= 0.3) increasing = true;
+      }
+      ledMaterial.emissiveIntensity = ledIntensity;
+    }, 150);
   }
