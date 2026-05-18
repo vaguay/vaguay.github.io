@@ -36,14 +36,15 @@ function init3D() {
   scene = new THREE.Scene();
 
   // Camera
-  camera = new THREE.PerspectiveCamera(
-    50,
-    canvas.clientWidth / canvas.clientHeight,
-    0.1,
-    1000
-  );
-  camera.position.set(0, 2.2, 10);
-  camera.lookAt(0, 0.3, 0);
+// Camera
+camera = new THREE.PerspectiveCamera(
+  50,
+  canvas.clientWidth / canvas.clientHeight,
+  0.1,
+  1000
+);
+camera.position.set(0, 1.5, 10); // Changed from (0, 2.2, 10)
+camera.lookAt(0, -0.5, 0); // Changed from (0, 0.3, 0)
 
   // Renderer
   renderer = new THREE.WebGLRenderer({
