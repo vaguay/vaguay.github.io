@@ -47,8 +47,128 @@ const projectData = {
       'Community partnerships for distribution'
     ],
     tech: ['Technical Writing', 'Education', 'Community Outreach']
+  },
+  'ai-literacy': {
+    title: 'Hola Mundo: AI for Kids',
+    description: 'Authored bilingual children\'s book introducing artificial intelligence concepts to Latin American youth. Reached 120,000+ readers globally, making technical concepts accessible through culturally relevant storytelling.',
+    details: [
+      'Bilingual content development (English/Spanish)',
+      'Age-appropriate technical explanations',
+      'Cultural representation in STEM education',
+      'Community partnerships for distribution'
+    ],
+    tech: ['Technical Writing', 'Education', 'Community Outreach']
+  },
+
+  'iwv-space': {
+    title: 'Impact-Weighted Space Investment',
+    description: 'Research and replication code for an Impact-Weighted Valuation framework modeling how workforce development and societal benefit reshape space-sector capital allocation.',
+    details: [
+      'Built replication code for capital concentration and portfolio simulation analysis',
+      'Modeled resilience under venture-capital contraction scenarios',
+      'Integrated workforce impact and societal benefit into investment valuation',
+      'Connected space commercialization, finance, and policy analysis'
+    ],
+    tech: ['Python', 'Monte Carlo Simulation', 'Finance', 'Space Policy']
+  },
+
+  'venezuela-risk': {
+    title: 'Emerging Markets Risk Pipeline',
+    description: 'ETL and Neo4j system integrating geopolitical news, commodity prices, and sovereign debt data to model emerging-market oil risk signals.',
+    details: [
+      'Built multi-source ETL pipelines for economic and geopolitical datasets',
+      'Modeled supply shocks and propagation into market volatility',
+      'Used graph relationships to connect events, actors, and commodities',
+      'Designed around decision-making under uncertainty'
+    ],
+    tech: ['Python', 'Neo4j', 'ETL', 'NLP']
+  },
+
+  'investment-banking': {
+    title: 'Investment Banking Analyst 2.0',
+    description: 'Hybrid quant-analyst recommendation system combining financial scoring, machine-learning precedent comparison, and portfolio logic.',
+    details: [
+      'Built financial scoring workflows using Python',
+      'Integrated precedent transaction and valuation analysis',
+      'Combined growth, income, and ESG portfolio logic',
+      'Generated buy/hold recommendation outputs'
+    ],
+    tech: ['Python', 'Finance', 'Machine Learning', 'Data Analysis']
+  },
+
+  'motor-controller': {
+    title: 'PWM Motor Controller',
+    description: 'PCB-based PWM motor controller and IR beam motor activation system designed and tested in ECE labs.',
+    details: [
+      'Built comparator-based PWM control system',
+      'Analyzed duty-cycle behavior through oscilloscope measurements',
+      'Implemented IR beam interruption motor switching',
+      'Tested PCB soldering and hardware debugging workflows'
+    ],
+    tech: ['PCB Design', 'PWM', 'Motor Control', 'Electronics']
+  },
+
+  'advanced-filters': {
+    title: 'Advanced Filters & Oscillators',
+    description: 'Circuit analysis and experimental testing of notch filters, phase-shift filters, and oscillators.',
+    details: [
+      'Measured notch-filter attenuation and phase behavior',
+      'Analyzed phase-shift oscillator loop gain conditions',
+      'Compared theoretical and experimental frequency response',
+      'Performed oscilloscope and Bode-plot analysis'
+    ],
+    tech: ['Signal Processing', 'Filters', 'Oscillators', 'Circuit Analysis']
+  },
+
+  'quantum-design': {
+    title: 'Quantum Network Design Tool',
+    description: 'Interactive visualization platform modeling neutral-atom quantum networking systems and atomic interactions.',
+    details: [
+      'Built interactive optical-tweezer visualization system',
+      'Modeled Rydberg-state interactions between atoms',
+      'Designed educational quantum-network simulations',
+      'Created browser-based TypeScript interface'
+    ],
+    tech: ['TypeScript', 'Quantum Computing', 'Visualization', 'Simulation']
+  },
+
+  'device-recommender': {
+    title: 'Device Recommender Goal Model',
+    description: 'Python recommendation engine aligning user goals, constraints, and device characteristics.',
+    details: [
+      'Built user-goal recommendation logic',
+      'Modeled tradeoffs between device performance and usability',
+      'Integrated scoring systems for personalized outputs',
+      'Explored interpretable recommendation-system design'
+    ],
+    tech: ['Python', 'Recommendation Systems', 'Data Modeling']
+  },
+
+  'blackjack-monte-carlo': {
+    title: 'Blackjack Monte Carlo',
+    description: 'Simulation-based blackjack decision engine learning optimal policies through Monte Carlo state estimation.',
+    details: [
+      'Implemented simulation-based reinforcement workflows',
+      'Estimated state-value probabilities through repeated sampling',
+      'Optimized blackjack hit/stand strategy decisions',
+      'Stored and evaluated simulation outcomes'
+    ],
+    tech: ['Python', 'Monte Carlo Methods', 'Probability', 'Simulation']
+  },
+
+  'entity-extraction': {
+    title: 'Entity Extraction Sandbox',
+    description: 'Experimental Azure OpenAI and GPT-4o environment for structured extraction from text, images, PDFs, and webpages.',
+    details: [
+      'Built structured extraction workflows using GPT-4o',
+      'Processed PDFs, webpages, images, and GitHub content',
+      'Experimented with schema-based extraction pipelines',
+      'Explored multimodal AI document understanding'
+    ],
+    tech: ['Python', 'Azure OpenAI', 'GPT-4o', 'Structured Outputs']
   }
 };
+
 
 if (projectCards.length && modal && modalClose && modalBody) {
   projectCards.forEach(card => {
