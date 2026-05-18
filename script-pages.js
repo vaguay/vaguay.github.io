@@ -156,17 +156,17 @@ const projectData = {
     tech: ['Python', 'Monte Carlo Methods', 'Probability', 'Simulation']
   },
 
-  'entity-extraction': {
-    title: 'Entity Extraction Sandbox',
-    description: 'Experimental Azure OpenAI and GPT-4o environment for structured extraction from text, images, PDFs, and webpages.',
-    details: [
-      'Built structured extraction workflows using GPT-4o',
-      'Processed PDFs, webpages, images, and GitHub content',
-      'Experimented with schema-based extraction pipelines',
-      'Explored multimodal AI document understanding'
-    ],
-    tech: ['Python', 'Azure OpenAI', 'GPT-4o', 'Structured Outputs']
-  }
+  'radio-fm': {
+  title: 'FM Radio Transmission Circuit',
+  description: 'Built and soldered a working FM radio transmission system using oscillators, transformers, and audio-jack circuitry for signal modulation experiments.',
+  details: [
+    'Constructed oscillator and transformer circuits on perf boards',
+    'Generated and analyzed 1MHz carrier signals using oscilloscopes and spectrum analyzers',
+    'Soldered and integrated audio-jack input for AM signal transmission',
+    'Tested live signal broadcasting and waveform envelope behavior'
+  ],
+  tech: ['Circuit Design', 'Soldering', 'Signal Processing', 'Oscilloscopes']
+}
 };
 
 
