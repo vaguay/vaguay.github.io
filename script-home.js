@@ -167,7 +167,7 @@ function createRealisticComputer() {
   const glassMaterial = new THREE.MeshStandardMaterial({
     color: 0xffffff,
     transparent: true,
-    opacity: 0.05,
+    opacity: 0.01,
     roughness: 0.03,
     metalness: 0.03
   });
