@@ -42,48 +42,59 @@
   <main id="main-container">
     <section id="blog" class="page active">
       <div class="content-wrapper">
-        <h2 class="page-title">Blog & Publications</h2>
+        <h2 class="page-title">Blog</h2>
         <div class="blog-grid">
-          <article class="blog-card">
+          <article class="blog-card blog-post-card" data-blog="ai-infrastructure">
             <div class="blog-image">
-              <img src="assets/images/publication-1.png" alt="AIAA Publication">
+              <img src="assets/images/blog-1.png" alt="AI Infrastructure">
             </div>
             <div class="blog-content">
-              <span class="blog-category">Research Paper</span>
-              <h3>Governing Space Security</h3>
-              <p>AIAA ASCEND 2025 paper analyzing multilateral treaty potential in space governance and security frameworks.</p>
-              <a href="https://arc.aiaa.org/doi/10.2514/6.2025-4011" class="btn btn-text" target="_blank">Read Paper →</a>
+              <span class="blog-category">AI Systems</span>
+              <h3>Why AI Infrastructure Will Matter More Than AI Models</h3>
+              <p>A reflection on why the future of AI depends less on isolated models and more on the pipelines, incentives, data quality, and systems that make decisions reliable.</p>
+              <a href="#" class="btn btn-text">Read Post →</a>
             </div>
           </article>
 
-          <article class="blog-card">
+          <article class="blog-card blog-post-card" data-blog="decision-systems">
             <div class="blog-image">
-              <img src="assets/images/publication-2.png" alt="Hola Mundo Book">
+              <img src="assets/images/blog-2.png" alt="Decision Systems">
             </div>
             <div class="blog-content">
-              <span class="blog-category">Publication</span>
-              <h3>Hola Mundo: Inteligencia Artificial para Niños</h3>
-              <p>Bilingual children's book making AI accessible to Latin American communities through culturally relevant storytelling.</p>
-              <a href="https://www.amazon.com/dp/B0C5Y8X4R3" class="btn btn-text" target="_blank">View Book →</a>
+              <span class="blog-category">Decision Systems</span>
+              <h3>Prediction Is Not Understanding</h3>
+              <p>How machine learning systems can produce useful outputs without true understanding, and why that matters in lending, hiring, finance, and human-centered AI.</p>
+              <a href="#" class="btn btn-text">Read Post →</a>
             </div>
           </article>
 
-          <article class="blog-card">
+          <article class="blog-card blog-post-card" data-blog="linear-algebra-nfl">
             <div class="blog-image">
-              <img src="assets/images/publication-3.png" alt="Yale Feature">
+              <img src="assets/images/blog-3.png" alt="Linear Algebra NFL">
             </div>
             <div class="blog-content">
-              <span class="blog-category">Feature</span>
-              <h3>Tsai CITY Innovation</h3>
-              <p>Featured as Yale Tsai CITY Fellow for work at the intersection of engineering, entrepreneurship, and social impact.</p>
-              <a href="https://tsai.yale.edu" class="btn btn-text" target="_blank">Learn More →</a>
+              <span class="blog-category">Math & Modeling</span>
+              <h3>Applying Linear Algebra to NFL Quarterback Performance</h3>
+              <p>Using PCA, eigenvectors, covariance matrices, and least squares to analyze quarterback performance and predict passing yards from NFL statistics.</p>
+              <a href="#" class="btn btn-text">Read Post →</a>
             </div>
           </article>
         </div>
+
+
       </div>
     </section>
   </main>
 
   <script src="script-pages.js"></script>
+
+  <div class="modal" id="blog-modal">
+    <div class="modal-content">
+      <button class="modal-close" id="blog-modal-close">&times;</button>
+      <div id="blog-modal-body"></div>
+    </div>
+  </div>
+
+  
 </body>
 </html>

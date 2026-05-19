@@ -231,3 +231,72 @@ if (projectCards.length && modal && modalClose && modalBody) {
     }
   });
 }
+
+const blogCards = document.querySelectorAll('.blog-post-card');
+const blogModal = document.getElementById('blog-modal');
+const blogModalClose = document.getElementById('blog-modal-close');
+const blogModalBody = document.getElementById('blog-modal-body');
+
+const blogData = {
+  'ai-infrastructure': {
+    title: 'Why AI Infrastructure Will Matter More Than AI Models',
+    category: 'AI Systems',
+    body: `
+      <p>Most people talk about AI as if the model is the product. But the model is only one layer in a much larger system.</p>
+      <p>The real leverage is in the infrastructure around it: the data pipelines, evaluation loops, monitoring systems, failure detection, human feedback, and incentives that determine whether an AI system can be trusted in the real world.</p>
+      <p>A model can be impressive in isolation and still fail when the data is stale, the objective is wrong, or the downstream decision affects people differently. The future belongs to people who can understand both the technical system and the human system around it.</p>
+    `
+  },
+
+  'decision-systems': {
+    title: 'Prediction Is Not Understanding',
+    category: 'Decision Systems',
+    body: `
+      <p>Prediction can look like intelligence. A system can classify, rank, approve, reject, recommend, and summarize without ever understanding the world it is shaping.</p>
+      <p>That distinction matters most in high-stakes domains: loans, hiring, education, healthcare, and finance. The danger is not only that models can be wrong. It is that they can be confidently useful while hiding the assumptions underneath.</p>
+      <p>Understanding requires more than accuracy. It requires context, incentives, uncertainty, explanation, and accountability. The systems I am most interested in are not just predictive. They are decision systems.</p>
+    `
+  },
+
+  'linear-algebra-nfl': {
+    title: 'Applying Linear Algebra to NFL Quarterback Performance',
+    category: 'Math & Modeling',
+    body: `
+      <p>This project used ESPN NFL passing statistics from the top 30 quarterbacks in the 2025 season to study performance through linear algebra.</p>
+      <p>Using PCA, we treated quarterback statistics as high-dimensional vectors and asked which linear combinations explained the most variance. PC1 captured passing volume through attempts, completions, yards, yards per game, and touchdowns. PC2 captured efficiency through completion percentage, yards per attempt, passer rating, and interceptions.</p>
+      <p>Then, using least squares, we modeled total passing yards from games played, yards per attempt, touchdowns, interceptions, and sacks. The model achieved an adjusted R² of 0.858 with an RMSE of about 233 yards, showing how projection and column-space thinking can create interpretable predictions.</p>
+      <p>The most interesting insight was rank and multicollinearity: completions and attempts were nearly linearly dependent, so removing redundant columns restored model stability.</p>
+    `
+  }
+};
+
+if (blogCards.length && blogModal && blogModalClose && blogModalBody) {
+  blogCards.forEach(card => {
+    card.addEventListener('click', (e) => {
+      e.preventDefault();
+      const blogId = card.getAttribute('data-blog');
+      const post = blogData[blogId];
+
+      if (post) {
+        blogModalBody.innerHTML = `
+          <span class="blog-category">${post.category}</span>
+          <h2>${post.title}</h2>
+          <div style="color: var(--light-gray); margin-top: 1.5rem; line-height: 1.8;">
+            ${post.body}
+          </div>
+        `;
+        blogModal.classList.add('active');
+      }
+    });
+  });
+
+  blogModalClose.addEventListener('click', () => {
+    blogModal.classList.remove('active');
+  });
+
+  blogModal.addEventListener('click', (e) => {
+    if (e.target === blogModal) {
+      blogModal.classList.remove('active');
+    }
+  });
+}
