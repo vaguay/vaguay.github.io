@@ -168,8 +168,8 @@ function createRealisticComputer() {
     color: 0xffffff,
     transparent: true,
     opacity: 0.05,
-    roughness: 0.1,
-    metalness: 0.1
+    roughness: 0.03,
+    metalness: 0.03
   });
   const glass = new THREE.Mesh(glassGeometry, glassMaterial);
   glass.position.z = 3.55 * scale;
