@@ -166,7 +166,32 @@ const projectData = {
     'Tested live signal broadcasting and waveform envelope behavior'
   ],
   tech: ['Circuit Design', 'Soldering', 'Signal Processing', 'Oscilloscopes']
-}
+},
+
+  'llm-decision': {
+  title: 'LLM Decision Invariance Study',
+  description: 'Experimental cognitive-science and AI reasoning study testing whether large language models maintain stable decisions when only the intended audience changes.',
+  details: [
+    'Designed bounded decision-making experiments across hiring, loans, scholarships, triage, and discipline scenarios',
+    'Tested decision invariance under audience framing using ChatGPT 5.3',
+    'Analyzed how explanation and judgment diverge in ambiguous or moral domains',
+    'Connected findings to Theory of Mind, ELIZA effect, and AI reasoning debates'
+  ],
+  tech: ['LLMs', 'Cognitive Science', 'Prompt Engineering', 'AI Evaluation']
+  },
+
+  'loan-decision': {
+  title: 'Loan Decision System',
+  description: 'AI-driven lending and decision-analysis system exploring approval logic, fairness tradeoffs, and counterfactual reasoning in automated financial systems.',
+  details: [
+    'Built machine-learning loan approval workflows using structured applicant data',
+    'Analyzed fairness, decision boundaries, and feature importance across applicant groups',
+    'Implemented counterfactual testing to examine how small profile changes alter outcomes',
+    'Connected AI decision systems to questions of ethics, risk, and interpretable reasoning'
+  ],
+  tech: ['Python', 'Machine Learning', 'Fairness Analysis', 'Decision Systems']
+  }
+
 };
 
 
