@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Applying Linear Algebra to NFL Quarterback Performance • Vanesa Aguay Guerra</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="cursor" id="cursor"></div>
+
+  <nav class="nav">
+    <div class="nav-logo">VANESA AGUAY GUERRA</div>
+  </nav>
+
+  <nav class="bottom-nav">
+    <a href="index.html" class="bottom-nav-link">
+      <span class="nav-icon">⌂</span><span>Home</span>
+    </a>
+    <a href="experience.html" class="bottom-nav-link">
+      <span class="nav-icon">◉</span><span>Experience</span>
+    </a>
+    <a href="portfolio.html" class="bottom-nav-link">
+      <span class="nav-icon">▣</span><span>Portfolio</span>
+    </a>
+    <a href="blog.html" class="bottom-nav-link active">
+      <span class="nav-icon">✎</span><span>Blog</span>
+    </a>
+  </nav>
+
+  <main id="main-container">
+    <section class="page active">
+      <div class="content-wrapper" style="max-width: 900px;">
+
+        <span class="blog-category">Math & Modeling</span>
+
+        <h1 style="font-size: 3rem; margin-top: 1rem; margin-bottom: 2rem;">
+          Applying Linear Algebra to NFL Quarterback Performance
+        </h1>
+
+        <img 
+          src="assets/images/blog-linear-cover.png" 
+          alt="Linear Algebra NFL Project"
+          style="width:100%; margin-bottom:3rem; border:1px solid rgba(255,255,255,0.1);"
+        >
+
+        <p style="color: var(--light-gray); line-height: 1.9; margin-bottom: 2rem;">
+          One thing I increasingly like about applied mathematics is that it forces you to think about systems from first principles instead of memorizing formulas in isolation. This project started from a simple question:
+        </p>
+
+        <p style="font-size:1.4rem; line-height:1.8; margin-bottom:3rem;">
+          What actually explains quarterback performance?
+        </p>
+
+        <p style="color: var(--light-gray); line-height: 1.9; margin-bottom: 2rem;">
+          At first glance, NFL passing statistics feel overwhelming. Completion percentage, touchdowns, sacks, passer rating, yards per game, attempts, interceptions — every metric seems to measure something slightly different while also overlapping with everything else.
+        </p>
+
+        <p style="color: var(--light-gray); line-height: 1.9; margin-bottom: 2rem;">
+          Linear algebra gave us a way to reduce that complexity into structure.
+        </p>
+
+        <h2 style="margin-top:4rem; margin-bottom:1.5rem;">The Core Idea</h2>
+
+        <p style="color: var(--light-gray); line-height: 1.9; margin-bottom: 2rem;">
+          The first-principles intuition behind PCA is surprisingly simple:
+        </p>
+
+        <p style="font-size:1.3rem; line-height:1.8; margin-bottom:3rem;">
+          If many variables move together, then the system may secretly be lower-dimensional than it appears.
+        </p>
+
+        <p style="color: var(--light-gray); line-height: 1.9; margin-bottom: 2rem;">
+          In football terms, quarterbacks who throw for many yards also usually have:
+        </p>
+
+        <ul style="color: var(--light-gray); line-height: 2; margin-bottom: 3rem; padding-left: 2rem;">
+          <li>More pass attempts</li>
+          <li>More completions</li>
+          <li>More touchdowns</li>
+          <li>Higher yards per game</li>
+        </ul>
+
+        <p style="color: var(--light-gray); line-height: 1.9; margin-bottom: 2rem;">
+          Those variables are not independent. They partially encode the same underlying phenomenon: passing volume.
+        </p>
+
+        <p style="color: var(--light-gray); line-height: 1.9; margin-bottom: 3rem;">
+          PCA let us mathematically uncover those hidden structures by transforming correlated variables into principal components that maximize explained variance.
+        </p>
+
+        <img 
+          src="assets/images/blog-linear-pca.png" 
+          alt="PCA Results"
+          style="width:100%; margin-bottom:3rem; border:1px solid rgba(255,255,255,0.1);"
+        >
+
+        <h2 style="margin-top:4rem; margin-bottom:1.5rem;">Why We Chose PCA</h2>
+
+        <p style="color: var(--light-gray); line-height: 1.9; margin-bottom: 2rem;">
+          One of the biggest constraints in the project was dimensionality relative to sample size.
+        </p>
+
+        <p style="color: var(--light-gray); line-height: 1.9; margin-bottom: 2rem;">
+          We only analyzed the top 30 quarterbacks from the 2025 season, but we had many statistical variables. With smaller datasets, correlated predictors can make interpretation unstable and noisy.
+        </p>
+
+        <p style="color: var(--light-gray); line-height: 1.9; margin-bottom: 2rem;">
+          PCA helped solve that problem by compressing the data into a smaller number of interpretable axes.
+        </p>
+
+        <p style="color: var(--light-gray); line-height: 1.9; margin-bottom: 3rem;">
+          What surprised me most was how low-dimensional quarterback performance actually was. Two principal components explained most of the variance:
+        </p>
+
+        <ul style="color: var(--light-gray); line-height: 2; margin-bottom: 3rem; padding-left: 2rem;">
+          <li>Passing volume</li>
+          <li>Passing efficiency</li>
+        </ul>
+
+        <p style="color: var(--light-gray); line-height: 1.9; margin-bottom: 3rem;">
+          The system looked complex at first, but mathematically it collapsed into a much simpler structure.
+        </p>
+
+        <h2 style="margin-top:4rem; margin-bottom:1.5rem;">Least Squares & Constraints</h2>
+
+        <p style="color: var(--light-gray); line-height: 1.9; margin-bottom: 2rem;">
+          For prediction, we used least squares regression to estimate total passing yards.
+        </p>
+
+        <p style="color: var(--light-gray); line-height: 1.9; margin-bottom: 2rem;">
+          Initially, we included variables like completions and attempts directly in the model. But this introduced multicollinearity because those variables were nearly linearly dependent.
+        </p>
+
+        <p style="color: var(--light-gray); line-height: 1.9; margin-bottom: 2rem;">
+          From a linear algebra perspective, the matrix was becoming close to singular.
+        </p>
+
+        <p style="font-size:1.2rem; line-height:1.8; margin-bottom:3rem;">
+          The model was technically solvable, but geometrically unstable.
+        </p>
+
+        <p style="color: var(--light-gray); line-height: 1.9; margin-bottom: 2rem;">
+          So we removed redundant predictors to restore invertibility and reduce variance inflation.
+        </p>
+
+        <img 
+          src="assets/images/blog-linear-leastsquares.png" 
+          alt="Least Squares Results"
+          style="width:100%; margin-bottom:3rem; border:1px solid rgba(255,255,255,0.1);"
+        >
+
+        <h2 style="margin-top:4rem; margin-bottom:1.5rem;">What I Would Do Differently</h2>
+
+        <p style="color: var(--light-gray); line-height: 1.9; margin-bottom: 2rem;">
+          Looking back, I think the biggest limitation was treating quarterback statistics as static rather than temporal.
+        </p>
+
+        <p style="color: var(--light-gray); line-height: 1.9; margin-bottom: 2rem;">
+          NFL performance evolves week-to-week through injuries, defensive schemes, weather, coaching adjustments, and opponent strength. A more advanced version of this project would model quarterback performance dynamically through time-series methods rather than single-season aggregates.
+        </p>
+
+        <p style="color: var(--light-gray); line-height: 1.9; margin-bottom: 2rem;">
+          I would also incorporate:
+        </p>
+
+        <ul style="color: var(--light-gray); line-height: 2; margin-bottom: 3rem; padding-left: 2rem;">
+          <li>Regularization methods like ridge regression</li>
+          <li>Opponent-adjusted efficiency metrics</li>
+          <li>Bayesian uncertainty estimates</li>
+          <li>Play-by-play sequential data</li>
+        </ul>
+
+        <h2 style="margin-top:4rem; margin-bottom:1.5rem;">What This Project Actually Taught Me</h2>
+
+        <p style="color: var(--light-gray); line-height: 1.9; margin-bottom: 2rem;">
+          More than football, this project changed how I think about systems.
+        </p>
+
+        <p style="color: var(--light-gray); line-height: 1.9; margin-bottom: 2rem;">
+          Many real-world systems appear overwhelmingly high-dimensional on the surface. But often, underneath the noise, there are a few hidden structures driving most of the behavior.
+        </p>
+
+        <p style="font-size:1.3rem; line-height:1.8; margin-top:3rem;">
+          Linear algebra is ultimately the study of hidden structure.
+        </p>
+
+      </div>
+    </section>
+  </main>
+
+  <script src="script-pages.js"></script>
+</body>
+</html>
