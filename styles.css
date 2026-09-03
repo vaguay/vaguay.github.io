@@ -445,7 +445,7 @@
 	}
   
 	.content-wrapper {
-	  padding: 6rem 2rem 6rem;
+	  padding: 6rem 2rem calc(6rem + 5rem);
 	}
   
 	.projects-grid {
