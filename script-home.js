@@ -8,6 +8,7 @@ let rotationX = -0.1;
 let rotationY = 0.3;
 let targetRotationX = -0.1;
 let targetRotationY = 0.3;
+const computerBaseY = 0.7;
 
 // Video and animation state
 let videoElements = [];
@@ -268,7 +269,7 @@ function createRealisticComputer() {
   // Set initial rotation and position
   computer.rotation.x = rotationX;
   computer.rotation.y = rotationY;
-  computer.position.y = -0.2;
+  computer.position.y = computerBaseY;
 
   // ADD TO SCENE
   scene.add(computer);
@@ -518,7 +519,7 @@ function animate() {
     computer.rotation.y = rotationY;
     computer.rotation.x = rotationX;
 
-    computer.position.y = -0.2 + Math.sin(Date.now() * 0.0008) * 0.1;
+    computer.position.y = computerBaseY + Math.sin(Date.now() * 0.0008) * 0.1;
   }
 
   if (renderer && scene && camera) {
