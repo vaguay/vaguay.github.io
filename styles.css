@@ -76,7 +76,10 @@
 	transform: translateX(-50%);
 	display: flex;
 	gap: 4rem;
+	padding: 0.75rem 1.25rem;
+	background: rgba(0, 0, 0, 0.94);
 	z-index: 100;
+	white-space: nowrap;
   }
   
   .bottom-nav-link {
@@ -173,7 +176,7 @@
   .content-wrapper {
 	max-width: 1200px;
 	margin: 0 auto;
-	padding: 8rem 4rem 8rem;
+	padding: 8rem 4rem calc(8rem + 5rem);
   }
   
   .page-title {
@@ -442,7 +445,7 @@
 	}
   
 	.content-wrapper {
-	  padding: 6rem 2rem 6rem;
+	  padding: 6rem 2rem calc(6rem + 5rem);
 	}
   
 	.projects-grid {
