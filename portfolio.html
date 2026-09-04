@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -12,202 +13,126 @@
     <div class="nav-logo">VANESA AGUAY GUERRA</div>
   </nav>
 
-  <nav class="bottom-nav">
-    <a href="index.html" class="bottom-nav-link">
-      <span class="nav-icon">⌂</span><span>Home</span>
-    </a>
-    <a href="experience.html" class="bottom-nav-link">
-      <span class="nav-icon">◉</span><span>Experience</span>
-    </a>
-    <a href="portfolio.html" class="bottom-nav-link active">
-      <span class="nav-icon">▣</span><span>Portfolio</span>
-    </a>
-    <a href="blog.html" class="bottom-nav-link">
-      <span class="nav-icon">✎</span><span>Blog</span>
-    </a>
-    <a
-    href="#"
-    class="bottom-nav-link"
-    onclick="window.open(
-      'https://mail.google.com/mail/?view=cm&fs=1&to=vanesa.aguay@yale.edu',
-      '_blank'
-    ); return false;"
-  >
-    <span class="nav-icon">✉</span>
-    <span>Contact</span>
-  </a>
+  <nav class="bottom-nav" aria-label="Primary navigation">
+    <a href="index.html" class="bottom-nav-link"><span class="nav-icon">⌂</span><span>home</span></a>
+    <a href="experience.html" class="bottom-nav-link"><span class="nav-icon">◉</span><span>experience</span></a>
+    <a href="portfolio.html" class="bottom-nav-link active" aria-current="page"><span class="nav-icon">▣</span><span>portfolio</span></a>
+    <a href="blog.html" class="bottom-nav-link"><span class="nav-icon">✎</span><span>blog</span></a>
+    <a href="mailto:vanesa.aguay@yale.edu" class="bottom-nav-link"><span class="nav-icon">✉</span><span>contact</span></a>
   </nav>
 
   <main id="main-container">
-    <section id="portfolio" class="page active">
-      <div class="content-wrapper">
-        <h2 class="page-title">Portfolio</h2>
-        <div class="projects-grid">
+    <section id="portfolio" class="page active portfolio-page">
+      <div class="content-wrapper portfolio-wrapper">
+        <header class="portfolio-intro">
+          <p class="portfolio-eyebrow">An evolving archive</p>
+          <h1 class="page-title">Portfolio</h1>
+          <p>Work in progress, things I have made, and the thinking behind them.</p>
+        </header>
 
-        <article class="project-card" data-project="quantum-laser">
-          <div class="project-image">
-            <img src="assets/images/projects-2.png" alt="Quantum Laser System">
-          </div>
-          <div class="project-info">
-            <h3>Quantum Laser Synchronization</h3>
-            <p>Python and MATLAB workflows for timing drift detection, signal synchronization, and distributed quantum networking experiments.</p>
-            <button class="btn btn-text">View Details →</button>
-          </div>
-        </article>
+        <div class="folder-grid" id="folder-grid">
+          <button class="folder-card" type="button" data-folder="technical">
+            <span class="folder-illustration" aria-hidden="true"><span class="folder-tab"></span><span class="folder-body"><span>TECH_PROJ</span><b></b></span></span>
+            <span class="folder-title">Technical Projects</span>
+            <span class="folder-description">Projects, GitHub, and build notes</span>
+          </button>
+          <button class="folder-card" type="button" data-folder="writing">
+            <span class="folder-illustration" aria-hidden="true"><span class="folder-tab"></span><span class="folder-body"><span>WRITING_IDEAS</span><b></b></span></span>
+            <span class="folder-title">Writing &amp; Ideas</span>
+            <span class="folder-description">Essays, research, and reflections</span>
+          </button>
+          <button class="folder-card" type="button" data-folder="learning">
+            <span class="folder-illustration" aria-hidden="true"><span class="folder-tab"></span><span class="folder-body"><span>LEARNING_LAB</span><b></b></span></span>
+            <span class="folder-title">Learning Lab</span>
+            <span class="folder-description">Courses, credentials, and work in progress</span>
+          </button>
+          <button class="folder-card" type="button" data-folder="photography">
+            <span class="folder-illustration" aria-hidden="true"><span class="folder-tab"></span><span class="folder-body"><span>PHOTOS</span><b></b></span></span>
+            <span class="folder-title">Photography</span>
+            <span class="folder-description">Photo stories and visual work</span>
+          </button>
+        </div>
 
-        <article class="project-card" data-project="venezuela-risk">
-          <div class="project-image">
-            <img src="assets/images/projects-5.png" alt="Emerging Markets Risk Pipeline">
-          </div>
-          <div class="project-info">
-            <h3>Emerging Markets Risk Pipeline</h3>
-            <p>ETL and Neo4j system integrating geopolitical news, commodity prices, and sovereign debt data to model Venezuela oil-risk signals.</p>
-            <button class="btn btn-text">View Details →</button>
-          </div>
-        </article>
+        <div class="portfolio-collections" id="portfolio-collections">
+          <section class="portfolio-collection" id="folder-technical" data-collection="technical" hidden>
+            <div class="collection-heading">
+              <button class="collection-back" type="button">← All folders</button>
+              <p class="portfolio-eyebrow">TECH_PROJ</p>
+              <h2>Technical Projects</h2>
+              <p>Models, systems, and experiments. Select a project for more detail.</p>
+            </div>
+            <div class="projects-grid">
+              <article class="project-card" data-project="quantum-laser"><div class="project-image"><img src="assets/images/projects-2.png" alt="Quantum Laser System"></div><div class="project-info"><h3>Quantum Laser Synchronization</h3><p>Python and MATLAB workflows for timing drift detection, signal synchronization, and distributed quantum networking experiments.</p><button class="btn btn-text">View details →</button></div></article>
+              <article class="project-card" data-project="venezuela-risk"><div class="project-image"><img src="assets/images/projects-5.png" alt="Emerging Markets Risk Pipeline"></div><div class="project-info"><h3>Emerging Markets Risk Pipeline</h3><p>ETL and Neo4j system integrating geopolitical news, commodity prices, and sovereign debt data to model Venezuela oil-risk signals.</p><button class="btn btn-text">View details →</button></div></article>
+              <article class="project-card" data-project="iwv-space"><div class="project-image"><img src="assets/images/projects-4.png" alt="Impact Weighted Valuation"></div><div class="project-info"><h3>Impact-Weighted Space Investment</h3><p>Research and replication code modeling how workforce and societal impact can reshape space-sector capital allocation.</p><button class="btn btn-text">View details →</button></div></article>
+              <article class="project-card" data-project="investment-banking"><div class="project-image"><img src="assets/images/projects-6.png" alt="Investment Banking Analyst System"></div><div class="project-info"><h3>Investment Banking Analyst 2.0</h3><p>Hybrid quant-analyst recommendation system combining financial scoring, machine learning precedent comparison, and client-specific logic.</p><button class="btn btn-text">View details →</button></div></article>
+              <article class="project-card" data-project="llm-decision"><div class="project-image"><img src="assets/images/projects-13.png" alt="LLM Decision Invariance"></div><div class="project-info"><h3>LLM Decision Invariance Study</h3><p>Experimental study testing whether large language models maintain stable decisions under audience-framing changes.</p><button class="btn btn-text">View details →</button></div></article>
+              <article class="project-card" data-project="loan-decision"><div class="project-image"><img src="assets/images/projects-14.png" alt="Loan Decision System"></div><div class="project-info"><h3>Loan Decision System</h3><p>An interpretable AI-driven lending system exploring fairness, counterfactuals, and approval decisions.</p><button class="btn btn-text">View details →</button></div></article>
+              <article class="project-card" data-project="quantum-design"><div class="project-image"><img src="assets/images/projects-9.png" alt="Quantum Design Tool"></div><div class="project-info"><h3>Quantum Network Design Tool</h3><p>An interactive TypeScript visualization of neutral-atom quantum networks and atomic interactions.</p><button class="btn btn-text">View details →</button></div></article>
+              <article class="project-card" data-project="ai-literacy"><div class="project-image"><img src="assets/images/projects-3.png" alt="Hola Mundo AI literacy book"></div><div class="project-info"><h3>Hola Mundo: AI for Kids</h3><p>A bilingual AI literacy book introducing machine learning, ethics, and computational thinking.</p><button class="btn btn-text">View details →</button></div></article>
+              <article class="project-card" data-project="mars-rover"><div class="project-image"><img src="assets/images/projects-1.png" alt="Mars Rover Architecture"></div><div class="project-info"><h3>NASA Mars Rover Architecture</h3><p>Systems architecture, cost-risk modeling, and power-subsystem analysis for a Mars rover concept.</p><button class="btn btn-text">View details →</button></div></article>
+              <article class="project-card" data-project="device-recommender"><div class="project-image"><img src="assets/images/projects-10.png" alt="Device Recommender"></div><div class="project-info"><h3>Device Recommender Goal Model</h3><p>A Python recommendation system aligning user needs, goals, and product constraints.</p><button class="btn btn-text">View details →</button></div></article>
+              <article class="project-card" data-project="blackjack-monte-carlo"><div class="project-image"><img src="assets/images/projects-11.png" alt="Blackjack Monte Carlo"></div><div class="project-info"><h3>Blackjack Monte Carlo</h3><p>A simulation-based decision system learning an optimal hit/stand policy through state-value estimation.</p><button class="btn btn-text">View details →</button></div></article>
+              <article class="project-card" data-project="advanced-filters"><div class="project-image"><img src="assets/images/projects-8.png" alt="Advanced Filters and Oscillators"></div><div class="project-info"><h3>Advanced Filters &amp; Oscillators</h3><p>Circuit labs analyzing frequency response, attenuation, and loop-gain behavior.</p><button class="btn btn-text">View details →</button></div></article>
+              <article class="project-card" data-project="motor-controller"><div class="project-image"><img src="assets/images/projects-7.png" alt="PWM Motor Controller"></div><div class="project-info"><h3>PWM Motor Controller</h3><p>A PCB and comparator-based motor-control system using adjustable PWM duty cycles and IR beam switching.</p><button class="btn btn-text">View details →</button></div></article>
+              <article class="project-card" data-project="radio-fm"><div class="project-image"><img src="assets/images/projects-12.png" alt="FM Radio Transmission Circuit"></div><div class="project-info"><h3>FM Radio Transmission Circuit</h3><p>A built and soldered oscillator-based radio transmission circuit for audio-signal experiments.</p><button class="btn btn-text">View details →</button></div></article>
+            </div>
+          </section>
 
-        <article class="project-card" data-project="iwv-space">
-          <div class="project-image">
-            <img src="assets/images/projects-4.png" alt="Impact Weighted Valuation">
-          </div>
-          <div class="project-info">
-            <h3>Impact-Weighted Space Investment</h3>
-            <p>Research and replication code modeling how workforce and societal impact can reshape space-sector capital allocation.</p>
-            <button class="btn btn-text">View Details →</button>
-          </div>
-        </article>
+          <section class="portfolio-collection" id="folder-writing" data-collection="writing" hidden>
+            <div class="collection-heading">
+              <button class="collection-back" type="button">← All folders</button>
+              <p class="portfolio-eyebrow">WRITING_IDEAS</p>
+              <h2>Writing &amp; Ideas</h2>
+              <p>Longer-form notes on the work: what I noticed, what changed my thinking, and how the pieces fit together.</p>
+            </div>
+            <div class="collection-list">
+              <a class="collection-list-item" href="blog.html"><span><strong>AI systems and infrastructure</strong><small>Notes on the systems around a model that make it useful in practice.</small></span><b>↗</b></a>
+              <a class="collection-list-item" href="blog.html"><span><strong>Decision systems</strong><small>Questions of prediction, context, and accountability in high-stakes tools.</small></span><b>↗</b></a>
+              <a class="collection-list-item" href="blog.html"><span><strong>Math and modeling</strong><small>Projects that use quantitative ideas to explain or test something concrete.</small></span><b>↗</b></a>
+            </div>
+            <a class="collection-link" href="blog.html">Open writing &amp; ideas →</a>
+          </section>
 
-        <article class="project-card" data-project="investment-banking">
-          <div class="project-image">
-            <img src="assets/images/projects-6.png" alt="Investment Banking Analyst System">
-          </div>
-          <div class="project-info">
-            <h3>Investment Banking Analyst 2.0</h3>
-            <p>Hybrid quant-analyst recommendation system combining financial scoring, machine learning precedent comparison, and client-specific logic.</p>
-            <button class="btn btn-text">View Details →</button>
-          </div>
-        </article>
+          <section class="portfolio-collection" id="folder-learning" data-collection="learning" hidden>
+            <div class="collection-heading">
+              <button class="collection-back" type="button">← All folders</button>
+              <p class="portfolio-eyebrow">LEARNING_LAB</p>
+              <h2>Learning Lab</h2>
+              <p>Formal coursework, focused programs, and skills I am actively putting to use.</p>
+            </div>
+            <div class="collection-list">
+              <div class="collection-list-item static"><span><strong>Yale coursework</strong><small>Automated Decision Systems, Algorithms, Statistics &amp; Data Analysis, Data Structures, Circuits &amp; System Design, and Minds, Brains, &amp; Machines.</small></span></div>
+              <div class="collection-list-item static"><span><strong>AI, cloud, and computing</strong><small>NVIDIA Accelerating CUDA C++ Applications on GPUs; Microsoft Azure AI Fundamentals; Microsoft Azure AI Essentials; AT&amp;T Technology Academy.</small></span></div>
+              <div class="collection-list-item static"><span><strong>Finance and markets</strong><small>Training the Street: Applied Excel, Valuation, and Accounting; IMC Trading Experience; Jane Street FOCUS and UNBOXED.</small></span></div>
+            </div>
+          </section>
 
-        <article class="project-card" data-project="llm-decision">
-          <div class="project-image">
-            <img src="assets/images/projects-13.png" alt="LLM Decision Invariance">
-          </div>
-          <div class="project-info">
-            <h3>LLM Decision Invariance Study</h3>
-            <p>Experimental cognitive-science study testing whether large language models maintain stable decisions under audience framing changes.</p>
-            <button class="btn btn-text">View Details →</button>
-          </div>
-        </article>
-
-        <article class="project-card" data-project="loan-decision">
-          <div class="project-image">
-            <img src="assets/images/projects-14.png" alt="Loan Decision System">
-          </div>
-          <div class="project-info">
-            <h3>Loan Decision System</h3>
-            <p>Built an interpretable AI-driven lending system analyzing fairness, counterfactuals, and approval decisions under changing applicant conditions.</p>
-            <button class="btn btn-text">View Details →</button>
-          </div>
-        </article>
-
-        <article class="project-card" data-project="quantum-design">
-          <div class="project-image">
-            <img src="assets/images/projects-9.png" alt="Quantum Design">
-          </div>
-          <div class="project-info">
-            <h3>Quantum Network Design Tool</h3>
-            <p>Interactive TypeScript visualization of neutral-atom quantum networks, optical tweezers, Rydberg states, and atomic interactions.</p>
-            <button class="btn btn-text">View Details →</button>
-          </div>
-        </article>
-
-        <article class="project-card" data-project="ai-literacy">
-          <div class="project-image">
-            <img src="assets/images/projects-3.png" alt="AI Literacy">
-          </div>
-          <div class="project-info">
-            <h3>Hola Mundo: AI for Kids</h3>
-            <p>Bilingual AI literacy book introducing machine learning, ethics, and computational thinking to Spanish-speaking students.</p>
-            <button class="btn btn-text">View Details →</button>
-          </div>
-        </article>
-
-        <article class="project-card" data-project="mars-rover">
-          <div class="project-image">
-            <img src="assets/images/projects-1.png" alt="Mars Rover Architecture">
-          </div>
-          <div class="project-info">
-            <h3>NASA Mars Rover Architecture</h3>
-            <p>Systems architecture, cost-risk modeling, and power subsystem analysis for a $450M Mars rover concept.</p>
-            <button class="btn btn-text">View Details →</button>
-          </div>
-        </article>
-
-        <article class="project-card" data-project="device-recommender">
-          <div class="project-image">
-            <img src="assets/images/projects-10.png" alt="Device Recommender">
-          </div>
-          <div class="project-info">
-            <h3>Device Recommender Goal Model</h3>
-            <p>Python recommendation system aligning user needs, goals, and product constraints to support personalized device selection.</p>
-            <button class="btn btn-text">View Details →</button>
-          </div>
-        </article>
-
-        <article class="project-card" data-project="blackjack-monte-carlo">
-          <div class="project-image">
-            <img src="assets/images/projects-11.png" alt="Blackjack Monte Carlo">
-          </div>
-          <div class="project-info">
-            <h3>Blackjack Monte Carlo</h3>
-            <p>Simulation-based decision system learning an optimal hit/stand blackjack policy through state-value estimation.</p>
-            <button class="btn btn-text">View Details →</button>
-          </div>
-        </article>
-
-        <article class="project-card" data-project="advanced-filters">
-          <div class="project-image">
-            <img src="assets/images/projects-8.png" alt="Advanced Filters">
-          </div>
-          <div class="project-info">
-            <h3>Advanced Filters & Oscillators</h3>
-            <p>Notch filter, phase-shift filter, and phase-shift oscillator lab analyzing frequency response, attenuation, and loop-gain behavior.</p>
-            <button class="btn btn-text">View Details →</button>
-          </div>
-        </article>
-
-        <article class="project-card" data-project="motor-controller">
-          <div class="project-image">
-            <img src="assets/images/projects-7.png" alt="PWM Motor Controller">
-          </div>
-          <div class="project-info">
-            <h3>PWM Motor Controller</h3>
-            <p>PCB and comparator-based motor control system using adjustable PWM duty cycles and IR beam switching.</p>
-            <button class="btn btn-text">View Details →</button>
-          </div>
-        </article>
-
-        <article class="project-card" data-project="radio-fm">
-          <div class="project-image">
-            <img src="assets/images/projects-12.png" alt="Entity Extraction">
-          </div>
-          <div class="project-info">
-            <h3>FM Radio Transmission Circuit</h3>
-            <p>Built and soldered an oscillator-based radio transmission circuit capable of broadcasting audio signals through AM modulation experiments.</p>
-          </div>
-        </article>
+          <section class="portfolio-collection" id="folder-photography" data-collection="photography" hidden>
+            <div class="collection-heading">
+              <button class="collection-back" type="button">← All folders</button>
+              <p class="portfolio-eyebrow">PHOTOS</p>
+              <h2>Photography</h2>
+              <p>A place for visual stories, details, and the parts of a place or experience that do not fit into a résumé bullet.</p>
+            </div>
+            <div class="photography-placeholder">
+              <span aria-hidden="true">⌁</span>
+              <p>This folder is ready for your first photo series.</p>
+              <small>When you choose the images and titles, this can become a simple image-led archive without changing the portfolio structure.</small>
+            </div>
+          </section>
+        </div>
       </div>
+    </section>
+  </main>
+
+  <div class="modal" id="project-modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-content">
+      <button class="modal-close" id="modal-close" type="button" aria-label="Close project details">×</button>
+      <div id="modal-body"></div>
     </div>
-  </section>
-</main>
-
-<div class="modal" id="project-modal">
-  <div class="modal-content">
-    <button class="modal-close" id="modal-close">&times;</button>
-    <div id="modal-body"></div>
   </div>
-</div>
 
-<script src="script-pages.js"></script>
+  <script src="script-pages.js"></script>
 </body>
 </html>
