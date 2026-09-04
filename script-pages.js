@@ -300,3 +300,209 @@ if (blogCards.length && blogModal && blogModalClose && blogModalBody) {
     }
   });
 }
+
+
+// Experience detail modal
+const experienceEntries = document.querySelectorAll('.experience-entry');
+const experienceModal = document.getElementById('experience-modal');
+const experienceModalClose = document.getElementById('experience-modal-close');
+const experienceModalBody = document.getElementById('experience-modal-body');
+
+const experienceData = {
+  honeywell: {
+    organization: 'Honeywell Technologies',
+    role: 'Applied AI Engineering Intern · Buenos Aires, Argentina · June 2026 - present',
+    summary: 'I am defining an AI-enabled reliability solution for battery energy storage systems, from the customer and engineering problem through the data reality and a practical implementation plan.',
+    details: [
+      'Translated stakeholder needs, operating constraints, and technical dependencies into product requirements, data specifications, and a five-phase roadmap.',
+      'Reviewed 7 use cases, 6 analytical approaches, and 2 possible MVPs to identify where AI could add value now and where the necessary capability was not yet in place.',
+      'Standardized 12,000 telemetry records from 16 historian exports and reconciled 31 required tags against 3,717 SCADA points.',
+      'Presented build-versus-integrate recommendations to sales, engineering, and management, helping align the near-term MVP with the data actually available.'
+    ],
+    focus: 'Product definition, data readiness, technical strategy, and stakeholder alignment.'
+  },
+  cornell: {
+    organization: 'Cornell Tech / Break Through Tech',
+    role: 'AI/ML Fellow · New York, NY · March 2026 - present',
+    summary: 'A selective applied machine-learning program focused on taking models from an initial question through data preparation, evaluation, and communication.',
+    details: [
+      'Built end-to-end machine-learning workflows with Python, scikit-learn, and TensorFlow.',
+      'Practiced feature engineering, training, evaluation, and model debugging on real-world datasets.',
+      'Worked in a 50+ student cohort to test assumptions, compare model choices, and explain results clearly.',
+      'Selected from more than 3,000 applicants for the national fellowship.'
+    ],
+    focus: 'Applied machine learning, model evaluation, and clear technical communication.'
+  },
+  shpe: {
+    organization: 'Society of Hispanic Professional Engineers',
+    role: 'National Undergraduate Representative, Region 4 · May 2026 - present',
+    summary: 'An elected national role representing SHPE students across 13 Northeastern states and Puerto Rico.',
+    details: [
+      'Represent undergraduate needs and priorities across regional chapters.',
+      'Build relationships that expand mentorship, professional development, and career-access opportunities.',
+      'Coordinate across a broad student network while keeping local chapter realities visible in national conversations.'
+    ],
+    focus: 'Leadership across a distributed community, relationship building, and student opportunity.'
+  },
+  'yale-engineering': {
+    organization: 'Yale Engineering',
+    role: 'Systems Engineer, Quantum Laser Across the Sound · New Haven, CT · August 2025 - present',
+    summary: 'I work on measurement and synchronization systems for distributed quantum-networking experiments, where small timing errors can change whether a result is trustworthy.',
+    details: [
+      'Engineered automated measurement and synchronization systems for quantum-networking experiments.',
+      'Built Python and R data-acquisition workflows to detect timing drift and improve measurement reliability by 90%.',
+      'Automated signal-synchronization calibration, reducing data-acquisition latency by 40%.',
+      'Lead recurring design reviews with JPMorgan Chase engineers on requirements, risk, cost allocation, and performance tradeoffs.'
+    ],
+    focus: 'Experimental systems, data acquisition, reliability, and decisions under technical uncertainty.'
+  },
+  openai: {
+    organization: 'OpenAI ChatGPT Lab',
+    role: 'Fellow · New York, NY · August 2025 - May 2026',
+    summary: 'I studied how students actually use generative AI: the workflows they create, the places they hesitate, and the conditions that make a tool useful in practice.',
+    details: [
+      'Evaluated AI product experiences through user feedback, workflows, and learning behavior.',
+      'Synthesized adoption barriers and product observations for generative-AI capabilities reaching more than one million students.',
+      'Worked with product managers and engineers through iterative testing and cross-functional feedback.'
+    ],
+    focus: 'User research, product judgment, and translating behavior into product insight.'
+  },
+  buildify: {
+    organization: 'Buildify',
+    role: 'Software Engineer Intern · New Haven, CT · October 2025 - December 2025',
+    summary: 'A product-engineering role centered on making the data behind AI workflows and internal decisions easier to trust.',
+    details: [
+      'Built structured data-ingestion pipelines that improved the reliability of AI workflows supporting more than 1,000 daily users.',
+      'Designed internal analytics systems that integrated third-party APIs for engineering and product decisions.',
+      'Worked across data intake, workflow reliability, and the practical needs of non-technical users.'
+    ],
+    focus: 'Data pipelines, product operations, and usable internal systems.'
+  },
+  its: {
+    organization: 'Yale Information Technology Services',
+    role: 'Technician · New Haven, CT · October 2025 - present',
+    summary: 'Front-line technical support has been a direct way to learn how people experience systems when they fail, especially under time pressure.',
+    details: [
+      'Provide software and network support for Yale’s 12,000+ user campus.',
+      'Diagnose macOS system failures and repair Windows hardware through structured troubleshooting.',
+      'Resolve high-volume technology problems while communicating clearly with people who have different levels of technical comfort.'
+    ],
+    focus: 'Root-cause analysis, service, and the human side of technical systems.'
+  },
+  tsai: {
+    organization: 'Tsai Center for Innovative Thinking at Yale',
+    role: 'Strategy Fellow · New Haven, CT · September 2025 - May 2026',
+    summary: 'I supported early-stage teams as they moved from interesting ideas to clearer choices about users, growth, and what to do next.',
+    details: [
+      'Advised venture teams on product strategy, venture evaluation, and data-informed growth recommendations.',
+      'Worked with founders and cross-functional stakeholders to prioritize cross-campus growth opportunities.',
+      'Connected customer needs, available evidence, and resource constraints in practical strategic work.'
+    ],
+    focus: 'Venture strategy, customer discovery, and prioritization.'
+  },
+  lacasa: {
+    organization: 'La Casa Latino Cultural Center at Yale',
+    role: 'Peer Liaison · New Haven, CT · February 2025 - present',
+    summary: 'A peer-support and community-building role focused on making the transition to Yale more navigable for first-generation students.',
+    details: [
+      'Support a cohort of 21 first-year, first-generation students through academic and social programming.',
+      'Created a professional-insight series that reached more than 190 Latino students nationwide through cross-campus partnerships.',
+      'Build programming around specific student needs rather than treating belonging as an abstract goal.'
+    ],
+    focus: 'Community design, mentorship, and programs that create access.'
+  },
+  nasa: {
+    organization: "NASA L'SPACE",
+    role: 'Systems Engineering Intern · May 2025 - September 2025',
+    summary: 'I worked with a multidisciplinary team on a Mars rover concept, learning how technical decisions change a system’s cost, risk, and operations.',
+    details: [
+      'Led systems analysis for a $450M Mars rover concept with a 15-engineer team.',
+      'Integrated power and operational constraints into the mission concept and its technical tradeoffs.',
+      'Built a Python cost-and-risk model with NASA CEH 4.0 to evaluate failure modes and response strategies.',
+      'Reduced modeled mission risk by 8% and helped prepare the Preliminary Design Review for a NASA panel.'
+    ],
+    focus: 'Systems engineering, quantitative risk analysis, and technical communication.'
+  },
+  fulcrum: {
+    organization: 'FulcrumCare',
+    role: 'Data Intern · New Haven, CT · August 2024 - May 2025',
+    summary: 'An early health-tech data role that made the value of reliable, connected information concrete.',
+    details: [
+      'Built API-based pipelines that linked clinical and dental records for longitudinal patient analysis.',
+      'Contributed to interoperability infrastructure for value-based-care systems serving underserved populations.',
+      'Learned how data structure and integration choices determine what questions a team can answer later.'
+    ],
+    focus: 'Data integration, health-tech infrastructure, and real-world information flow.'
+  },
+  dwight: {
+    organization: 'Dwight Hall Socially Responsible Investment Fund',
+    role: 'Portfolio Analyst · New Haven, CT · October 2024 - present',
+    summary: 'I use financial, governance, and ESG information to support decisions for an undergraduate-managed investment portfolio.',
+    details: [
+      'Evaluate a $200K+ portfolio using financial, ESG, and quantitative analysis.',
+      'Research shareholder proposals, governance initiatives, and portfolio performance.',
+      'Turn mixed financial and non-financial evidence into recommendations for the fund.'
+    ],
+    focus: 'Financial analysis, governance, and decision-making with multiple objectives.'
+  },
+  'latina-women': {
+    organization: 'Latina Women at Yale',
+    role: 'Treasurer · New Haven, CT · August 2024 - present',
+    summary: 'I reworked how a 120-member organization allocated resources so programming could better reflect what members used and needed.',
+    details: [
+      'Restructured budget allocation around programs with measurable engagement and retention.',
+      'Launched a mentorship-focused operating model that helped increase funding by 200% in two months.',
+      'Balanced finance, programming, and member experience rather than treating budgeting as a back-office task.'
+    ],
+    focus: 'Resource allocation, organizational operations, and community-led growth.'
+  }
+};
+
+if (experienceEntries.length && experienceModal && experienceModalClose && experienceModalBody) {
+  const escapeHtml = (value) => value.replace(/[&<>"']/g, (character) => ({
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#039;'
+  }[character]));
+
+  const closeExperienceModal = () => {
+    experienceModal.classList.remove('active');
+    experienceModal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('modal-open');
+  };
+
+  experienceEntries.forEach((entry) => {
+    entry.addEventListener('click', () => {
+      const item = experienceData[entry.dataset.experience];
+      if (!item) return;
+
+      experienceModalBody.innerHTML = `
+        <p class="experience-modal-kicker">${escapeHtml(item.organization)}</p>
+        <h2 id="experience-modal-title">${escapeHtml(item.organization)}</h2>
+        <p class="experience-modal-role">${escapeHtml(item.role)}</p>
+        <p>${escapeHtml(item.summary)}</p>
+        <h3>What I worked on</h3>
+        <ul>${item.details.map((detail) => `<li>${escapeHtml(detail)}</li>`).join('')}</ul>
+        <p class="experience-modal-focus"><span>Focus:</span> ${escapeHtml(item.focus)}</p>
+      `;
+      experienceModal.classList.add('active');
+      experienceModal.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('modal-open');
+      experienceModalClose.focus();
+    });
+  });
+
+  experienceModalClose.addEventListener('click', closeExperienceModal);
+
+  experienceModal.addEventListener('click', (event) => {
+    if (event.target === experienceModal) closeExperienceModal();
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && experienceModal.classList.contains('active')) {
+      closeExperienceModal();
+    }
+  });
+}
