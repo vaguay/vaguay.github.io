@@ -506,3 +506,50 @@ if (experienceEntries.length && experienceModal && experienceModalClose && exper
     }
   });
 }
+
+
+// Portfolio folder navigation
+const folderCards = document.querySelectorAll('.folder-card');
+const folderGrid = document.getElementById('folder-grid');
+const portfolioCollections = document.getElementById('portfolio-collections');
+const portfolioCollectionsList = document.querySelectorAll('.portfolio-collection');
+const collectionBackButtons = document.querySelectorAll('.collection-back');
+
+if (folderCards.length && folderGrid && portfolioCollections) {
+  const showFolder = (folderName, updateHash = true) => {
+    const target = document.getElementById(`folder-${folderName}`);
+    if (!target) return;
+
+    portfolioCollectionsList.forEach((collection) => {
+      collection.hidden = collection !== target;
+    });
+    folderGrid.hidden = true;
+
+    if (updateHash) {
+      history.replaceState(null, '', `#${folderName}`);
+    }
+
+    target.querySelector('.collection-back')?.focus();
+  };
+
+  const showFolderIndex = () => {
+    portfolioCollectionsList.forEach((collection) => {
+      collection.hidden = true;
+    });
+    folderGrid.hidden = false;
+    history.replaceState(null, '', window.location.pathname);
+  };
+
+  folderCards.forEach((card) => {
+    card.addEventListener('click', () => showFolder(card.dataset.folder));
+  });
+
+  collectionBackButtons.forEach((button) => {
+    button.addEventListener('click', showFolderIndex);
+  });
+
+  const requestedFolder = window.location.hash.slice(1);
+  if (requestedFolder && document.getElementById(`folder-${requestedFolder}`)) {
+    showFolder(requestedFolder, false);
+  }
+}
