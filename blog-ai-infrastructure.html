@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Why AI Infrastructure Will Matter More Than AI Models • Vanesa Aguay Guerra</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="cursor" id="cursor"></div>
+
+  <nav class="nav">
+    <div class="nav-logo">VANESA AGUAY GUERRA</div>
+  </nav>
+
+  <nav class="bottom-nav" aria-label="Primary navigation">
+    <a href="index.html" class="bottom-nav-link"><span class="nav-icon">⌂</span><span>home</span></a>
+    <a href="experience.html" class="bottom-nav-link"><span class="nav-icon">◉</span><span>experience</span></a>
+    <a href="portfolio.html#writing" class="bottom-nav-link active"><span class="nav-icon">▣</span><span>portfolio</span></a>
+    <a href="mailto:vanesa.aguay@yale.edu" class="bottom-nav-link"><span class="nav-icon">✉</span><span>contact</span></a>
+  </nav>
+
+  <main id="main-container">
+    <article class="page active">
+      <div class="content-wrapper writing-article">
+        <a class="article-back" href="portfolio.html#writing">← Writing &amp; Ideas</a>
+        <p class="blog-category">AI Systems</p>
+        <h1>Why AI Infrastructure Will Matter More Than AI Models</h1>
+        <p class="article-dek">The model matters, but it is only one part of the system that determines whether an AI product is useful, reliable, and worth trusting.</p>
+
+        <p>Most people talk about AI as if the model is the product. But the model is only one layer in a much larger system.</p>
+        <p>The real leverage is in the infrastructure around it: data pipelines, evaluation loops, monitoring systems, failure detection, human feedback, and incentives. Those are the pieces that determine whether an AI system can be trusted in the real world.</p>
+        <p>A model can be impressive in isolation and still fail when the data is stale, the objective is wrong, or the downstream decision affects people differently.</p>
+
+        <h2>What surrounds the model</h2>
+        <p>Every deployed system has to answer questions that model accuracy alone cannot settle. What information enters the system? How is quality checked? What happens when confidence is low? Who can correct a bad result? How does the team know the system is still working after conditions change?</p>
+        <p>These questions are less glamorous than a new benchmark, but they shape what a product can responsibly do.</p>
+
+        <h2>The part I keep returning to</h2>
+        <p>Human feedback is not a final polish step. It is part of the system. People notice mismatches between a tool and the work it is meant to support: missing context, confusing handoffs, incentives that push toward the wrong answer, or failures that are invisible in an aggregate metric.</p>
+        <p>The AI work I am most interested in connects those observations back to a technical decision. That might mean changing the data, narrowing the use case, adding a review step, or deciding not to automate something yet.</p>
+
+        <h2>Why this matters</h2>
+        <p>Models will continue to improve. The harder and more durable work is building the surrounding system well enough that improvement can be used. That is where technical choices, product judgment, and the realities of human work meet.</p>
+      </div>
+    </article>
+  </main>
+
+  <script src="script-pages.js"></script>
+</body>
+</html>
