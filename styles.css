@@ -484,3 +484,250 @@
 
   
   
+
+/* Experience narrative */
+.experience-wrapper {
+  max-width: 1120px;
+}
+
+.experience-intro {
+  max-width: 760px;
+  margin-bottom: 5.5rem;
+}
+
+.experience-eyebrow {
+  color: var(--red);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+.experience-intro .page-title {
+  margin-bottom: 1.8rem;
+}
+
+.experience-statement {
+  color: var(--light-gray);
+  font-size: clamp(1.2rem, 2vw, 1.6rem);
+  line-height: 1.45;
+  max-width: 650px;
+}
+
+.experience-timeline {
+  border-top: 1px solid rgba(255, 255, 255, 0.22);
+}
+
+.experience-era {
+  display: grid;
+  grid-template-columns: minmax(170px, 0.42fr) minmax(0, 1.58fr);
+  gap: 3rem;
+  padding: 2.5rem 0 1rem;
+}
+
+.experience-era-label p {
+  color: var(--red);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.45rem;
+  text-transform: uppercase;
+}
+
+.experience-era-label h2 {
+  font-size: 1.05rem;
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+.experience-era-items {
+  min-width: 0;
+}
+
+.experience-entry {
+  align-items: start;
+  background: transparent;
+  border: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
+  color: var(--white);
+  cursor: none;
+  display: grid;
+  font: inherit;
+  gap: 0.3rem 1.5rem;
+  grid-template-columns: minmax(0, 1fr) auto;
+  padding: 1.45rem 0 1.55rem;
+  text-align: left;
+  transition: border-color var(--transition), padding-left var(--transition);
+  width: 100%;
+}
+
+.experience-entry:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.experience-entry:hover,
+.experience-entry:focus-visible {
+  border-color: var(--red);
+  outline: 0;
+  padding-left: 0.75rem;
+}
+
+.experience-entry-main,
+.experience-entry-summary {
+  min-width: 0;
+}
+
+.experience-entry-company,
+.experience-entry-role,
+.experience-entry-summary {
+  display: block;
+}
+
+.experience-entry-company {
+  font-size: 1.25rem;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+}
+
+.experience-entry-role {
+  color: var(--light-gray);
+  font-size: 0.93rem;
+  margin-top: 0.28rem;
+}
+
+.experience-entry-summary {
+  color: var(--light-gray);
+  font-size: 0.92rem;
+  grid-column: 1;
+  line-height: 1.55;
+  max-width: 640px;
+}
+
+.experience-entry-arrow {
+  color: var(--red);
+  font-size: 1.2rem;
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  line-height: 1;
+  transition: transform var(--transition);
+}
+
+.experience-entry:hover .experience-entry-arrow,
+.experience-entry:focus-visible .experience-entry-arrow {
+  transform: translate(0.2rem, -0.2rem);
+}
+
+.experience-modal {
+  background: rgba(0, 0, 0, 0.97);
+  padding: 2rem;
+}
+
+.experience-modal-content {
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  max-width: 760px;
+  padding: clamp(2rem, 5vw, 4rem);
+  width: 100%;
+}
+
+.experience-modal-kicker {
+  color: var(--red);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  margin-bottom: 1rem;
+  padding-right: 2rem;
+  text-transform: uppercase;
+}
+
+.experience-modal-content h2 {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  letter-spacing: -0.04em;
+  line-height: 1.04;
+  margin-bottom: 0.65rem;
+}
+
+.experience-modal-role {
+  color: var(--light-gray);
+  font-size: 1rem;
+  margin-bottom: 2.25rem;
+}
+
+.experience-modal-content h3 {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  margin: 2rem 0 0.8rem;
+  text-transform: uppercase;
+}
+
+.experience-modal-content p,
+.experience-modal-content li {
+  color: var(--light-gray);
+  line-height: 1.7;
+}
+
+.experience-modal-content ul {
+  display: grid;
+  gap: 0.55rem;
+  list-style: none;
+  margin: 0;
+}
+
+.experience-modal-content li {
+  padding-left: 1.1rem;
+  position: relative;
+}
+
+.experience-modal-content li::before {
+  color: var(--red);
+  content: '•';
+  left: 0;
+  position: absolute;
+}
+
+.experience-modal-focus {
+  border-top: 1px solid rgba(255, 255, 255, 0.22);
+  margin-top: 2rem;
+  padding-top: 1.2rem;
+}
+
+.experience-modal-focus span {
+  color: var(--white);
+}
+
+body.modal-open {
+  overflow: hidden;
+}
+
+@media (max-width: 720px) {
+  .experience-intro {
+    margin-bottom: 3.75rem;
+  }
+
+  .experience-era {
+    display: block;
+    padding-top: 2rem;
+  }
+
+  .experience-era-label {
+    margin-bottom: 1.8rem;
+  }
+
+  .experience-entry-company {
+    font-size: 1.1rem;
+  }
+
+  .experience-modal {
+    align-items: flex-start;
+    overflow-y: auto;
+    padding: 1rem;
+  }
+
+  .experience-modal-content {
+    margin: 4.5rem 0 7rem;
+    max-height: none;
+  }
+}
