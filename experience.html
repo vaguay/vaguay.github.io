@@ -13,214 +13,127 @@
     <div class="nav-logo">VANESA AGUAY GUERRA</div>
   </nav>
 
-  <nav class="bottom-nav">
-    <a href="index.html" class="bottom-nav-link">
-      <span class="nav-icon">⌂</span><span>home</span>
-    </a>
-    <a href="experience.html" class="bottom-nav-link active">
-      <span class="nav-icon">◉</span><span>experience</span>
-    </a>
-    <a href="portfolio.html" class="bottom-nav-link">
-      <span class="nav-icon">▣</span><span>portfolio</span>
-    </a>
-    <a href="blog.html" class="bottom-nav-link">
-      <span class="nav-icon">✎</span><span>blog</span>
-    </a>
-    <a
-    href="#"
-    class="bottom-nav-link"
-    onclick="window.open(
-      'https://mail.google.com/mail/?view=cm&fs=1&to=vanesa.aguay@yale.edu',
-      '_blank'
-    ); return false;"
-  >
-    <span class="nav-icon">✉</span>
-    <span>Contact</span>
-  </a>
+  <nav class="bottom-nav" aria-label="Primary navigation">
+    <a href="index.html" class="bottom-nav-link"><span class="nav-icon">⌂</span><span>home</span></a>
+    <a href="experience.html" class="bottom-nav-link active" aria-current="page"><span class="nav-icon">◉</span><span>experience</span></a>
+    <a href="portfolio.html" class="bottom-nav-link"><span class="nav-icon">▣</span><span>portfolio</span></a>
+    <a href="blog.html" class="bottom-nav-link"><span class="nav-icon">✎</span><span>blog</span></a>
+    <a href="mailto:vanesa.aguay@yale.edu" class="bottom-nav-link"><span class="nav-icon">✉</span><span>contact</span></a>
   </nav>
 
   <main id="main-container">
-    <section id="experience" class="page active">
-      <div class="content-wrapper">
-        <h2 class="page-title">Experience</h2>
-        <div class="timeline">
+    <section id="experience" class="page active experience-page">
+      <div class="content-wrapper experience-wrapper">
+        <header class="experience-intro">
+          <p class="experience-eyebrow">Selected work, learning, and leadership</p>
+          <h1 class="page-title">Experience</h1>
+          <p class="experience-statement">I learn unfamiliar systems, work through the details, and use what I find to make better decisions.</p>
+        </header>
 
-        <div class="timeline-item">
-          <div class="timeline-date">2025</div>
-          <div class="timeline-content">
-            <h3>Yale Engineering</h3>
-            <p class="role">Applied AI & Systems Engineer</p>
-            <p>Research with Yale Engineering’s Quantum Laser Across the Sound team, building synchronization and measurement systems for distributed quantum networking. Develop Python and MATLAB workflows for timing drift analysis and laser-system reliability.</p>
-          </div>
+        <div class="experience-timeline">
+          <section class="experience-era" aria-labelledby="now-heading">
+            <div class="experience-era-label">
+              <p>2026 - present</p>
+              <h2 id="now-heading">Applied AI and product work</h2>
+            </div>
+            <div class="experience-era-items">
+              <button class="experience-entry" type="button" data-experience="honeywell">
+                <span class="experience-entry-main"><span class="experience-entry-company">Honeywell Technologies</span><span class="experience-entry-role">Applied AI Engineering Intern</span></span>
+                <span class="experience-entry-summary">Turning a BESS reliability problem into an achievable AI roadmap.</span>
+                <span class="experience-entry-arrow" aria-hidden="true">↗</span>
+              </button>
+              <button class="experience-entry" type="button" data-experience="cornell">
+                <span class="experience-entry-main"><span class="experience-entry-company">Cornell Tech / Break Through Tech</span><span class="experience-entry-role">AI/ML Fellow</span></span>
+                <span class="experience-entry-summary">Building and evaluating machine-learning workflows on real datasets.</span>
+                <span class="experience-entry-arrow" aria-hidden="true">↗</span>
+              </button>
+              <button class="experience-entry" type="button" data-experience="shpe">
+                <span class="experience-entry-main"><span class="experience-entry-company">Society of Hispanic Professional Engineers</span><span class="experience-entry-role">National Undergraduate Representative, Region 4</span></span>
+                <span class="experience-entry-summary">Supporting engineering students across the Northeast and Puerto Rico.</span>
+                <span class="experience-entry-arrow" aria-hidden="true">↗</span>
+              </button>
+            </div>
+          </section>
+
+          <section class="experience-era" aria-labelledby="systems-heading">
+            <div class="experience-era-label">
+              <p>2025 - 26</p>
+              <h2 id="systems-heading">Systems, research, and users</h2>
+            </div>
+            <div class="experience-era-items">
+              <button class="experience-entry" type="button" data-experience="yale-engineering">
+                <span class="experience-entry-main"><span class="experience-entry-company">Yale Engineering</span><span class="experience-entry-role">Systems Engineer, Quantum Laser Across the Sound</span></span>
+                <span class="experience-entry-summary">Improving the measurement systems behind distributed quantum-networking experiments.</span>
+                <span class="experience-entry-arrow" aria-hidden="true">↗</span>
+              </button>
+              <button class="experience-entry" type="button" data-experience="openai">
+                <span class="experience-entry-main"><span class="experience-entry-company">OpenAI ChatGPT Lab</span><span class="experience-entry-role">Fellow</span></span>
+                <span class="experience-entry-summary">Studying how students use generative AI and where the experience breaks down.</span>
+                <span class="experience-entry-arrow" aria-hidden="true">↗</span>
+              </button>
+              <button class="experience-entry" type="button" data-experience="buildify">
+                <span class="experience-entry-main"><span class="experience-entry-company">Buildify</span><span class="experience-entry-role">Software Engineer Intern</span></span>
+                <span class="experience-entry-summary">Making data intake and internal analysis more reliable for an AI product team.</span>
+                <span class="experience-entry-arrow" aria-hidden="true">↗</span>
+              </button>
+              <button class="experience-entry" type="button" data-experience="its">
+                <span class="experience-entry-main"><span class="experience-entry-company">Yale Information Technology Services</span><span class="experience-entry-role">Technician</span></span>
+                <span class="experience-entry-summary">Solving high-volume hardware, software, and network problems for campus users.</span>
+                <span class="experience-entry-arrow" aria-hidden="true">↗</span>
+              </button>
+              <button class="experience-entry" type="button" data-experience="tsai">
+                <span class="experience-entry-main"><span class="experience-entry-company">Tsai Center for Innovative Thinking at Yale</span><span class="experience-entry-role">Strategy Fellow</span></span>
+                <span class="experience-entry-summary">Helping early-stage teams prioritize product and growth decisions.</span>
+                <span class="experience-entry-arrow" aria-hidden="true">↗</span>
+              </button>
+              <button class="experience-entry" type="button" data-experience="lacasa">
+                <span class="experience-entry-main"><span class="experience-entry-company">La Casa Latino Cultural Center at Yale</span><span class="experience-entry-role">Peer Liaison</span></span>
+                <span class="experience-entry-summary">Building practical support and professional access for first-generation students.</span>
+                <span class="experience-entry-arrow" aria-hidden="true">↗</span>
+              </button>
+            </div>
+          </section>
+
+          <section class="experience-era" aria-labelledby="foundations-heading">
+            <div class="experience-era-label">
+              <p>2024 - 25</p>
+              <h2 id="foundations-heading">Foundations</h2>
+            </div>
+            <div class="experience-era-items">
+              <button class="experience-entry" type="button" data-experience="nasa">
+                <span class="experience-entry-main"><span class="experience-entry-company">NASA L'SPACE</span><span class="experience-entry-role">Systems Engineering Intern</span></span>
+                <span class="experience-entry-summary">Modeling cost, risk, and operational tradeoffs for a Mars rover concept.</span>
+                <span class="experience-entry-arrow" aria-hidden="true">↗</span>
+              </button>
+              <button class="experience-entry" type="button" data-experience="fulcrum">
+                <span class="experience-entry-main"><span class="experience-entry-company">FulcrumCare</span><span class="experience-entry-role">Data Intern</span></span>
+                <span class="experience-entry-summary">Connecting clinical records to make longitudinal patient data more useful.</span>
+                <span class="experience-entry-arrow" aria-hidden="true">↗</span>
+              </button>
+              <button class="experience-entry" type="button" data-experience="dwight">
+                <span class="experience-entry-main"><span class="experience-entry-company">Dwight Hall Socially Responsible Investment Fund</span><span class="experience-entry-role">Portfolio Analyst</span></span>
+                <span class="experience-entry-summary">Using financial, governance, and ESG analysis to inform investment decisions.</span>
+                <span class="experience-entry-arrow" aria-hidden="true">↗</span>
+              </button>
+              <button class="experience-entry" type="button" data-experience="latina-women">
+                <span class="experience-entry-main"><span class="experience-entry-company">Latina Women at Yale</span><span class="experience-entry-role">Treasurer</span></span>
+                <span class="experience-entry-summary">Rebuilding how a student organization funds and grows its work.</span>
+                <span class="experience-entry-arrow" aria-hidden="true">↗</span>
+              </button>
+            </div>
+          </section>
         </div>
-
-        <div class="timeline-item">
-          <div class="timeline-date">2026</div>
-          <div class="timeline-content">
-            <h3>Cornell Tech</h3>
-            <p class="role">AI/ML Fellow, Break Through Tech</p>
-            <p>Built end-to-end machine learning pipelines using Python, NumPy, scikit-learn, and TensorFlow for supervised and unsupervised learning tasks on real-world datasets. Selected from 3,000+ applicants for a national AI/ML fellowship and collaborated in a 50+ student cohort to debug models, run ablation studies, and communicate insights through technical presentations.</p>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-date">2025</div>
-          <div class="timeline-content">
-            <h3>OpenAI ChatGPT Lab</h3>
-            <p class="role">Lab Member</p>
-            <p>Collaborated with OpenAI teams and a selected cohort of students nationwide to shape educational AI product experiences, including testing and providing feedback on Study Mode during product development.</p>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-date">2025</div>
-          <div class="timeline-content">
-            <h3>Buildify</h3>
-            <p class="role">Software Engineer Intern</p>
-            <p>Built internal CRM pipelines, lead-scoring systems, and onboarding workflows optimized to reduce operational friction and improve conversion for non-technical users.</p>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-date">2025</div>
-          <div class="timeline-content">
-            <h3>NASA L’SPACE Mission Concepts Academy</h3>
-            <p class="role">Systems Engineering Intern</p>
-            <p>Developed hardware architecture and mission systems analysis for a $450M Mars rover concept, integrating subsystem power optimization, CAD modeling, and NASA CEH 4.0 cost and risk evaluation.</p>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-date">2024</div>
-          <div class="timeline-content">
-            <h3>Dwight Hall Socially Responsible Investment Fund</h3>
-            <p class="role">Portfolio Analyst & Shareholder Engagement Team</p>
-            <p>Worked with the country’s oldest undergraduate-run socially responsible investment fund, analyzing ESG proposals, portfolio performance, and shareholder engagement strategies for a $200K+ fund.</p>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-date">2026</div>
-          <div class="timeline-content">
-            <h3>Girls Into VC</h3>
-            <p class="role">Venture Fellow</p>
-            <p>Selected for a competitive venture capital fellowship focused on investment simulations, startup evaluation, and experiential projects exploring venture investing and entrepreneurship.</p>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-date">2024</div>
-          <div class="timeline-content">
-            <h3>Jane Street</h3>
-            <p class="role">FOCUS Fellow & UNBOXED Scholar</p>
-            <p>Selected for competitive cohorts exploring trading, software engineering, mathematics, statistics, and market-making through immersive programming and collaborative problem-solving experiences in New York City.</p>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-date">2025</div>
-          <div class="timeline-content">
-            <h3>Tsai Center for Innovative Thinking at Yale</h3>
-            <p class="role">Fellow</p>
-            <p>Selected as 1 of 20 fellows across Yale College and graduate schools to support innovation projects and venture teams through data analysis, stakeholder coordination, and entrepreneurial collaboration.</p>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-date">2025</div>
-          <div class="timeline-content">
-            <h3>Management Leadership for Tomorrow</h3>
-            <p class="role">Career Prep Fellow</p>
-            <p>Selected for a rigorous 20-month professional development program focused on leadership, business strategy, technical skill-building, and networking with major technology and finance companies.</p>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-date">2025</div>
-          <div class="timeline-content">
-            <h3>Goldman Sachs</h3>
-            <p class="role">Emerging Leaders Series Participant</p>
-            <p>Selected for Goldman Sachs’ competitive early-career insight program exploring investment banking, markets, and business strategy through workshops and mentorship.</p>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-date">2025</div>
-          <div class="timeline-content">
-            <h3>Yale Information Technology Services</h3>
-            <p class="role">Technician, Student Technology Collaborative</p>
-            <p>Provide in-person hardware and software support for Yale students campus-wide, diagnosing technical issues and repairing systems in the university’s primary technology and hardware support center serving 12,000+ users.</p>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-date">2024</div>
-          <div class="timeline-content">
-            <h3>Yale Undergraduate Aerospace Association</h3>
-            <p class="role">Space Policy Researcher & Project Liquid Team Member</p>
-            <p>Conducted research on space governance published with the American Institute of Aeronautics and Astronautics while contributing to avionics and control systems projects on Project Liquid.</p>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-date">2025</div>
-          <div class="timeline-content">
-            <h3>Stanford University School of Medicine</h3>
-            <p class="role">Molecular Imaging Techniques Fellow</p>
-            <p>Researched molecular imaging technologies and clinical applications of optical luminescent imaging with a focus on AI and deep learning innovations under Stanford faculty mentorship.</p>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-date">2024</div>
-          <div class="timeline-content">
-            <h3>Yale Helix</h3>
-            <p class="role">Innovation Fellow</p>
-            <p>Selected for Yale’s undergraduate health-tech incubator supporting startup development, mentorship, and interdisciplinary healthcare innovation projects.</p>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-date">2025</div>
-          <div class="timeline-content">
-            <h3>AT&T Technology Academy</h3>
-            <p class="role">Technology Program Fellow</p>
-            <p>Completed intensive training in cloud computing, REST APIs, cybersecurity, Agile delivery, AI/ML workflows, 5G systems, and Azure cloud technologies through AT&T’s technology development program.</p>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-date">2026</div>
-          <div class="timeline-content">
-            <h3>SHPE</h3>
-            <p class="role">National Representative, Region 4</p>
-            <p>Elected nationally to represent SHPE Region 4 across the Northeast and Puerto Rico, supporting chapter strategy, student engagement, and professional development initiatives across 13 states and territories.</p>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-date">2025</div>
-          <div class="timeline-content">
-            <h3>La Casa Latino Cultural Center at Yale</h3>
-            <p class="role">Peer Liaison</p>
-            <p>Selected as 1 of 14 peer liaisons mentoring first-year students and organizing academic, social, and cultural initiatives supporting transition and belonging at Yale.</p>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-date">2025</div>
-          <div class="timeline-content">
-            <h3>Yale Ecuatorianos y Amigos Unidos</h3>
-            <p class="role">President</p>
-            <p>Lead Ecuadorian student organization expanding cultural programming and building community through events celebrating Ecuadorian identity, heritage, and traditions at Yale.</p>
-          </div>
-        </div>
-
       </div>
-    </div>
-  </section>
-</main>
+    </section>
+  </main>
 
-<script src="script-pages.js"></script>
+  <div class="modal experience-modal" id="experience-modal" role="dialog" aria-modal="true" aria-labelledby="experience-modal-title" aria-hidden="true">
+    <div class="modal-content experience-modal-content">
+      <button class="modal-close" id="experience-modal-close" type="button" aria-label="Close experience details">×</button>
+      <div id="experience-modal-body"></div>
+    </div>
+  </div>
+
+  <script src="script-pages.js"></script>
 </body>
 </html>
