@@ -1028,3 +1028,50 @@ body.modal-open {
 .folder-grid[hidden] {
   display: none;
 }
+
+
+/* Standalone writing pages */
+.writing-article {
+  max-width: 850px;
+}
+
+.article-back {
+  color: var(--light-gray);
+  display: inline-block;
+  font-size: 0.8rem;
+  letter-spacing: 0.11em;
+  margin-bottom: 3rem;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.article-back:hover {
+  color: var(--red);
+}
+
+.writing-article h1 {
+  font-size: clamp(2.6rem, 6vw, 4.7rem);
+  letter-spacing: -0.05em;
+  line-height: 0.98;
+  margin: 0.9rem 0 1.7rem;
+}
+
+.article-dek {
+  color: var(--light-gray);
+  font-size: clamp(1.1rem, 2vw, 1.35rem);
+  line-height: 1.55;
+  margin-bottom: 3rem;
+  max-width: 680px;
+}
+
+.writing-article > p:not(.blog-category):not(.article-dek) {
+  color: var(--light-gray);
+  line-height: 1.9;
+  margin-bottom: 1.5rem;
+  max-width: 720px;
+}
+
+.writing-article h2 {
+  font-size: 1.55rem;
+  margin: 3.3rem 0 1rem;
+}
