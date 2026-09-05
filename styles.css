@@ -1126,3 +1126,10 @@ body.modal-open {
     width: 100%;
   }
 }
+
+
+/* Keep the custom cursor visible over primary navigation on every page. */
+.bottom-nav,
+.bottom-nav * {
+  cursor: none !important;
+}
