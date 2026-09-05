@@ -469,12 +469,15 @@ if (experienceEntries.length && experienceModal && experienceModalClose && exper
 
   const closeExperienceModal = () => {
     experienceModal.classList.remove('active');
+    experienceEntries.forEach((entry) => entry.classList.remove('is-selected'));
     experienceModal.setAttribute('aria-hidden', 'true');
     document.body.classList.remove('modal-open');
   };
 
   experienceEntries.forEach((entry) => {
     entry.addEventListener('click', () => {
+      experienceEntries.forEach((item) => item.classList.remove('is-selected'));
+      entry.classList.add('is-selected');
       const item = experienceData[entry.dataset.experience];
       if (!item) return;
 
