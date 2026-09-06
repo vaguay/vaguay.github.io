@@ -1139,3 +1139,21 @@ body.modal-open {
 .cursor {
   z-index: 1000001;
 }
+
+
+/* Desktop experience explorer: keep the timeline usable beside the detail panel. */
+@media (min-width: 721px) {
+  .experience-modal {
+    background: transparent;
+    pointer-events: none;
+  }
+
+  .experience-modal-content {
+    pointer-events: auto;
+    width: min(42vw, 620px);
+  }
+
+  body.modal-open {
+    overflow: auto;
+  }
+}
