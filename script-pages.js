@@ -455,6 +455,94 @@ const experienceData = {
       'Balanced finance, programming, and member experience rather than treating budgeting as a back-office task.'
     ],
     focus: 'Resource allocation, organizational operations, and community-led growth.'
+  },
+  'capital-one': {
+    organization: 'Capital One',
+    role: 'Tech Summit Participant · Plano, TX · May 2026',
+    summary: 'A selective technical program where I worked through workshops and case studies with Capital One mentors.',
+    details: [
+      'Selected as 1 of 35 students nationwide.',
+      'Participated in technical workshops and collaborative case work.',
+      'Learned from practitioners about how technical teams approach business and product problems.'
+    ],
+    focus: 'Technical problem-solving, case work, and learning from practitioners.'
+  },
+  'girls-vc': {
+    organization: 'Girls in VC',
+    role: 'Venture Fellow · May 2026',
+    summary: 'A ten-week program focused on how investors evaluate early-stage companies and emerging opportunities.',
+    details: [
+      'Selected for a competitive venture-capital fellowship.',
+      'Worked through investment simulations and experiential projects.',
+      'Built a clearer view of how market, team, and product signals are considered together.'
+    ],
+    focus: 'Venture evaluation, investment thinking, and startup analysis.'
+  },
+  mlt: {
+    organization: 'Management Leadership for Tomorrow',
+    role: 'Career Prep Fellow · November 2025 - present',
+    summary: 'An 18-month professional-development program for high-achieving, diverse talent.',
+    details: [
+      'Work through business case studies that develop structured problem-solving and communication.',
+      'Build technical and professional skills alongside exposure to industry leaders.',
+      'Participate in a long-term community focused on career preparation and leadership.'
+    ],
+    focus: 'Business cases, career development, and professional community.'
+  },
+  goldman: {
+    organization: 'Goldman Sachs',
+    role: 'Investment Banking Track Emerging Leaders Fellow · Jersey City, NJ · November 2025',
+    summary: 'A competitive insight program exploring the work and decision-making behind investment banking.',
+    details: [
+      'Completed investment-banking workshops and M&A case studies.',
+      'Learned directly from bankers through mentorship and technical exercises.',
+      'Practiced connecting financial analysis to a client and transaction context.'
+    ],
+    focus: 'M&A analysis, financial decision-making, and industry exposure.'
+  },
+  att: {
+    organization: 'AT&T Technology Academy',
+    role: 'Technology Program Fellow · June 2025 - August 2025',
+    summary: 'A selective technology and professional-development program that broadened my foundation across technical systems.',
+    details: [
+      'Completed coursework in Azure cloud, AI/ML fundamentals, REST APIs, cloud computing, Agile, and network systems.',
+      'Connected those topics through applied exercises and professional-development programming.',
+      'Used the program to build a more practical vocabulary for the infrastructure behind software products.'
+    ],
+    focus: 'Cloud systems, APIs, AI/ML foundations, and Agile delivery.'
+  },
+  'jane-street': {
+    organization: 'Jane Street',
+    role: 'FOCUS and UNBOXED Fellow · New York, NY · May 2024 and May 2025',
+    summary: 'A set of immersive programs that connected mathematical and engineering thinking with market-making problems.',
+    details: [
+      'Applied SQL, probabilistic reasoning, and Python to solve structured market-making challenges.',
+      'Worked with engineers and mentors on collaborative technical problem-solving.',
+      'Explored the connection between quantitative models, uncertainty, and real-time decisions.'
+    ],
+    focus: 'Probability, programming, market-making, and structured reasoning.'
+  },
+  'outdoor-leader': {
+    organization: 'Yale First-Year Outdoor Orientation Trips',
+    role: 'Trip Leader · January 2025 - present',
+    summary: 'A leadership role centered on helping incoming students navigate a demanding shared experience before they begin at Yale.',
+    details: [
+      'Selected and trained to co-lead 7 to 8 incoming students on a four-day, phone-free backpacking trip.',
+      'Manage logistics, safety, group dynamics, and changing conditions in the field.',
+      'Adapt responsibilities to individual strengths while helping a group build trust quickly.'
+    ],
+    focus: 'Team leadership, logistics, safety, and group dynamics.'
+  },
+  ecuadorianos: {
+    organization: 'Ecuatorianos Unidos y Amigos',
+    role: 'President · Yale University',
+    summary: 'I lead a student community that creates cultural programming around Ecuadorian identity, heritage, and traditions at Yale.',
+    details: [
+      'Plan and lead events that make Ecuadorian culture visible and shared on campus.',
+      'Build community among students and friends of Ecuador.',
+      'Create opportunities for cultural connection alongside academic and professional life.'
+    ],
+    focus: 'Community leadership, cultural programming, and event design.'
   }
 };
 
