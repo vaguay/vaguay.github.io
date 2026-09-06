@@ -1133,3 +1133,9 @@ body.modal-open {
 .bottom-nav * {
   cursor: none !important;
 }
+
+
+/* The cursor must sit above the fixed navigation itself, not just inherit its cursor rule. */
+.cursor {
+  z-index: 1000001;
+}
