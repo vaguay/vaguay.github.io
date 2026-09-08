@@ -233,6 +233,77 @@ if (projectCards.length && modal && modalClose && modalBody) {
 }
 
 
+// Project walkthroughs for repositories with a deeper case-study page
+Object.assign(projectData, {
+  'gpt-from-scratch': {
+    title: 'GPT Built from Scratch',
+    description: 'A ground-up implementation of the components that lead from neural-network fundamentals to GPT training and text generation.',
+    details: [
+      'Built neural-network primitives including neurons, backpropagation, MLPs, activations, and training loops.',
+      'Implemented the language-model pipeline: vocabulary, tokenization, batching, dataset preparation, and embeddings.',
+      'Built attention heads, multi-head attention, transformer blocks, normalization layers, a KV cache, grouped-query attention, and the GPT model.',
+      'Included training and generation entry points to connect the individual components into a working language model.'
+    ],
+    tech: ['Python', 'PyTorch', 'Transformers', 'Attention', 'Tokenization', 'Neural Networks']
+  },
+  replaylab: {
+    title: 'ReplayLab',
+    description: 'A prototype for evaluating action-taking enterprise agents against historical workflows before they are allowed to touch production systems.',
+    details: [
+      'Built an interactive workflow-replay prototype around customer-support refund scenarios.',
+      'Compared an agent’s proposed tool-call trace with a verified human outcome, including evidence, permissions, and escalation requirements.',
+      'Included controlled variations for tool outages, approval thresholds, and security conflicts.',
+      'Surfaced release recommendations from outcome, action, policy/safety, and operational-quality signals.'
+    ],
+    tech: ['JavaScript', 'HTML', 'CSS', 'Agent Evaluation', 'Workflow Design', 'AI Safety']
+  }
+});
+
+const projectWalkthroughs = {
+  'blackjack-monte-carlo': {
+    problem: 'How can a decision system choose hit or stand without hard-coding a strategy table?',
+    approach: 'The model simulates blackjack games offline, estimates win rates for game states, and saves the learned hit/stand policy in a lookup table for fast use during play.',
+    choices: 'Training happens before gameplay, which separates expensive simulation from real-time decisions. The stored policy makes the final decision path small and inspectable.',
+    validation: 'The useful check is whether repeated simulation produces a stable state-to-action policy and whether cached decisions can be returned quickly at play time.',
+    repository: 'https://github.com/vaguay/blackjack_monte_carlo'
+  },
+  'investment-banking': {
+    problem: 'How can a recommendation system combine financial signals with the different objectives of growth, income, and ESG-focused investors?',
+    approach: 'The system pulls market and company data, creates interpretable return, stability, income, and ESG-proxy scores, then weights those scores by investor mandate. A KNN layer supplies comparable-company context for the explanation.',
+    choices: 'The model uses transparent scores and fixed weights instead of a black-box recommendation. ESG is presented as a proxy because consistent official ESG data was not available through the selected API.',
+    validation: 'The repository uses a fixed training universe, calibrated buy/hold/sell thresholds, and examples across investor types. Because inputs are live market data, recommendations are designed to change as data changes.',
+    repository: 'https://github.com/vaguay/investment_banking_analyst_2.0'
+  },
+  'iwv-space': {
+    problem: 'How might capital concentration and socioeconomic impact change the way space-sector investment resilience is evaluated?',
+    approach: 'The project combines a public deal-level dataset with concentration metrics and Monte Carlo scenarios that compare concentrated, diversified, and impact-weighted portfolios under a funding shock.',
+    choices: 'The empirical analysis and scenario model are kept separate: observed deal data produces concentration measures, while the simulation demonstrates structural behavior rather than claiming a forecast.',
+    validation: 'The repository includes the 76-round dataset, replication scripts, generated figures, and expected concentration outputs so the paper’s tables and figures can be reproduced without proprietary data.',
+    repository: 'https://github.com/vaguay/iwv-space-investment'
+  },
+  'venezuela-risk': {
+    problem: 'How do political events and commodity-export control structures translate into market reactions and risk in an emerging market?',
+    approach: 'A Bronze-to-Gold pipeline ingests event and price data, classifies and transforms it, loads curated data into BigQuery and Neo4j, then serves event windows, heatmaps, and a control-network view.',
+    choices: 'The graph deliberately separates ownership from control, which matters when an actor can influence cash flows without owning the asset. Streaming, warehouse, graph, and dashboard layers have separate responsibilities.',
+    validation: 'The repository includes sample historical events, a local Docker Compose environment, unit tests, and a CI workflow that lints, tests, and parses the Airflow DAG.',
+    repository: 'https://github.com/vaguay/venezuelan-market-risk-data-pipelines'
+  },
+  'gpt-from-scratch': {
+    problem: 'What does a GPT model require under the hood, from optimization fundamentals through a working text-generation loop?',
+    approach: 'The repository builds the stack incrementally: neural-network primitives, data and tokenization utilities, attention and transformer modules, then training and generation scripts.',
+    choices: 'Each component is written as a separate module so the model can be studied and debugged at the level of a neuron, tokenizer, attention head, or full transformer block.',
+    validation: 'The project connects the components through runnable training and generation scripts, making the learning path testable as a complete system rather than a collection of isolated exercises.',
+    repository: 'https://github.com/vaguay/gpt-built-from-scratch'
+  },
+  replaylab: {
+    problem: 'How can an enterprise team evaluate whether an action-taking agent follows a safe and correct workflow before production deployment?',
+    approach: 'ReplayLab replays a historical case through an agent’s tool-call plan and compares the trace with the verified human outcome, evidence requirements, permissions, and escalation path.',
+    choices: 'The prototype evaluates actions and workflow state rather than only the final chat response. It starts with fictional scenarios so controlled operational variations can be tested safely.',
+    validation: 'The initial suite includes a baseline case plus tool-outage, approval-threshold, and security-conflict variations, then surfaces a release recommendation from the replay.',
+    repository: 'https://github.com/vaguay/replaylab'
+  }
+};
+
 // Standalone project pages
 const projectPageBody = document.getElementById('project-page-body');
 const projectImages = {
@@ -266,12 +337,27 @@ if (projectPageBody) {
   if (project) {
     document.title = `${project.title} • Vanesa Aguay Guerra`;
     const image = projectImages[projectId];
+    const walkthrough = projectWalkthroughs[projectId];
+    const walkthroughMarkup = walkthrough ? `
+      <section class="project-walkthrough">
+        <h2>The question</h2>
+        <p>${escapeHtml(walkthrough.problem)}</p>
+        <h2>How it works</h2>
+        <p>${escapeHtml(walkthrough.approach)}</p>
+        <h2>Key design decision</h2>
+        <p>${escapeHtml(walkthrough.choices)}</p>
+        <h2>How I checked it</h2>
+        <p>${escapeHtml(walkthrough.validation)}</p>
+        <a class="project-repo-link" href="${walkthrough.repository}" target="_blank" rel="noopener noreferrer">View repository on GitHub ↗</a>
+      </section>
+    ` : '';
     projectPageBody.innerHTML = `
       <a class="article-back" href="portfolio.html#technical">← Technical Projects</a>
       <p class="project-page-kicker">Technical project</p>
       <h1>${escapeHtml(project.title)}</h1>
       <p class="project-page-dek">${escapeHtml(project.description)}</p>
       ${image ? `<img class="project-page-image" src="${image}" alt="">` : ''}
+      ${walkthroughMarkup}
       <h2>What I worked on</h2>
       <ul>${project.details.map((detail) => `<li>${escapeHtml(detail)}</li>`).join('')}</ul>
       <h2>Tools and methods</h2>
