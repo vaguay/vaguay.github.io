@@ -259,48 +259,156 @@ Object.assign(projectData, {
   }
 });
 
-const projectWalkthroughs = {
-  'blackjack-monte-carlo': {
-    problem: 'How can a decision system choose hit or stand without hard-coding a strategy table?',
-    approach: 'The model simulates blackjack games offline, estimates win rates for game states, and saves the learned hit/stand policy in a lookup table for fast use during play.',
-    choices: 'Training happens before gameplay, which separates expensive simulation from real-time decisions. The stored policy makes the final decision path small and inspectable.',
-    validation: 'The useful check is whether repeated simulation produces a stable state-to-action policy and whether cached decisions can be returned quickly at play time.',
-    repository: 'https://github.com/vaguay/blackjack_monte_carlo'
+const projectStories = {
+  "replaylab": {
+    "repository": "https://github.com/vaguay/replaylab",
+    "sections": [
+      [
+        "Starting with the workflow, not the chat",
+        "I began with a gap I kept noticing in the way enterprise agents are evaluated. A polished final answer can look convincing while the underlying workflow has done something unsafe: called the wrong tool, skipped a required approval, relied on missing evidence, or failed to recover from an outage. For action-taking agents, response quality is only part of the question.",
+        "ReplayLab treats the workflow as the unit of evaluation. The initial prototype uses customer-support refunds because the outcome is easy to make concrete: did the agent collect the right evidence, follow the threshold and permission rules, use tools safely, and arrive at the verified resolution?"
+      ],
+      [
+        "Turning a concern into something testable",
+        "The system replays a historical-style case through an agent's proposed tool-call plan. It compares that trace with a verified human outcome, the evidence the workflow required, the actions that were permitted, and the escalation path. That made the question operational: not “does this agent sound helpful?” but “would I let this workflow reach a customer?”",
+        "I deliberately started with fictional data and controlled scenarios. That gives the prototype room to introduce one change at a time—an unavailable tool, a refund that crosses an approval threshold, or a security conflict—and observe whether the agent's plan remains safe."
+      ],
+      [
+        "The central design choice",
+        "I chose not to collapse performance into one generic score. The replay surfaces where a trace is incomplete, unsafe, or missing a handoff, then produces a release recommendation from those checks. This keeps a reviewer close to the evidence instead of asking them to trust an opaque benchmark number.",
+        "It also makes the prototype useful as a product conversation. A team can see which policy constraint broke, not just that a model “failed.”"
+      ],
+      [
+        "How I checked the idea",
+        "The initial suite includes a baseline refund case alongside tool-outage, approval-threshold, and security-conflict variations. Each is intended to test a different part of the workflow: resilience, authorization, and safety boundaries.",
+        "This is a prototype, not a claim of benchmark validity. The repository makes that limitation explicit and lays out the next practical steps: versioned policies, imported traces, scorecards, release gates, and sandbox connectors."
+      ]
+    ]
   },
-  'investment-banking': {
-    problem: 'How can a recommendation system combine financial signals with the different objectives of growth, income, and ESG-focused investors?',
-    approach: 'The system pulls market and company data, creates interpretable return, stability, income, and ESG-proxy scores, then weights those scores by investor mandate. A KNN layer supplies comparable-company context for the explanation.',
-    choices: 'The model uses transparent scores and fixed weights instead of a black-box recommendation. ESG is presented as a proxy because consistent official ESG data was not available through the selected API.',
-    validation: 'The repository uses a fixed training universe, calibrated buy/hold/sell thresholds, and examples across investor types. Because inputs are live market data, recommendations are designed to change as data changes.',
-    repository: 'https://github.com/vaguay/investment_banking_analyst_2.0'
+  "venezuela-risk": {
+    "repository": "https://github.com/vaguay/venezuelan-market-risk-data-pipelines",
+    "sections": [
+      [
+        "A market question with a data-modeling problem",
+        "The starting question was how political events and commodity-export controls around Venezuela might become observable market risk. The harder part was not finding a headline or a price series; it was preserving enough context to explain what happened, who had influence, and how an event lined up with a market move.",
+        "That pushed the project beyond a single dashboard. I designed it as a pipeline that can retain raw source material, create a normalized analytical layer, and connect events to assets and control relationships."
+      ],
+      [
+        "Building the system in layers",
+        "The pipeline follows a Bronze–Silver–Gold pattern. It ingests RSS, JSONL, and price feeds through Redpanda; stores raw records in BigQuery; applies classification and entity processing with spaCy and keyword logic; and then serves curated event windows and metrics.",
+        "Neo4j holds the relationship layer, while BigQuery supports the event-window analysis. The Streamlit interface brings together the price series, event-sensitivity view, heatmap, and control-network view. Each layer has a distinct job, which made the data flow easier to inspect and extend."
+      ],
+      [
+        "The decision that mattered",
+        "I modeled ownership separately from control. In an emerging-market setting, an actor may influence cash flows or operational decisions without appearing as the legal owner of an asset. Treating those ideas as interchangeable would make the graph simpler, but less useful for the question the project is trying to answer.",
+        "I also kept the ingestion, warehouse, graph, and dashboard concerns separate rather than asking one tool to do everything. That tradeoff supports clearer debugging and a more believable path from prototype to a maintained system."
+      ],
+      [
+        "How I made it reproducible",
+        "The repository includes sample historical events, a local Docker Compose environment, unit tests, and CI checks that lint, test, and parse the Airflow DAG. Those choices matter because this kind of analysis is only useful if someone else can follow the lineage from an event source to a chart.",
+        "The next useful extension would be more carefully curated event labels and broader coverage, but the current version already demonstrates the end-to-end reasoning: source data becomes structured evidence, structured evidence becomes a relationship-aware view of risk."
+      ]
+    ]
   },
-  'iwv-space': {
-    problem: 'How might capital concentration and socioeconomic impact change the way space-sector investment resilience is evaluated?',
-    approach: 'The project combines a public deal-level dataset with concentration metrics and Monte Carlo scenarios that compare concentrated, diversified, and impact-weighted portfolios under a funding shock.',
-    choices: 'The empirical analysis and scenario model are kept separate: observed deal data produces concentration measures, while the simulation demonstrates structural behavior rather than claiming a forecast.',
-    validation: 'The repository includes the 76-round dataset, replication scripts, generated figures, and expected concentration outputs so the paper’s tables and figures can be reproduced without proprietary data.',
-    repository: 'https://github.com/vaguay/iwv-space-investment'
+  "gpt-from-scratch": {
+    "repository": "https://github.com/vaguay/gpt-built-from-scratch",
+    "sections": [
+      [
+        "Why build the pieces before using the abstraction",
+        "I wanted to understand what a GPT-style model is actually doing at each stage, rather than treating a library call as the whole story. The project begins below the transformer: gradients, backpropagation, neurons, activations, and multilayer perceptrons. From there it moves into the data and modeling machinery required for language generation.",
+        "The point was not to reproduce a production foundation model. It was to make the path from simple neural-network primitives to a runnable text-generation loop visible and inspectable."
+      ],
+      [
+        "Following the dependency chain",
+        "I built the repository in the order the system needs to exist. The data layer handles vocabulary, tokenization, batching, and dataset preparation. Embedding and normalization layers create the representations the model needs. Attention heads, multi-head attention, transformer blocks, KV caching, and grouped-query attention then build toward the GPT model.",
+        "Keeping these components in separate modules means a problem can be located at the right level. If a generated sequence is wrong, the investigation can move from training or sampling back through attention, tokenization, or data loading instead of treating the model as one black box."
+      ],
+      [
+        "The design choice behind the structure",
+        "The repository favors small, named implementations over a monolithic notebook. That makes the learning progression clearer, but it also mirrors a real engineering concern: complex systems are easier to reason about when interfaces are narrow and the dependencies are explicit.",
+        "I used the training and generation scripts as the integration point. The model is not just a collection of exercises; the pieces have to work together well enough to train and produce text."
+      ],
+      [
+        "How I checked the learning path",
+        "The practical check is end to end: the modules connect through runnable training and generation entry points. That is a stronger test than verifying an isolated attention calculation, because it exposes mismatches between the tokenizer, batches, embeddings, model, and decoding loop.",
+        "The repository is course work, and I preserve that provenance in the project description. Its value is the transparent record of the concepts I implemented and connected, rather than a claim to have built a novel model architecture."
+      ]
+    ]
   },
-  'venezuela-risk': {
-    problem: 'How do political events and commodity-export control structures translate into market reactions and risk in an emerging market?',
-    approach: 'A Bronze-to-Gold pipeline ingests event and price data, classifies and transforms it, loads curated data into BigQuery and Neo4j, then serves event windows, heatmaps, and a control-network view.',
-    choices: 'The graph deliberately separates ownership from control, which matters when an actor can influence cash flows without owning the asset. Streaming, warehouse, graph, and dashboard layers have separate responsibilities.',
-    validation: 'The repository includes sample historical events, a local Docker Compose environment, unit tests, and a CI workflow that lints, tests, and parses the Airflow DAG.',
-    repository: 'https://github.com/vaguay/venezuelan-market-risk-data-pipelines'
+  "investment-banking": {
+    "repository": "https://github.com/vaguay/investment_banking_analyst_2.0",
+    "sections": [
+      [
+        "The recommendation had to reflect the investor",
+        "A generic buy, hold, or sell label hides a real decision: different investors care about different tradeoffs. A growth-oriented investor may prioritize return potential; an income investor may care much more about dividends and stability; an ESG-focused investor wants a different lens again. I designed this project around that distinction.",
+        "The goal became a hybrid quant–analyst tool: use market and company data for the numerical backbone, then make the recommendation legible enough for a person to understand why it changed."
+      ],
+      [
+        "From raw market data to a decision",
+        "The system pulls data through yfinance, including beta, market capitalization, dividend information, sector, valuation, growth, margins, return on equity, and longer-horizon price history. It turns those inputs into four interpretable score families: return, stability, income, and an ESG proxy.",
+        "A weighted matrix changes how those score families matter for growth, income, and ESG-oriented investor profiles. The model then maps the combined score to buy, hold, or sell thresholds. A K-nearest-neighbors layer adds comparable-company context to the explanation; optional clustering is kept explanatory rather than treated as the recommendation engine."
+      ],
+      [
+        "Choosing transparency over false precision",
+        "I deliberately used visible scores and fixed weights rather than a black-box model. That makes the tradeoffs inspectable: a user can see when a recommendation is being driven by growth, income, or stability. It also makes a limitation clear. The ESG component is labeled as a proxy because the selected data source does not provide consistent official ESG coverage.",
+        "That honesty matters more than an overly confident label. The output is a structured decision aid, not investment advice or a claim that one score can represent every investor's objectives."
+      ],
+      [
+        "How I checked the system",
+        "The repository documents the training universe, score logic, thresholds, investor profiles, and runnable examples. Because the inputs are live market data, the recommendation is designed to change with the data rather than remain a frozen result.",
+        "The next iteration I would prioritize is making the evidence behind each factor even more visible in the interface, so a user can move from the recommendation to the specific financial signals and comparable cases that informed it."
+      ]
+    ]
   },
-  'gpt-from-scratch': {
-    problem: 'What does a GPT model require under the hood, from optimization fundamentals through a working text-generation loop?',
-    approach: 'The repository builds the stack incrementally: neural-network primitives, data and tokenization utilities, attention and transformer modules, then training and generation scripts.',
-    choices: 'Each component is written as a separate module so the model can be studied and debugged at the level of a neuron, tokenizer, attention head, or full transformer block.',
-    validation: 'The project connects the components through runnable training and generation scripts, making the learning path testable as a complete system rather than a collection of isolated exercises.',
-    repository: 'https://github.com/vaguay/gpt-built-from-scratch'
+  "iwv-space": {
+    "repository": "https://github.com/vaguay/iwv-space-investment",
+    "sections": [
+      [
+        "Separating what the data says from what a scenario explores",
+        "This project grew from a question about resilience in space-sector investment: how concentrated is the current funding landscape, and how might that concentration interact with an impact-weighted approach during a funding shock? I wanted the analysis to be rigorous about the boundary between observed data and a modeled scenario.",
+        "The repository supports the supplementary materials for an AIAA ASCEND 2026 paper. It uses a deal-level dataset of 76 funding rounds from January 2023 through December 2025, with disclosed funding amounts for 59 rounds and a nine-category taxonomy."
+      ],
+      [
+        "Measuring the baseline before modeling the alternative",
+        "The empirical portion computes concentration through the Gini coefficient, HHI, top-two share, and Lorenz curve. The scripts make the observed concentration visible before any portfolio simulation is introduced. That ordering matters: it gives the scenario model a factual starting point instead of treating the simulation as evidence by itself.",
+        "The modeling portion then runs 10,000 Monte Carlo paths over 10 periods. It compares a benchmark portfolio, a diversified portfolio, and an impact-weighted portfolio under a 40% contraction in the third period."
+      ],
+      [
+        "A deliberate guardrail in the interpretation",
+        "The most important choice was keeping the empirical analysis and the scenario model distinct. The deal data can support a statement about concentration; the Monte Carlo model can illustrate the structural behavior of specified portfolios under stated assumptions. It is not a forecast of the sector.",
+        "That distinction is easy to blur in investment work. Making it explicit lets a reader assess both parts on their own terms: the data preparation and concentration metrics on one side, and the scenario design and portfolio assumptions on the other."
+      ],
+      [
+        "How someone can verify the work",
+        "The repository includes the source dataset, scripts for the concentration calculations, generated figures, and expected outputs. A reader can reproduce the table and figure logic without proprietary data, then inspect the assumptions that shape the simulation.",
+        "A natural next step is sensitivity analysis across shock timing, allocation rules, and taxonomy choices. The current project establishes the reproducible analytical base needed for that conversation."
+      ]
+    ]
   },
-  replaylab: {
-    problem: 'How can an enterprise team evaluate whether an action-taking agent follows a safe and correct workflow before production deployment?',
-    approach: 'ReplayLab replays a historical case through an agent’s tool-call plan and compares the trace with the verified human outcome, evidence requirements, permissions, and escalation path.',
-    choices: 'The prototype evaluates actions and workflow state rather than only the final chat response. It starts with fictional scenarios so controlled operational variations can be tested safely.',
-    validation: 'The initial suite includes a baseline case plus tool-outage, approval-threshold, and security-conflict variations, then surfaces a release recommendation from the replay.',
-    repository: 'https://github.com/vaguay/replaylab'
+  "blackjack-monte-carlo": {
+    "repository": "https://github.com/vaguay/blackjack_monte_carlo",
+    "sections": [
+      [
+        "Turning a familiar game into a decision problem",
+        "Blackjack is a compact way to ask a serious modeling question: how can a system choose an action when the quality of that action depends on uncertainty and repeated outcomes? Rather than hard-code a hit-or-stand table, I framed the project as an offline learning problem.",
+        "The system simulates games, estimates how often states lead to successful outcomes under candidate decisions, and converts those estimates into a policy that can be used during play."
+      ],
+      [
+        "Why the work happens before the decision",
+        "Simulation is relatively expensive compared with a single hit-or-stand choice. I separated those two concerns: training happens offline, while gameplay reads a cached lookup table. That means the real-time portion is fast and small enough to inspect.",
+        "This separation also makes the project easier to reason about. The learning process is where the statistical work happens; the action layer is simply retrieving the learned policy for the current state."
+      ],
+      [
+        "The design decision",
+        "I chose a lookup table rather than burying the policy inside a more opaque model. For this problem, transparency is useful: a reviewer can examine the mapping from state to action and understand that it came from estimated win rates rather than an arbitrary rule.",
+        "The project is therefore as much about the decision-system architecture as it is about Blackjack. It shows how an offline simulation loop can become a dependable, low-latency decision path."
+      ],
+      [
+        "How I evaluated it",
+        "The useful checks are stability and usability. Repeated simulation should settle into a coherent state-to-action policy, and the saved policy should produce quick decisions when the game is running.",
+        "A natural extension would be to compare the learned policy with a baseline strategy across a held-out simulation set, then expose uncertainty where the system has seen relatively few examples. The current version focuses on the core loop: simulate, estimate, cache, and act."
+      ]
+    ]
   }
 };
 
@@ -337,18 +445,16 @@ if (projectPageBody) {
   if (project) {
     document.title = `${project.title} • Vanesa Aguay Guerra`;
     const image = projectImages[projectId];
-    const walkthrough = projectWalkthroughs[projectId];
-    const walkthroughMarkup = walkthrough ? `
-      <section class="project-walkthrough">
-        <h2>The question</h2>
-        <p>${escapeHtml(walkthrough.problem)}</p>
-        <h2>How it works</h2>
-        <p>${escapeHtml(walkthrough.approach)}</p>
-        <h2>Key design decision</h2>
-        <p>${escapeHtml(walkthrough.choices)}</p>
-        <h2>How I checked it</h2>
-        <p>${escapeHtml(walkthrough.validation)}</p>
-        <a class="project-repo-link" href="${walkthrough.repository}" target="_blank" rel="noopener noreferrer">View repository on GitHub ↗</a>
+    const story = projectStories[projectId];
+    const storyMarkup = story ? `
+      <section class="project-walkthrough project-story">
+        ${story.sections.map(([heading, ...paragraphs]) => `
+          <section class="project-story-section">
+            <h2>${escapeHtml(heading)}</h2>
+            ${paragraphs.map((paragraph) => `<p>${escapeHtml(paragraph)}</p>`).join('')}
+          </section>
+        `).join('')}
+        <a class="project-repo-link" href="${story.repository}" target="_blank" rel="noopener noreferrer">Read the repository on GitHub ↗</a>
       </section>
     ` : '';
     projectPageBody.innerHTML = `
@@ -357,7 +463,7 @@ if (projectPageBody) {
       <h1>${escapeHtml(project.title)}</h1>
       <p class="project-page-dek">${escapeHtml(project.description)}</p>
       ${image ? `<img class="project-page-image" src="${image}" alt="">` : ''}
-      ${walkthroughMarkup}
+      ${storyMarkup}
       <h2>What I worked on</h2>
       <ul>${project.details.map((detail) => `<li>${escapeHtml(detail)}</li>`).join('')}</ul>
       <h2>Tools and methods</h2>
