@@ -1229,3 +1229,50 @@ body.modal-open {
   color: var(--light-gray);
   line-height: 1.7;
 }
+
+
+/* Project walkthrough sections */
+.project-walkthrough {
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  margin: 3rem 0 0;
+  max-width: 720px;
+  padding-top: 0.5rem;
+}
+
+.project-walkthrough p {
+  color: var(--light-gray);
+  line-height: 1.8;
+  margin-bottom: 1.25rem;
+}
+
+.project-repo-link {
+  border-bottom: 1px solid var(--red);
+  color: var(--white);
+  display: inline-block;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  margin: 1.2rem 0 0.5rem;
+  padding-bottom: 0.25rem;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.project-repo-link:hover {
+  color: var(--red);
+}
+
+.project-image-placeholder {
+  align-items: center;
+  background: linear-gradient(135deg, rgba(255, 0, 0, 0.2), rgba(255, 255, 255, 0.05));
+  display: flex;
+  justify-content: center;
+}
+
+.project-image-placeholder span {
+  color: var(--white);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: clamp(1.4rem, 4vw, 2.4rem);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+}
