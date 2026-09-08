@@ -9,7 +9,7 @@ document.addEventListener('mousemove', (e) => {
 });
 
 // Project Modal (runs only on portfolio page where elements exist)
-const projectCards = document.querySelectorAll('.project-card');
+const projectCards = document.querySelectorAll('.project-card:not(.project-link)');
 const modal = document.getElementById('project-modal');
 const modalClose = document.getElementById('modal-close');
 const modalBody = document.getElementById('modal-body');
@@ -230,6 +230,60 @@ if (projectCards.length && modal && modalClose && modalBody) {
       modal.classList.remove('active');
     }
   });
+}
+
+
+// Standalone project pages
+const projectPageBody = document.getElementById('project-page-body');
+const projectImages = {
+  'mars-rover': 'assets/images/projects-1.png',
+  'quantum-laser': 'assets/images/projects-2.png',
+  'ai-literacy': 'assets/images/projects-3.png',
+  'iwv-space': 'assets/images/projects-4.png',
+  'venezuela-risk': 'assets/images/projects-5.png',
+  'investment-banking': 'assets/images/projects-6.png',
+  'motor-controller': 'assets/images/projects-7.png',
+  'advanced-filters': 'assets/images/projects-8.png',
+  'quantum-design': 'assets/images/projects-9.png',
+  'device-recommender': 'assets/images/projects-10.png',
+  'blackjack-monte-carlo': 'assets/images/projects-11.png',
+  'radio-fm': 'assets/images/projects-12.png',
+  'llm-decision': 'assets/images/projects-13.png',
+  'loan-decision': 'assets/images/projects-14.png'
+};
+
+if (projectPageBody) {
+  const projectId = new URLSearchParams(window.location.search).get('project');
+  const project = projectData[projectId];
+  const escapeHtml = (value) => value.replace(/[&<>"']/g, (character) => ({
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#039;'
+  }[character]));
+
+  if (project) {
+    document.title = `${project.title} • Vanesa Aguay Guerra`;
+    const image = projectImages[projectId];
+    projectPageBody.innerHTML = `
+      <a class="article-back" href="portfolio.html#technical">← Technical Projects</a>
+      <p class="project-page-kicker">Technical project</p>
+      <h1>${escapeHtml(project.title)}</h1>
+      <p class="project-page-dek">${escapeHtml(project.description)}</p>
+      ${image ? `<img class="project-page-image" src="${image}" alt="">` : ''}
+      <h2>What I worked on</h2>
+      <ul>${project.details.map((detail) => `<li>${escapeHtml(detail)}</li>`).join('')}</ul>
+      <h2>Tools and methods</h2>
+      <p class="project-page-tools">${project.tech.map(escapeHtml).join(' · ')}</p>
+    `;
+  } else {
+    projectPageBody.innerHTML = `
+      <a class="article-back" href="portfolio.html#technical">← Technical Projects</a>
+      <h1>Project not found</h1>
+      <p class="project-page-dek">Return to the portfolio to choose a project.</p>
+    `;
+  }
 }
 
 const blogCards = document.querySelectorAll('.blog-post-card');
