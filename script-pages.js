@@ -248,7 +248,7 @@ Object.assign(projectData, {
   },
   replaylab: {
     title: 'ReplayLab',
-    description: 'A prototype for evaluating action-taking enterprise agents against historical workflows before they are allowed to touch production systems.',
+    description: 'A prototype for evaluating enterprise agents against historical workflows before they are implemented in production systems.',
     details: [
       'Built an interactive workflow-replay prototype around customer-support refund scenarios.',
       'Compared an agent’s proposed tool-call trace with a verified human outcome, including evidence, permissions, and escalation requirements.',
@@ -264,9 +264,9 @@ const projectStories = {
     "repository": "https://github.com/vaguay/replaylab",
     "sections": [
       [
-        "Starting with the workflow, not the chat",
-        "I began with a gap I kept noticing in the way enterprise agents are evaluated. A polished final answer can look convincing while the underlying workflow has done something unsafe: called the wrong tool, skipped a required approval, relied on missing evidence, or failed to recover from an outage. For action-taking agents, response quality is only part of the question.",
-        "ReplayLab treats the workflow as the unit of evaluation. The initial prototype uses customer-support refunds because the outcome is easy to make concrete: did the agent collect the right evidence, follow the threshold and permission rules, use tools safely, and arrive at the verified resolution?"
+        "Starting with the workflow",
+        "I began with a gap I kept noticing in the way enterprise agents are evaluated. A polished final solution can look convincing while the underlying workflow has effects that we can't immediately see: called the wrong tool, skipped a required approval, relied on missing evidence, or failed to recover from an outage. For action-taking agents, response quality is only one component.",
+        "ReplayLab treats the workflow as the unit of evaluation. The initial prototype uses customer-support refunds because the outcome is easy to define: did the agent collect the right evidence, follow the threshold and permission rules, use tools safely, and arrive at the verified resolution?"
       ],
       [
         "Turning a concern into something testable",
@@ -314,7 +314,7 @@ const projectStories = {
     "repository": "https://github.com/vaguay/gpt-built-from-scratch",
     "sections": [
       [
-        "Why build the pieces before using the abstraction",
+        "How I build the pieces",
         "I wanted to understand what a GPT-style model is actually doing at each stage, rather than treating a library call as the whole story. The project begins below the transformer: gradients, backpropagation, neurons, activations, and multilayer perceptrons. From there it moves into the data and modeling machinery required for language generation.",
         "The point was not to reproduce a production foundation model. It was to make the path from simple neural-network primitives to a runnable text-generation loop visible and inspectable."
       ],
@@ -324,7 +324,7 @@ const projectStories = {
         "Keeping these components in separate modules means a problem can be located at the right level. If a generated sequence is wrong, the investigation can move from training or sampling back through attention, tokenization, or data loading instead of treating the model as one black box."
       ],
       [
-        "The design choice behind the structure",
+        "The design choice I made",
         "The repository favors small, named implementations over a monolithic notebook. That makes the learning progression clearer, but it also mirrors a real engineering concern: complex systems are easier to reason about when interfaces are narrow and the dependencies are explicit.",
         "I used the training and generation scripts as the integration point. The model is not just a collection of exercises; the pieces have to work together well enough to train and produce text."
       ],
@@ -344,12 +344,12 @@ const projectStories = {
         "The goal became a hybrid quant–analyst tool: use market and company data for the numerical backbone, then make the recommendation legible enough for a person to understand why it changed."
       ],
       [
-        "From raw market data to a decision",
+        "From raw market data",
         "The system pulls data through yfinance, including beta, market capitalization, dividend information, sector, valuation, growth, margins, return on equity, and longer-horizon price history. It turns those inputs into four interpretable score families: return, stability, income, and an ESG proxy.",
         "A weighted matrix changes how those score families matter for growth, income, and ESG-oriented investor profiles. The model then maps the combined score to buy, hold, or sell thresholds. A K-nearest-neighbors layer adds comparable-company context to the explanation; optional clustering is kept explanatory rather than treated as the recommendation engine."
       ],
       [
-        "Choosing transparency over false precision",
+        "Choosing transparency",
         "I deliberately used visible scores and fixed weights rather than a black-box model. That makes the tradeoffs inspectable: a user can see when a recommendation is being driven by growth, income, or stability. It also makes a limitation clear. The ESG component is labeled as a proxy because the selected data source does not provide consistent official ESG coverage.",
         "That honesty matters more than an overly confident label. The output is a structured decision aid, not investment advice or a claim that one score can represent every investor's objectives."
       ],
@@ -389,7 +389,7 @@ const projectStories = {
     "repository": "https://github.com/vaguay/blackjack_monte_carlo",
     "sections": [
       [
-        "Turning a familiar game into a decision problem",
+        "Defining a decision problem",
         "Blackjack is a compact way to ask a serious modeling question: how can a system choose an action when the quality of that action depends on uncertainty and repeated outcomes? Rather than hard-code a hit-or-stand table, I framed the project as an offline learning problem.",
         "The system simulates games, estimates how often states lead to successful outcomes under candidate decisions, and converts those estimates into a policy that can be used during play."
       ],
@@ -495,7 +495,7 @@ const blogData = {
   },
 
   'decision-systems': {
-    title: 'Prediction Is Not Understanding',
+    title: 'Prediction vs Understanding',
     category: 'Decision Systems',
     body: `
       <p>Prediction can look like intelligence. A system can classify, rank, approve, reject, recommend, and summarize without ever understanding the world it is shaping.</p>
